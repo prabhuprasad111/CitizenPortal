@@ -26,17 +26,19 @@
 }
 
 html {
-  height: 100%;
-  max-height: 100%;
+  min-height: 100%;
+  height: auto;
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body.login-page-body {
   margin: 0;
-  height: 100dvh;
-  max-height: 100dvh;
-  overflow: hidden;
+  min-height: 100dvh;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   color: var(--od-ink);
   background: linear-gradient(
@@ -79,6 +81,38 @@ body.login-page-body {
   box-shadow: 0 2px 10px rgba(180, 60, 20, 0.12);
 }
 
+.login-lang-bar button.login-lang-btn {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  color: var(--od-deep-orange);
+  text-decoration: none;
+  padding: 0.42rem 0.72rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow:
+    0 1px 2px rgba(44, 24, 16, 0.08),
+    0 0 0 1px rgba(232, 131, 15, 0.18) inset;
+}
+
+.login-lang-bar button.login-lang-btn:hover {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(180, 60, 20, 0.12);
+}
+
+.login-lang-bar .login-lang-btn.login-lang-active {
+  background: linear-gradient(
+    118deg,
+    rgba(252, 190, 120, 0.35),
+    rgba(255, 255, 255, 0.95)
+  );
+  box-shadow:
+    0 0 0 2px rgba(180, 60, 20, 0.22),
+    0 2px 8px rgba(180, 60, 20, 0.12);
+}
+
 /* ── Main: centered card, flex fill ───────────────────────── */
 .login-main-centre {
   flex: 1;
@@ -97,21 +131,13 @@ body.login-page-body {
 .login-card-shell {
   position: relative;
   width: min(416px, 100%);
-  max-height: calc(
-    100dvh - clamp(44px, 8dvh, 70px) - max(1rem, env(safe-area-inset-top, 0px)) -
-      max(0.75rem, env(safe-area-inset-bottom, 0px)) - 1.25rem
-  );
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   flex-direction: column;
 }
 
 .login-card-shell .login-card-inner {
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-  flex: 1;
-  min-height: 0;
+  overflow: visible;
 }
 
 .login-patta-frame {
@@ -215,16 +241,33 @@ body.login-page-body {
   color: transparent;
 }
 
-.login-heading .odia-stack {
-  display: block;
+/* English / ଓଡ଼ିଆ toggle (whole UI, not bilingual mix) */
+.lang-or {
+  display: none !important;
+}
+
+body.login-lang-or .lang-en {
+  display: none !important;
+}
+
+body.login-lang-or .lang-or {
+  display: inline !important;
+}
+
+body.login-lang-or .login-heading .lang-or {
+  display: block !important;
+  margin-top: 0.08rem;
   font-family: "Noto Sans Oriya", "Noto Sans Odia", serif;
   font-size: clamp(1.72rem, 5vmin, 2.05rem);
   font-weight: 600;
-  margin-top: 0.08rem;
   background: linear-gradient(118deg, var(--od-maroon) 0%, var(--od-crimson) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+body.login-lang-or {
+  font-family: "Noto Sans Oriya", "Noto Sans Odia", "Plus Jakarta Sans", system-ui, sans-serif;
 }
 
 .login-sub {
@@ -457,6 +500,46 @@ body.login-page-body {
 
 .login-footer-links .odia {
   font-family: "Noto Sans Oriya", "Noto Sans Odia", serif;
+}
+
+/* Same pattern as homepage preloader (#preloader CSS lives in main.css there) */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  overflow: hidden;
+  background: var(--od-cream);
+  transition: opacity 0.45s ease-out;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid rgba(255, 255, 255, 0.92);
+  border-color: var(--od-saffron) transparent var(--od-deep-orange) transparent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-login-preloader 1.2s linear infinite;
+}
+
+@keyframes animate-login-preloader {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  #preloader:before {
+    animation: none;
+    border-color: rgba(180, 60, 20, 0.5);
+  }
 }
 
 /* ── Footer art (bottom.png): fades into page at top; strong art + deep tone at bottom ─── */

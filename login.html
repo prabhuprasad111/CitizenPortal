@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login · Citizen Portal | ନାଗରିକ ପୋର୍ଟାଲ୍</title>
-  <meta name="description" content="Secure login for the Odisha Citizen Portal — bilingual Odia / English labels.">
+  <meta name="description" content="Secure login for the Odisha Citizen Portal — English or ଓଡ଼ିଆ">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +20,15 @@
 </head>
 
 <body class="login-page-body">
-  <nav class="login-lang-bar" role="navigation" aria-label="Language">
-    <a href="#" lang="en">English</a>
-    <a href="#" lang="or">ଓଡ଼ିଆ</a>
+  <div id="preloader" aria-busy="true" aria-live="polite"></div>
+
+  <nav class="login-lang-bar" role="toolbar" aria-label="Display language">
+    <button type="button" class="login-lang-btn login-lang-active" data-login-lang="en" id="loginLangEn" aria-pressed="true">
+      English
+    </button>
+    <button type="button" class="login-lang-btn" data-login-lang="or" id="loginLangOr" aria-pressed="false" lang="or">
+      ଓଡ଼ିଆ
+    </button>
   </nav>
 
   <main class="login-main-centre">
@@ -47,47 +53,53 @@
       <div class="login-card-inner">
         <div class="login-brand-row">
           <div class="login-konark-wheel-wrap">
-            <!-- Wheel: konark.png — clockwise spin; tweak object-position if the chakra is off-center -->
-            <div class="login-wheel-spin" role="img" aria-label="Konark Sun Temple wheel">
+            <div class="login-wheel-spin" role="img"
+              aria-label="Konark Sun Temple wheel · କୋଣାର୍କ ସୂର୍ଯ୍ୟମନ୍ଦିରର ଚକ">
               <div class="login-wheel-rotator">
-                <img class="login-wheel-img" src="assets/img/konark.png" alt="Konark Sun Temple — Dharma Chakra wheel"
+                <img class="login-wheel-img" src="assets/img/konark.png" alt=""
                   width="400" height="400" decoding="async" fetchpriority="high">
               </div>
             </div>
           </div>
 
           <h1 class="login-heading">
-            Welcome
-            <span class="odia-stack" lang="or">ସ୍ୱାଗତ</span>
+            <span class="lang-en">Welcome</span>
+            <span class="lang-or" lang="or">ସ୍ୱାଗତ</span>
           </h1>
           <p class="login-sub">
-            Odisha Citizen Portal · <span class="odia" lang="or">ଓଡ଼ିଶା ନାଗରିକ ପୋର୍ଟାଲ୍</span>
+            <span class="lang-en">Odisha Citizen Portal</span>
+            <span class="lang-or" lang="or">ଓଡ଼ିଶା ନାଗରିକ ପୋର୍ଟାଲ୍</span>
           </p>
         </div>
 
         <form class="login-form" action="#" method="post" autocomplete="on" novalidate>
           <div class="login-field">
             <label class="login-label" for="username">
-              Username <span class="odia" lang="or">(ବ୍ୟବହାରକାରୀ ନାମ)</span>
+              <span class="lang-en">Username</span>
+              <span class="lang-or" lang="or">ବ୍ୟବହାରକାରୀ ନାମ</span>
             </label>
             <div class="login-input-wrap">
               <i class="bi bi-person-fill" aria-hidden="true"></i>
-              <input class="login-input" type="text" id="username" name="username" required
-                placeholder="Enter your username" spellcheck="false" autocapitalize="none">
+              <input class="login-input" type="text" id="username" name="username" required spellcheck="false"
+                autocapitalize="none" data-ph-en="Enter your username"
+                data-ph-or="ବ୍ୟବହାରକାରୀ ନାମ ଲେଖନ୍ତୁ">
             </div>
           </div>
 
           <div class="login-field">
             <label class="login-label" for="password">
-              Password <span class="odia" lang="or">(ପାସ୍ୱାର୍ଡ)</span>
+              <span class="lang-en">Password</span>
+              <span class="lang-or" lang="or">ପାସ୍ୱାର୍ଡ</span>
             </label>
             <div class="login-input-wrap">
               <i class="bi bi-shield-lock-fill" aria-hidden="true"></i>
               <input class="login-input login-input--password" type="password" id="password" name="password" required
-                placeholder="Enter your password" autocomplete="current-password">
+                autocomplete="current-password" data-ph-en="Enter your password"
+                data-ph-or="ପାସ୍ୱାର୍ଡ ଲେଖନ୍ତୁ">
               <div class="login-password-actions">
                 <button class="btn-toggle-password" type="button" id="togglePassword"
-                  aria-label="Show password · ପାସ୍ୱାର୍ଡ ଦେଖାନ୍ତୁ" aria-pressed="false" aria-controls="password">
+                  aria-pressed="false" aria-controls="password" data-show-en="Show password"
+                  data-hide-en="Hide password" data-show-or="ପାସ୍ୱାର୍ଡ ଦେଖାନ୍ତୁ" data-hide-or="ପାସ୍ୱାର୍ଡ ଲୁଚାନ୍ତୁ">
                   <i class="bi bi-eye-fill" aria-hidden="true"></i>
                 </button>
               </div>
@@ -97,20 +109,29 @@
           <div class="login-meta">
             <label class="login-check">
               <input type="checkbox" id="remember" name="remember" value="1">
-              <span>Remember me <span class="odia" lang="or">· ମନେରଖିବେ</span></span>
+              <span>
+                <span class="lang-en">Remember me</span>
+                <span class="lang-or" lang="or">ମନେରଖିବେ</span>
+              </span>
             </label>
-            <a class="login-forgot" href="#">Forgot password? <span class="odia" lang="or">ପାସ୍ୱାର୍ଡ ଭୁଲି
-                ଗଲେ?</span></a>
+            <a class="login-forgot" href="#">
+              <span class="lang-en">Forgot password?</span>
+              <span class="lang-or" lang="or">ପାସ୍ୱାର୍ଡ ଭୁଲି ଗଲେ?</span>
+            </a>
           </div>
 
           <button type="submit" class="btn-login-submit">
-            Sign in <span class="odia" lang="or">· ଲଗଇନ୍ କରନ୍ତୁ</span>
+            <span class="lang-en">Sign in</span>
+            <span class="lang-or" lang="or">ଲଗଇନ୍ କରନ୍ତୁ</span>
           </button>
         </form>
 
         <div class="login-footer-links">
-          <a href="index.html"><i class="bi bi-arrow-left-short" aria-hidden="true"></i> Back to home</a>
-          · <span class="odia" lang="or">ମୁଖ୍ୟ ପୃଷ୍ଠାକୁ ଫେରିଆସନ୍ତୁ</span>
+          <a href="index.html" id="loginBackHome" data-loader-on-leave="1">
+            <i class="bi bi-arrow-left-short" aria-hidden="true"></i>
+            <span class="lang-en"> Back to home</span>
+            <span class="lang-or" lang="or"> ମୁଖ୍ୟ ପୃଷ୍ଠାକୁ ଫେରିଆସନ୍ତୁ</span>
+          </a>
         </div>
       </div>
     </div>
@@ -123,34 +144,103 @@
 
   <script>
     (function () {
-      var input = document.getElementById("password");
-      var btn = document.getElementById("togglePassword");
-      if (!input || !btn) return;
-      var icon = btn.querySelector("i");
+      var STORAGE = "citizenPortalLoginLang";
+      var TITLE_EN = "Login · Citizen Portal | Odisha";
+      var TITLE_OR = "ଲଗଇନ୍ · ଓଡ଼ିଶା ନାଗରିକ ପୋର୍ଟାଲ୍";
 
-      function setPasswordVisible(reveal) {
-        input.type = reveal ? "text" : "password";
-        btn.setAttribute("aria-pressed", reveal ? "true" : "false");
-        btn.setAttribute(
-          "aria-label",
-          reveal ? "Hide password · ପାସ୍ୱାର୍ଡ ଲୁଚାନ୍ତୁ" : "Show password · ପାସ୍ୱାର୍ଡ ଦେଖାନ୍ତୁ"
-        );
+      function qs(id) {
+        return document.getElementById(id);
+      }
+
+      function removePreloader() {
+        var p = qs("preloader");
+        if (p && p.parentNode) p.parentNode.removeChild(p);
+      }
+      window.addEventListener("load", removePreloader);
+
+      function syncPwdToggleUi() {
+        var inputPw = qs("password");
+        var toggleBtn = qs("togglePassword");
+        var icon = toggleBtn && toggleBtn.querySelector("i");
+        if (!inputPw || !toggleBtn) return;
+        var orMode = document.body.classList.contains("login-lang-or");
+        var reveal = inputPw.type === "text";
+        toggleBtn.setAttribute("aria-pressed", reveal ? "true" : "false");
+        var show = orMode ? toggleBtn.dataset.showOr : toggleBtn.dataset.showEn;
+        var hide = orMode ? toggleBtn.dataset.hideOr : toggleBtn.dataset.hideEn;
+        toggleBtn.setAttribute("aria-label", reveal ? hide : show);
         if (icon) {
           icon.classList.toggle("bi-eye-fill", !reveal);
           icon.classList.toggle("bi-eye-slash-fill", reveal);
         }
       }
 
-      btn.addEventListener("click", function () {
-        setPasswordVisible(input.type === "password");
-      });
-
-      btn.addEventListener("keydown", function (e) {
-        if (e.key === " " || e.key === "Enter") {
-          e.preventDefault();
-          btn.click();
+      function setLang(orMode) {
+        document.documentElement.lang = orMode ? "or" : "en";
+        document.body.classList.toggle("login-lang-or", orMode);
+        var ben = qs("loginLangEn");
+        var bor = qs("loginLangOr");
+        if (ben) {
+          ben.classList.toggle("login-lang-active", !orMode);
+          ben.setAttribute("aria-pressed", orMode ? "false" : "true");
         }
-      });
+        if (bor) {
+          bor.classList.toggle("login-lang-active", orMode);
+          bor.setAttribute("aria-pressed", orMode ? "true" : "false");
+        }
+        document.title = orMode ? TITLE_OR : TITLE_EN;
+
+        var user = qs("username");
+        var pass = qs("password");
+        if (user) user.placeholder = orMode ? (user.dataset.phOr || "") : (user.dataset.phEn || "");
+        if (pass) pass.placeholder = orMode ? (pass.dataset.phOr || "") : (pass.dataset.phEn || "");
+
+        try {
+          sessionStorage.setItem(STORAGE, orMode ? "or" : "en");
+        } catch (_e) { }
+
+        syncPwdToggleUi();
+      }
+
+      var btnEn = qs("loginLangEn");
+      var btnOr = qs("loginLangOr");
+      var initialOr = false;
+      try {
+        initialOr = sessionStorage.getItem(STORAGE) === "or";
+      } catch (_e) { }
+
+      if (btnEn) btnEn.addEventListener("click", function () { setLang(false); });
+      if (btnOr) btnOr.addEventListener("click", function () { setLang(true); });
+      setLang(initialOr);
+
+      function showLeaveLoader() {
+        if (qs("preloader")) return;
+        var d = document.createElement("div");
+        d.id = "preloader";
+        d.setAttribute("aria-busy", "true");
+        document.body.insertBefore(d, document.body.firstChild);
+      }
+
+      var back = qs("loginBackHome");
+      if (back) back.addEventListener("click", showLeaveLoader);
+
+      var inputPw = qs("password");
+      var toggleBtn = qs("togglePassword");
+
+      if (toggleBtn && inputPw) {
+        toggleBtn.addEventListener("click", function () {
+          inputPw.type = inputPw.type === "password" ? "text" : "password";
+          syncPwdToggleUi();
+        });
+        toggleBtn.addEventListener("keydown", function (e) {
+          if (e.key === " " || e.key === "Enter") {
+            e.preventDefault();
+            toggleBtn.click();
+          }
+        });
+      }
+
+      syncPwdToggleUi();
     })();
   </script>
 </body>

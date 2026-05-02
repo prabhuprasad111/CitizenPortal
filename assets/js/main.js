@@ -68,6 +68,31 @@
     });
   }
 
+  /** Show homepage preloader when navigating to login (parity with loader on login “back”) */
+  function isLoginDestination(href) {
+    try {
+      const resolved = new URL(href, window.location.href);
+      if (resolved.origin !== window.location.origin) return false;
+      var path = resolved.pathname.toLowerCase();
+      return path.endsWith('/login.html');
+    } catch (_) {
+      return false;
+    }
+  }
+  document.querySelectorAll('a[href]').forEach((loginLink) => {
+    loginLink.addEventListener('click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const href = loginLink.getAttribute('href');
+      if (!href || href.startsWith('#')) return;
+      if (!isLoginDestination(href)) return;
+      if (document.getElementById('preloader')) return;
+      const el = document.createElement('div');
+      el.id = 'preloader';
+      el.setAttribute('aria-busy', 'true');
+      document.body.insertBefore(el, document.body.firstChild);
+    });
+  });
+
   /**
    * Scroll top button
    */
