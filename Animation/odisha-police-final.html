@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odisha Police - Digital Citizen Services</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1565c0;
+            --primary-dark: #0d47a1;
+            --accent-gold: #f9a825;
+            --success-green: #2e7d32;
+            --bg-light: #f5f7fa;
+            --text-dark: #263238;
+            --text-medium: #546e7a;
+            --border-color: #cfd8dc;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .animation-container {
+            width: 100%;
+            max-width: 1400px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            padding: 30px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 4px solid var(--accent-gold);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-badge {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            padding: 10px;
+        }
+
+        .logo-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .header-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2em;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .header-text p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95em;
+            margin-top: 4px;
+        }
+
+        .scenario-tabs {
+            display: flex;
+            gap: 12px;
+            background: var(--bg-light);
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-button {
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+            padding: 16px 24px;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95em;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tab-button:hover {
+            border-color: var(--primary-blue);
+            background: #e3f2fd;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .tab-button.active {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: white;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .canvas-wrapper {
+            background: linear-gradient(to bottom, #e8f4f8 0%, #cfe9f3 50%, #7cb342 50%, #558b2f 100%);
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 600px;
+        }
+
+        .controls-panel {
+            background: white;
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .control-btn:active {
+            transform: translateY(0);
+        }
+
+        .info-panel {
+            background: var(--bg-light);
+            padding: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .status-display {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--primary-blue);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .status-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .status-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .status-text h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1em;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .status-text p {
+            color: var(--text-medium);
+            font-size: 0.9em;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 16px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-dark));
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            font-size: 0.85em;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .legend-item::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        .footer strong {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px;
+            }
+
+            .header-text h1 {
+                font-size: 1.5em;
+            }
+
+            .tab-button {
+                min-width: 100%;
+            }
+        }
+    </style> -->
+</head>
+
+<body>
+    <div class="animation-container">
+        <!-- Header -->
+        <!-- <div class="header">
+            <div class="header-content">
+                <div class="logo-badge">
+                    <img src="./Odisha_Police_Logo.png" alt="Odisha Police" id="headerLogo">
+                </div>
+                <div class="header-text">
+                    <h1>Odisha Police</h1>
+                    <p>Smart Digital Services - Apply from Home</p>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Scenario Selection -->
+        <div class="scenario-tabs">
+            <button class="tab-button active" onclick="selectScenario('complaint')">
+                📱 Online Complaint
+            </button>
+            <button class="tab-button" onclick="selectScenario('character')">
+                ✅ Character Certificate
+            </button>
+            <button class="tab-button" onclick="selectScenario('senior')">
+                👴 Senior Citizen Certificate
+            </button>
+        </div>
+
+        <!-- Animation Canvas -->
+        <div class="canvas-wrapper">
+            <svg id="mainSvg" viewBox="0 0 1600 650" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs>
+                    <!-- Filters -->
+                    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                        <feOffset dx="2" dy="4" result="offsetblur" />
+                        <feComponentTransfer>
+                            <feFuncA type="linear" slope="0.3" />
+                        </feComponentTransfer>
+                        <feMerge>
+                            <feMergeNode />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                        <feMerge>
+                            <feMergeNode in="coloredBlur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+
+                    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#B0E0E6;stop-opacity:1" />
+                    </linearGradient>
+
+                    <linearGradient id="skinTone" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#FFDBAC;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#F1C27D;stop-opacity:1" />
+                    </linearGradient>
+
+                    <linearGradient id="khakiUniform" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#C9B382;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#A89160;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+
+                <!-- Background -->
+                <rect width="1600" height="650" fill="url(#skyGrad)" />
+
+                <!-- Sun with realistic rays -->
+                <g id="sun">
+                    <circle cx="1450" cy="100" r="50" fill="#FFD700" opacity="0.9">
+                        <animate attributeName="opacity" values="0.8;1;0.8" dur="4s" repeatCount="indefinite" />
+                    </circle>
+                    <g opacity="0.6">
+                        <line x1="1450" y1="40" x2="1450" y2="10" stroke="#FFD700" stroke-width="4"
+                            stroke-linecap="round">
+                            <animateTransform attributeName="transform" type="rotate" from="0 1450 100"
+                                to="360 1450 100" dur="20s" repeatCount="indefinite" />
+                        </line>
+                        <line x1="1510" y1="100" x2="1540" y2="100" stroke="#FFD700" stroke-width="4"
+                            stroke-linecap="round">
+                            <animateTransform attributeName="transform" type="rotate" from="0 1450 100"
+                                to="360 1450 100" dur="20s" repeatCount="indefinite" />
+                        </line>
+                        <line x1="1500" y1="150" x2="1520" y2="170" stroke="#FFD700" stroke-width="4"
+                            stroke-linecap="round">
+                            <animateTransform attributeName="transform" type="rotate" from="0 1450 100"
+                                to="360 1450 100" dur="20s" repeatCount="indefinite" />
+                        </line>
+                        <line x1="1400" y1="150" x2="1380" y2="170" stroke="#FFD700" stroke-width="4"
+                            stroke-linecap="round">
+                            <animateTransform attributeName="transform" type="rotate" from="0 1450 100"
+                                to="360 1450 100" dur="20s" repeatCount="indefinite" />
+                        </line>
+                    </g>
+                </g>
+
+                <!-- Clouds -->
+                <g opacity="0.8">
+                    <g id="cloud1">
+                        <ellipse cx="250" cy="100" rx="50" ry="30" fill="white" />
+                        <ellipse cx="220" cy="95" rx="35" ry="25" fill="white" />
+                        <ellipse cx="280" cy="95" rx="40" ry="28" fill="white" />
+                        <ellipse cx="250" cy="85" rx="30" ry="20" fill="white" />
+                    </g>
+
+                    <g id="cloud2">
+                        <ellipse cx="1100" cy="130" rx="60" ry="35" fill="white" />
+                        <ellipse cx="1060" cy="125" rx="40" ry="28" fill="white" />
+                        <ellipse cx="1140" cy="125" rx="45" ry="30" fill="white" />
+                        <ellipse cx="1100" cy="110" rx="35" ry="22" fill="white" />
+                    </g>
+                </g>
+
+                <!-- Ground -->
+                <rect x="0" y="450" width="1600" height="200" fill="#7cb342" />
+                <rect x="0" y="450" width="1600" height="20" fill="#558b2f" />
+
+                <!-- Road -->
+                <rect x="0" y="420" width="1600" height="60" fill="#424242" />
+                <g>
+                    <rect x="0" y="445" width="80" height="5" fill="#FFEB3B" />
+                    <rect x="120" y="445" width="80" height="5" fill="#FFEB3B" />
+                    <rect x="240" y="445" width="80" height="5" fill="#FFEB3B" />
+                    <rect x="360" y="445" width="80" height="5" fill="#FFEB3B" />
+                    <rect x="480" y="445" width="80" height="5" fill="#FFEB3B" />
+                    <rect x="600" y="445" width="80" height="5" fill="#FFEB3B" />
+                    <rect x="720" y="445" width="80" height="5" fill="#FFEB3B" />
+                    <rect x="840" y="445" width="80" height="5" fill="#FFEB3B" />
+                    <rect x="960" y="445" width="80" height="5" fill="#FFEB3B" />
+                    <rect x="1080" y="445" width="80" height="5" fill="#FFEB3B" />
+                    <rect x="1200" y="445" width="80" height="5" fill="#FFEB3B" />
+                    <rect x="1320" y="445" width="80" height="5" fill="#FFEB3B" />
+                    <rect x="1440" y="445" width="80" height="5" fill="#FFEB3B" />
+                </g>
+
+                <!-- Trees -->
+                <g id="trees">
+                    <rect x="600" y="380" width="20" height="70" fill="#6D4C41" rx="3" />
+                    <ellipse cx="610" cy="370" rx="50" ry="55" fill="#4CAF50" />
+                    <ellipse cx="590" cy="350" rx="35" ry="40" fill="#66BB6A" />
+                    <ellipse cx="630" cy="350" rx="35" ry="40" fill="#66BB6A" />
+
+                    <rect x="980" y="380" width="20" height="70" fill="#6D4C41" rx="3" />
+                    <ellipse cx="990" cy="370" rx="50" ry="55" fill="#4CAF50" />
+                    <ellipse cx="970" cy="350" rx="35" ry="40" fill="#66BB6A" />
+                    <ellipse cx="1010" cy="350" rx="35" ry="40" fill="#66BB6A" />
+                </g>
+
+                <!-- HOME -->
+                <g id="citizenHome" filter="url(#shadow)">
+                    <rect x="100" y="250" width="240" height="170" fill="#e57373" rx="5" />
+                    <polygon points="100,250 220,180 340,250" fill="#C62828" />
+                    <rect x="270" y="200" width="25" height="50" fill="#8D6E63" rx="2" />
+                    <rect x="265" y="195" width="35" height="10" fill="#6D4C41" rx="2" />
+
+                    <rect x="180" y="340" width="80" height="80" fill="#5D4037" rx="8" />
+                    <rect x="185" y="345" width="70" height="70" fill="#6D4C41" rx="6" />
+                    <circle cx="245" cy="380" r="6" fill="#FFD700" />
+                    <rect x="220" y="345" width="3" height="70" fill="#4E342E" />
+
+                    <g id="leftWindow">
+                        <rect x="115" y="280" width="60" height="55" fill="#90CAF9" stroke="#1565C0" stroke-width="3"
+                            rx="4" />
+                        <rect x="118" y="283" width="54" height="49" fill="#BBDEFB" rx="2" />
+                        <line x1="145" y1="283" x2="145" y2="332" stroke="#1565C0" stroke-width="3" />
+                        <line x1="118" y1="307.5" x2="172" y2="307.5" stroke="#1565C0" stroke-width="3" />
+                        <rect x="120" y="285" width="20" height="15" fill="white" opacity="0.5" rx="2" />
+                    </g>
+
+                    <g id="rightWindow">
+                        <rect x="265" y="280" width="60" height="55" fill="#90CAF9" stroke="#1565C0" stroke-width="3"
+                            rx="4" />
+                        <rect x="268" y="283" width="54" height="49" fill="#BBDEFB" rx="2" />
+                        <line x1="295" y1="283" x2="295" y2="332" stroke="#1565C0" stroke-width="3" />
+                        <line x1="268" y1="307.5" x2="322" y2="307.5" stroke="#1565C0" stroke-width="3" />
+                        <rect x="270" y="285" width="20" height="15" fill="white" opacity="0.5" rx="2" />
+                    </g>
+
+                    <rect x="110" y="335" width="70" height="12" fill="#8D6E63" rx="2" />
+                    <circle cx="125" cy="335" r="5" fill="#E91E63" />
+                    <circle cx="140" cy="333" r="5" fill="#F06292" />
+                    <circle cx="155" cy="335" r="5" fill="#E91E63" />
+
+                    <rect x="260" y="335" width="70" height="12" fill="#8D6E63" rx="2" />
+                    <circle cx="275" cy="335" r="5" fill="#E91E63" />
+                    <circle cx="290" cy="333" r="5" fill="#F06292" />
+                    <circle cx="305" cy="335" r="5" fill="#E91E63" />
+
+                    <g stroke="#8D6E63" stroke-width="3" fill="none">
+                        <line x1="80" y1="420" x2="80" y2="440" />
+                        <line x1="110" y1="420" x2="110" y2="440" />
+                        <line x1="140" y1="420" x2="140" y2="440" />
+                        <line x1="170" y1="420" x2="170" y2="440" />
+                        <line x1="200" y1="420" x2="200" y2="440" />
+                        <line x1="230" y1="420" x2="230" y2="440" />
+                        <line x1="260" y1="420" x2="260" y2="440" />
+                        <line x1="290" y1="420" x2="290" y2="440" />
+                        <line x1="320" y1="420" x2="320" y2="440" />
+                        <line x1="350" y1="420" x2="350" y2="440" />
+                        <line x1="80" y1="428" x2="350" y2="428" />
+                        <line x1="80" y1="432" x2="350" y2="432" />
+                    </g>
+
+                    <ellipse cx="90" cy="425" rx="20" ry="15" fill="#4CAF50" />
+                    <ellipse cx="350" cy="425" rx="20" ry="15" fill="#4CAF50" />
+                </g>
+
+                <!-- REALISTIC CITIZEN WITH DEVICE -->
+                <g id="citizenWithDevice">
+                    <!-- Modern chair -->
+                    <rect x="170" y="360" width="70" height="12" fill="#78909C" rx="4" />
+                    <rect x="175" y="372" width="10" height="48" fill="#546E7A" rx="3" />
+                    <rect x="225" y="372" width="10" height="48" fill="#546E7A" rx="3" />
+                    <rect x="175" y="320" width="10" height="40" fill="#546E7A" rx="3" />
+                    <rect x="225" y="320" width="10" height="40" fill="#546E7A" rx="3" />
+                    <rect x="175" y="315" width="60" height="8" fill="#78909C" rx="4" />
+
+                    <!-- Person - REALISTIC -->
+                    <g id="realisticPerson">
+                        <!-- Legs -->
+                        <rect x="195" y="365" width="12" height="40" fill="#2C3E50" rx="6" />
+                        <rect x="213" y="365" width="12" height="40" fill="#2C3E50" rx="6" />
+                        <!-- Shoes -->
+                        <ellipse cx="201" cy="406" rx="10" ry="6" fill="#212121" />
+                        <ellipse cx="219" cy="406" rx="10" ry="6" fill="#212121" />
+
+                        <!-- Body with shirt -->
+                        <ellipse cx="210" cy="340" rx="24" ry="30" fill="#42A5F5" />
+                        <!-- Collar -->
+                        <path d="M 200,325 L 210,330 L 220,325" fill="#1976D2" />
+                        <!-- Buttons -->
+                        <circle cx="210" cy="335" r="2" fill="#1565C0" />
+                        <circle cx="210" cy="345" r="2" fill="#1565C0" />
+                        <circle cx="210" cy="355" r="2" fill="#1565C0" />
+
+                        <!-- Arms with realistic bend -->
+                        <path d="M 186,330 Q 170,338 170,355" stroke="#42A5F5" stroke-width="11" fill="none"
+                            stroke-linecap="round" />
+                        <path d="M 234,330 Q 250,338 250,355" stroke="#42A5F5" stroke-width="11" fill="none"
+                            stroke-linecap="round" />
+
+                        <!-- Hands - realistic skin tone -->
+                        <ellipse cx="170" cy="358" rx="8" ry="10" fill="url(#skinTone)" />
+                        <ellipse cx="250" cy="358" rx="8" ry="10" fill="url(#skinTone)" />
+                        <!-- Fingers detail -->
+                        <path d="M 166,356 L 164,362" stroke="#E0AC69" stroke-width="2" stroke-linecap="round" />
+                        <path d="M 254,356 L 256,362" stroke="#E0AC69" stroke-width="2" stroke-linecap="round" />
+
+                        <!-- Neck -->
+                        <rect x="202" y="318" width="16" height="12" fill="url(#skinTone)" rx="3" />
+
+                        <!-- Head - realistic proportions -->
+                        <ellipse cx="210" cy="300" rx="20" ry="23" fill="url(#skinTone)" />
+
+                        <!-- Ears -->
+                        <ellipse cx="190" cy="300" rx="4" ry="6" fill="#F1C27D" />
+                        <ellipse cx="230" cy="300" rx="4" ry="6" fill="#F1C27D" />
+
+                        <!-- Hair - realistic -->
+                        <path
+                            d="M 190,285 Q 185,278 192,273 Q 200,268 210,268 Q 220,268 228,273 Q 235,278 230,285 Q 228,290 225,292 L 220,287 Q 215,285 210,285 Q 205,285 200,287 L 195,292 Q 192,290 190,285 Z"
+                            fill="#2C3E50" />
+                        <!-- Hair strands -->
+                        <path d="M 205,270 Q 208,268 210,270" stroke="#1A1A1A" stroke-width="1.5" fill="none" />
+                        <path d="M 215,270 Q 218,268 220,271" stroke="#1A1A1A" stroke-width="1.5" fill="none" />
+
+                        <!-- Eyebrows -->
+                        <path d="M 197,293 Q 203,291 209,293" stroke="#2C3E50" stroke-width="2.5" fill="none"
+                            stroke-linecap="round" />
+                        <path d="M 211,293 Q 217,291 223,293" stroke="#2C3E50" stroke-width="2.5" fill="none"
+                            stroke-linecap="round" />
+
+                        <!-- Eyes - realistic -->
+                        <ellipse cx="200" cy="300" rx="5" ry="4" fill="white" />
+                        <ellipse cx="220" cy="300" rx="5" ry="4" fill="white" />
+                        <circle cx="200" cy="300" r="3" fill="#3E2723" />
+                        <circle cx="220" cy="300" r="3" fill="#3E2723" />
+                        <circle cx="201" cy="299" r="1.5" fill="white" opacity="0.8" />
+                        <circle cx="221" cy="299" r="1.5" fill="white" opacity="0.8" />
+
+                        <!-- Nose -->
+                        <path d="M 210,300 L 210,308" stroke="#D4A574" stroke-width="2" stroke-linecap="round" />
+                        <ellipse cx="207" cy="310" rx="2" ry="1.5" fill="#D4A574" />
+                        <ellipse cx="213" cy="310" rx="2" ry="1.5" fill="#D4A574" />
+
+                        <!-- Mouth - realistic smile -->
+                        <path d="M 202,315 Q 210,319 218,315" stroke="#D84315" stroke-width="2.5" fill="none"
+                            stroke-linecap="round" />
+                        <path d="M 202,315 Q 210,317 218,315" fill="#FFE0E0" opacity="0.6" />
+                    </g>
+
+                    <!-- Modern smartphone with realistic screen -->
+                    <g id="smartphone">
+                        <rect x="170" y="350" width="38" height="65" fill="#1A1A1A" rx="6" />
+                        <rect x="173" y="357" width="32" height="51" fill="#0D47A1" rx="2" filter="url(#glow)">
+                            <animate attributeName="fill" values="#0D47A1;#1565C0;#0D47A1" dur="3s"
+                                repeatCount="indefinite" />
+                        </rect>
+
+                        <!-- Realistic app interface -->
+                        <rect x="175" y="359" width="28" height="10" fill="#1976D2" rx="2" />
+                        <image href="/mnt/user-data/uploads/Odisha_Police_Logo.png" x="176" y="360" width="8"
+                            height="8" />
+                        <text x="191.5" y="366" text-anchor="middle" font-size="5" fill="#FFD700"
+                            font-weight="bold">ODISHA</text>
+
+                        <rect x="176" y="371" width="26" height="5" fill="#FFFFFF" opacity="0.9" rx="1" />
+                        <rect x="176" y="378" width="26" height="5" fill="#FFFFFF" opacity="0.9" rx="1" />
+                        <rect x="176" y="385" width="20" height="5" fill="#FFFFFF" opacity="0.9" rx="1" />
+
+                        <rect x="176" y="393" width="26" height="11" fill="#4CAF50" rx="2" />
+                        <text x="189" y="400" text-anchor="middle" font-size="6" fill="white"
+                            font-weight="bold">SUBMIT</text>
+
+                        <!-- Typing animation -->
+                        <circle cx="182" cy="380" r="1.5" fill="#1976D2">
+                            <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite" />
+                        </circle>
+
+                        <!-- Phone details -->
+                        <ellipse cx="191.5" cy="354" rx="3" ry="2" fill="#263238" />
+                        <circle cx="200" cy="354" r="1" fill="#C62828" />
+                        <rect x="175" y="410" width="24" height="3" fill="#263238" rx="1.5" />
+                    </g>
+
+                    <!-- Laptop for senior -->
+                    <g id="laptop" opacity="0">
+                        <rect x="170" y="345" width="75" height="6" fill="#2C3E50" rx="3" />
+                        <rect x="162" y="351" width="91" height="55" fill="#37474F" rx="4" />
+                        <rect x="166" y="355" width="83" height="47" fill="#0D47A1" rx="2" filter="url(#glow)">
+                            <animate attributeName="fill" values="#0D47A1;#1565C0;#0D47A1" dur="3s"
+                                repeatCount="indefinite" />
+                        </rect>
+
+                        <rect x="170" y="359" width="75" height="11" fill="#1976D2" rx="2" />
+                        <image href="/mnt/user-data/uploads/Odisha_Police_Logo.png" x="172" y="360" width="9"
+                            height="9" />
+                        <text x="207.5" y="367" text-anchor="middle" font-size="7" fill="#FFD700"
+                            font-weight="bold">ODISHA POLICE</text>
+
+                        <rect x="170" y="372" width="75" height="6" fill="#FFFFFF" opacity="0.9" rx="1" />
+                        <rect x="170" y="380" width="75" height="6" fill="#FFFFFF" opacity="0.9" rx="1" />
+                        <rect x="170" y="388" width="55" height="6" fill="#FFFFFF" opacity="0.9" rx="1" />
+                        <rect x="170" y="396" width="28" height="5" fill="#4CAF50" rx="1" />
+
+                        <rect x="166" y="402" width="83" height="12" fill="#263238" rx="2" />
+
+                        <rect x="175" y="381" width="2" height="5" fill="#1976D2">
+                            <animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite" />
+                        </rect>
+                    </g>
+                </g>
+
+                <!-- REALISTIC SENIOR CITIZEN -->
+                <g id="seniorCitizen" opacity="0">
+                    <rect x="170" y="360" width="70" height="12" fill="#78909C" rx="4" />
+                    <rect x="175" y="372" width="10" height="48" fill="#546E7A" rx="3" />
+                    <rect x="225" y="372" width="10" height="48" fill="#546E7A" rx="3" />
+                    <rect x="175" y="320" width="10" height="40" fill="#546E7A" rx="3" />
+                    <rect x="225" y="320" width="10" height="40" fill="#546E7A" rx="3" />
+
+                    <g id="seniorPerson">
+                        <!-- Legs -->
+                        <rect x="195" y="365" width="12" height="40" fill="#424242" rx="6" />
+                        <rect x="213" y="365" width="12" height="40" fill="#424242" rx="6" />
+                        <ellipse cx="201" cy="406" rx="10" ry="6" fill="#212121" />
+                        <ellipse cx="219" cy="406" rx="10" ry="6" fill="#212121" />
+
+                        <!-- Body -->
+                        <ellipse cx="210" cy="340" rx="24" ry="30" fill="#7E57C2" />
+                        <path d="M 200,325 L 210,330 L 220,325" fill="#5E35B1" />
+
+                        <!-- Arms -->
+                        <path d="M 186,330 Q 165,340 163,360" stroke="#7E57C2" stroke-width="11" fill="none"
+                            stroke-linecap="round" />
+                        <path d="M 234,330 Q 255,340 257,360" stroke="#7E57C2" stroke-width="11" fill="none"
+                            stroke-linecap="round" />
+
+                        <!-- Hands -->
+                        <ellipse cx="163" cy="363" rx="8" ry="10" fill="url(#skinTone)" />
+                        <ellipse cx="257" cy="363" rx="8" ry="10" fill="url(#skinTone)" />
+
+                        <!-- Neck -->
+                        <rect x="202" y="318" width="16" height="12" fill="url(#skinTone)" rx="3" />
+
+                        <!-- Head -->
+                        <ellipse cx="210" cy="300" rx="20" ry="23" fill="url(#skinTone)" />
+
+                        <!-- Ears -->
+                        <ellipse cx="190" cy="300" rx="4" ry="6" fill="#F1C27D" />
+                        <ellipse cx="230" cy="300" rx="4" ry="6" fill="#F1C27D" />
+
+                        <!-- Gray hair -->
+                        <path
+                            d="M 190,285 Q 185,278 192,273 Q 200,268 210,268 Q 220,268 228,273 Q 235,278 230,285 Q 228,290 225,292 L 220,287 Q 215,285 210,285 Q 205,285 200,287 L 195,292 Q 192,290 190,285 Z"
+                            fill="#BDBDBD" />
+
+                        <!-- Glasses - realistic -->
+                        <g id="glasses">
+                            <circle cx="200" cy="300" r="7" fill="none" stroke="#424242" stroke-width="2.5" />
+                            <circle cx="220" cy="300" r="7" fill="none" stroke="#424242" stroke-width="2.5" />
+                            <line x1="207" y1="300" x2="213" y2="300" stroke="#424242" stroke-width="2.5" />
+                            <line x1="193" y1="298" x2="188" y2="296" stroke="#424242" stroke-width="2" />
+                            <line x1="227" y1="298" x2="232" y2="296" stroke="#424242" stroke-width="2" />
+
+                            <!-- Lens reflection -->
+                            <ellipse cx="197" cy="297" rx="3" ry="2" fill="white" opacity="0.6" />
+                            <ellipse cx="217" cy="297" rx="3" ry="2" fill="white" opacity="0.6" />
+                        </g>
+
+                        <!-- Eyes behind glasses -->
+                        <circle cx="200" cy="300" r="3" fill="#3E2723" />
+                        <circle cx="220" cy="300" r="3" fill="#3E2723" />
+
+                        <!-- Wrinkles -->
+                        <path d="M 195,295 Q 197,294 199,295" stroke="#D4A574" stroke-width="1" fill="none"
+                            opacity="0.5" />
+                        <path d="M 221,295 Q 223,294 225,295" stroke="#D4A574" stroke-width="1" fill="none"
+                            opacity="0.5" />
+                        <path d="M 200,312 Q 205,311 210,312" stroke="#D4A574" stroke-width="1" fill="none"
+                            opacity="0.4" />
+
+                        <!-- Nose -->
+                        <path d="M 210,300 L 210,308" stroke="#D4A574" stroke-width="2" stroke-linecap="round" />
+                        <ellipse cx="207" cy="310" rx="2" ry="1.5" fill="#D4A574" />
+                        <ellipse cx="213" cy="310" rx="2" ry="1.5" fill="#D4A574" />
+
+                        <!-- Smile -->
+                        <path d="M 202,315 Q 210,318 218,315" stroke="#D84315" stroke-width="2.5" fill="none"
+                            stroke-linecap="round" />
+
+                        <!-- Walking stick -->
+                        <line x1="258" y1="365" x2="265" y2="410" stroke="#8D6E63" stroke-width="4"
+                            stroke-linecap="round" />
+                        <ellipse cx="258" cy="365" rx="6" ry="4" fill="#6D4C41" />
+                        <circle cx="265" cy="410" r="5" fill="#424242" />
+                    </g>
+
+                    <!-- Laptop -->
+                    <rect x="170" y="345" width="75" height="6" fill="#2C3E50" rx="3" />
+                    <rect x="162" y="351" width="91" height="55" fill="#37474F" rx="4" />
+                    <rect x="166" y="355" width="83" height="47" fill="#0D47A1" rx="2" filter="url(#glow)">
+                        <animate attributeName="fill" values="#0D47A1;#1565C0;#0D47A1" dur="3s"
+                            repeatCount="indefinite" />
+                    </rect>
+                    <rect x="170" y="359" width="75" height="11" fill="#1976D2" rx="2" />
+                    <text x="207.5" y="367" text-anchor="middle" font-size="7" fill="#FFD700" font-weight="bold">SENIOR
+                        CITIZEN</text>
+                    <rect x="170" y="372" width="75" height="6" fill="#FFFFFF" opacity="0.9" rx="1" />
+                    <rect x="170" y="380" width="75" height="6" fill="#FFFFFF" opacity="0.9" rx="1" />
+                    <rect x="170" y="388" width="55" height="6" fill="#FFFFFF" opacity="0.9" rx="1" />
+                    <rect x="170" y="396" width="28" height="5" fill="#4CAF50" rx="1" />
+                    <rect x="166" y="402" width="83" height="12" fill="#263238" rx="2" />
+                </g>
+
+                <!-- POLICE STATION -->
+                <g id="policeStation" filter="url(#shadow)">
+                    <rect x="1220" y="230" width="320" height="190" fill="#FFF9C4" rx="5" />
+                    <rect x="1245" y="290" width="25" height="130" fill="white" stroke="#CFD8DC" stroke-width="2"
+                        rx="3" />
+                    <rect x="1350" y="290" width="25" height="130" fill="white" stroke="#CFD8DC" stroke-width="2"
+                        rx="3" />
+                    <rect x="1425" y="290" width="25" height="130" fill="white" stroke="#CFD8DC" stroke-width="2"
+                        rx="3" />
+                    <rect x="1500" y="290" width="25" height="130" fill="white" stroke="#CFD8DC" stroke-width="2"
+                        rx="3" />
+
+                    <rect x="1240" y="285" width="35" height="8" fill="#E0E0E0" rx="2" />
+                    <rect x="1345" y="285" width="35" height="8" fill="#E0E0E0" rx="2" />
+                    <rect x="1420" y="285" width="35" height="8" fill="#E0E0E0" rx="2" />
+                    <rect x="1495" y="285" width="35" height="8" fill="#E0E0E0" rx="2" />
+
+                    <!-- <rect x="1250" y="250" width="270" height="35" fill="#0D47A1" rx="4"/> -->
+                    <text x="1385" y="273" text-anchor="middle" font-size="20" font-weight="bold" fill="#FFD700">POLICE
+                        STATION</text>
+                    <text x="1385" y="245" text-anchor="middle" font-size="16" font-weight="bold" fill="#C62828">ଆଦର୍ଶ
+                        ଥାନା</text>
+
+                    <rect x="1355" y="340" width="80" height="80" fill="#37474F" rx="8" />
+                    <rect x="1360" y="345" width="70" height="70" fill="#263238" rx="6" />
+
+                    <rect x="1250" y="300" width="55" height="60" fill="#BBDEFB" stroke="#1565C0" stroke-width="3"
+                        rx="4" />
+                    <line x1="1277.5" y1="300" x2="1277.5" y2="360" stroke="#1565C0" stroke-width="3" />
+                    <line x1="1250" y1="330" x2="1305" y2="330" stroke="#1565C0" stroke-width="3" />
+
+                    <rect x="1465" y="300" width="55" height="60" fill="#BBDEFB" stroke="#1565C0" stroke-width="3"
+                        rx="4" />
+                    <line x1="1492.5" y1="300" x2="1492.5" y2="360" stroke="#1565C0" stroke-width="3" />
+                    <line x1="1465" y1="330" x2="1520" y2="330" stroke="#1565C0" stroke-width="3" />
+
+                    <rect x="1250" y="370" width="55" height="50" fill="#BBDEFB" stroke="#1565C0" stroke-width="3"
+                        rx="4" />
+                    <line x1="1277.5" y1="370" x2="1277.5" y2="420" stroke="#1565C0" stroke-width="3" />
+
+                    <rect x="1465" y="370" width="55" height="50" fill="#BBDEFB" stroke="#1565C0" stroke-width="3"
+                        rx="4" />
+                    <line x1="1492.5" y1="370" x2="1492.5" y2="420" stroke="#1565C0" stroke-width="3" />
+
+                    <circle cx="1385" cy="310" r="25" fill="white" stroke="#1565C0" stroke-width="3" />
+                    <image href="/mnt/user-data/uploads/Odisha_Police_Logo.png" x="1365" y="290" width="40"
+                        height="40" />
+
+                    <!-- <ellipse cx="1385" cy="220" rx="25" ry="15" fill="#FF1744" filter="url(#glow)" opacity="0.8" /> -->
+                </g>
+
+                <!-- REALISTIC POLICE OFFICER AT DESK -->
+                <g id="policeOfficerDesk">
+                    <rect x="1310" y="380" width="150" height="15" fill="#78909C" rx="4" />
+                    <rect x="1315" y="395" width="12" height="50" fill="#546E7A" rx="3" />
+                    <rect x="1443" y="395" width="12" height="50" fill="#546E7A" rx="3" />
+
+                    <!-- Desktop computer -->
+                    <g id="desktopComputer">
+                        <rect x="1360" y="360" width="50" height="8" fill="#424242" rx="2" />
+                        <rect x="1380" y="368" width="10" height="12" fill="#424242" rx="2" />
+
+                        <rect x="1340" y="320" width="90" height="60" fill="#263238" rx="4" />
+                        <rect x="1345" y="325" width="80" height="50" fill="#0D47A1" rx="2" filter="url(#glow)">
+                            <animate attributeName="fill" values="#0D47A1;#1565C0;#0D47A1" dur="3s"
+                                repeatCount="indefinite" />
+                        </rect>
+
+                        <rect x="1348" y="328" width="74" height="12" fill="#1976D2" rx="2" />
+                        <text x="1385" y="337" text-anchor="middle" font-size="7" fill="#FFD700" font-weight="bold">NEW
+                            APPLICATION</text>
+
+                        <rect x="1350" y="343" width="70" height="5" fill="#FFFFFF" opacity="0.9" rx="1" />
+                        <rect x="1350" y="350" width="70" height="5" fill="#FFFFFF" opacity="0.9" rx="1" />
+                        <rect x="1350" y="357" width="50" height="5" fill="#FFFFFF" opacity="0.9" rx="1" />
+
+                        <circle cx="1355" cy="368" r="4" fill="#FF9800">
+                            <animate attributeName="fill" values="#FF9800;#4CAF50" dur="4s" repeatCount="indefinite" />
+                        </circle>
+                        <text x="1375" y="371" text-anchor="middle" font-size="6" fill="#616161">PROCESSING</text>
+
+                        <rect x="1345" y="383" width="80" height="10" fill="#263238" rx="2" />
+                        <ellipse cx="1430" cy="387" rx="5" ry="7" fill="#546E7A" />
+                    </g>
+
+                    <!-- Officer chair -->
+                    <rect x="1340" y="385" width="90" height="15" fill="#78909C" rx="4" />
+                    <rect x="1345" y="400" width="12" height="45" fill="#546E7A" rx="3" />
+                    <rect x="1413" y="400" width="12" height="45" fill="#546E7A" rx="3" />
+
+                    <!-- REALISTIC POLICE OFFICER SITTING -->
+                    <g id="officerSitting">
+                        <!-- Body in khaki uniform -->
+                        <ellipse cx="1385" cy="365" rx="26" ry="34" fill="url(#khakiUniform)" />
+
+                        <!-- Belt -->
+                        <rect x="1359" y="384" width="52" height="7" fill="#6D4C41" rx="2" />
+                        <rect x="1378" y="384" width="14" height="7" fill="#9E9E9E" rx="2" />
+
+                        <!-- Collar -->
+                        <path d="M 1372,348 L 1385,355 L 1398,348" fill="#8D6E63" />
+
+                        <!-- Pocket flaps -->
+                        <rect x="1368" y="358" width="12" height="8" fill="#9E8B6A" rx="1" />
+                        <rect x="1405" y="358" width="12" height="8" fill="#9E8B6A" rx="1" />
+
+                        <!-- Shoulder epaulettes -->
+                        <rect x="1357" y="348" width="14" height="6" fill="#C9A961" rx="1" />
+                        <rect x="1414" y="348" width="14" height="6" fill="#C9A961" rx="1" />
+
+                        <!-- Neck -->
+                        <rect x="1377" y="343" width="16" height="10" fill="url(#skinTone)" rx="2" />
+
+                        <!-- Head -->
+                        <ellipse cx="1385" cy="318" rx="22" ry="25" fill="url(#skinTone)" />
+
+                        <!-- Ears -->
+                        <ellipse cx="1363" cy="318" rx="5" ry="7" fill="#F1C27D" />
+                        <ellipse cx="1407" cy="318" rx="5" ry="7" fill="#F1C27D" />
+
+                        <!-- Police cap -->
+                        <ellipse cx="1385" cy="308" rx="24" ry="10" fill="url(#khakiUniform)" />
+                        <rect x="1366" y="302" width="38" height="7" fill="#8D6E63" rx="2" />
+                        <ellipse cx="1385" cy="314" rx="26" ry="6" fill="#6D4C41" />
+
+                        <!-- Cap badge -->
+                        <circle cx="1385" cy="305" r="7" fill="#FFD700" stroke="#DAA520" stroke-width="1.5" />
+                        <image href="/mnt/user-data/uploads/Odisha_Police_Logo.png" x="1379" y="299" width="12"
+                            height="12" />
+
+                        <!-- Face details -->
+                        <path d="M 1373,313 Q 1378,311 1383,313" stroke="#2C3E50" stroke-width="2.5" fill="none"
+                            stroke-linecap="round" />
+                        <path d="M 1387,313 Q 1392,311 1397,313" stroke="#2C3E50" stroke-width="2.5" fill="none"
+                            stroke-linecap="round" />
+
+                        <!-- Eyes -->
+                        <ellipse cx="1376" cy="318" rx="5" ry="4" fill="white" />
+                        <ellipse cx="1394" cy="318" rx="5" ry="4" fill="white" />
+                        <circle cx="1376" cy="318" r="3.5" fill="#3E2723" />
+                        <circle cx="1394" cy="318" r="3.5" fill="#3E2723" />
+                        <circle cx="1377" cy="317" r="1.5" fill="white" opacity="0.8" />
+                        <circle cx="1395" cy="317" r="1.5" fill="white" opacity="0.8" />
+
+                        <!-- Nose -->
+                        <path d="M 1385,318 L 1385,327" stroke="#D4A574" stroke-width="2" stroke-linecap="round" />
+                        <ellipse cx="1382" cy="329" rx="2.5" ry="2" fill="#D4A574" />
+                        <ellipse cx="1388" cy="329" rx="2.5" ry="2" fill="#D4A574" />
+
+                        <!-- Realistic mustache -->
+                        <path d="M 1372,333 Q 1370,336 1367,335 M 1372,333 Q 1375,334 1378,333" stroke="#3E2723"
+                            stroke-width="3" fill="none" stroke-linecap="round" />
+                        <path d="M 1398,333 Q 1400,336 1403,335 M 1398,333 Q 1395,334 1392,333" stroke="#3E2723"
+                            stroke-width="3" fill="none" stroke-linecap="round" />
+
+                        <!-- Smile -->
+                        <path d="M 1378,338 Q 1385,341 1392,338" stroke="#D84315" stroke-width="2" fill="none"
+                            stroke-linecap="round" />
+
+                        <!-- Badge on chest -->
+                        <rect x="1373" y="368" width="24" height="14" fill="#1565C0" rx="2" />
+                        <text x="1385" y="377" text-anchor="middle" font-size="9" fill="#FFD700"
+                            font-weight="bold">POLICE</text>
+
+                        <!-- Arms typing -->
+                        <path d="M 1359,360 Q 1345,370 1343,386" stroke="url(#khakiUniform)" stroke-width="12"
+                            fill="none" stroke-linecap="round" />
+                        <path d="M 1411,360 Q 1425,370 1427,386" stroke="url(#khakiUniform)" stroke-width="12"
+                            fill="none" stroke-linecap="round" />
+
+                        <!-- Hands on keyboard -->
+                        <ellipse cx="1343" cy="389" rx="8" ry="10" fill="url(#skinTone)" />
+                        <ellipse cx="1427" cy="389" rx="8" ry="10" fill="url(#skinTone)" />
+                    </g>
+                </g>
+
+                <!-- REALISTIC WALKING POLICE OFFICER -->
+                <g id="walkingOfficer">
+                    <ellipse cx="0" cy="52" rx="20" ry="7" fill="black" opacity="0.2" />
+
+                    <!-- Body -->
+                    <ellipse cx="0" cy="12" rx="22" ry="32" fill="url(#khakiUniform)" />
+                    <rect x="-22" y="28" width="44" height="7" fill="#6D4C41" rx="2" />
+
+                    <!-- Collar -->
+                    <path d="M -12,-8 L 0,0 L 12,-8" fill="#8D6E63" />
+
+                    <!-- Pockets -->
+                    <rect x="-14" y="5" width="10" height="8" fill="#9E8B6A" rx="1" />
+                    <rect x="4" y="5" width="10" height="8" fill="#9E8B6A" rx="1" />
+
+                    <!-- Epaulettes -->
+                    <rect x="-24" y="-8" width="12" height="5" fill="#C9A961" rx="1" />
+                    <rect x="12" y="-8" width="12" height="5" fill="#C9A961" rx="1" />
+
+                    <!-- Neck -->
+                    <rect x="-8" y="-14" width="16" height="10" fill="url(#skinTone)" rx="2" />
+
+                    <!-- Head -->
+                    <ellipse cx="0" cy="-30" rx="20" ry="23" fill="url(#skinTone)" />
+
+                    <!-- Ears -->
+                    <ellipse cx="-20" cy="-30" rx="4" ry="6" fill="#F1C27D" />
+                    <ellipse cx="20" cy="-30" rx="4" ry="6" fill="#F1C27D" />
+
+                    <!-- Cap -->
+                    <ellipse cx="0" cy="-40" rx="22" ry="9" fill="url(#khakiUniform)" />
+                    <rect x="-16" y="-46" width="32" height="6" fill="#8D6E63" rx="2" />
+                    <ellipse cx="0" cy="-36" rx="23" ry="5" fill="#6D4C41" />
+
+                    <!-- Cap badge -->
+                    <circle cx="0" cy="-43" r="6" fill="#FFD700" stroke="#DAA520" stroke-width="1" />
+                    <image href="/mnt/user-data/uploads/Odisha_Police_Logo.png" x="-5" y="-48" width="10" height="10" />
+
+                    <!-- Eyebrows -->
+                    <path d="M -13,-35 Q -8,-37 -3,-35" stroke="#2C3E50" stroke-width="2.5" fill="none"
+                        stroke-linecap="round" />
+                    <path d="M 3,-35 Q 8,-37 13,-35" stroke="#2C3E50" stroke-width="2.5" fill="none"
+                        stroke-linecap="round" />
+
+                    <!-- Eyes -->
+                    <ellipse cx="-7" cy="-30" rx="4" ry="3.5" fill="white" />
+                    <ellipse cx="7" cy="-30" rx="4" ry="3.5" fill="white" />
+                    <circle cx="-7" cy="-30" r="2.5" fill="#3E2723" />
+                    <circle cx="7" cy="-30" r="2.5" fill="#3E2723" />
+                    <circle cx="-6.5" cy="-31" r="1" fill="white" opacity="0.8" />
+                    <circle cx="7.5" cy="-31" r="1" fill="white" opacity="0.8" />
+
+                    <!-- Nose -->
+                    <path d="M 0,-30 L 0,-22" stroke="#D4A574" stroke-width="2" stroke-linecap="round" />
+                    <ellipse cx="-2" cy="-20" rx="2" ry="1.5" fill="#D4A574" />
+                    <ellipse cx="2" cy="-20" rx="2" ry="1.5" fill="#D4A574" />
+
+                    <!-- Mustache -->
+                    <path d="M -10,-15 Q -12,-13 -14,-14" stroke="#3E2723" stroke-width="2.5" fill="none"
+                        stroke-linecap="round" />
+                    <path d="M 10,-15 Q 12,-13 14,-14" stroke="#3E2723" stroke-width="2.5" fill="none"
+                        stroke-linecap="round" />
+
+                    <!-- Badge -->
+                    <rect x="-10" y="0" width="20" height="12" fill="#1565C0" rx="2" />
+                    <text x="0" y="8" text-anchor="middle" font-size="7" fill="#FFD700" font-weight="bold">POLICE</text>
+
+                    <!-- Arms walking -->
+                    <path d="M -22,5 Q -32,15 -34,22" stroke="url(#khakiUniform)" stroke-width="11" fill="none"
+                        stroke-linecap="round">
+                        <animate attributeName="d"
+                            values="M -22,5 Q -32,15 -34,22; M -22,5 Q -28,12 -28,25; M -22,5 Q -32,15 -34,22"
+                            dur="0.8s" repeatCount="indefinite" />
+                    </path>
+                    <path d="M 22,5 Q 32,15 34,22" stroke="url(#khakiUniform)" stroke-width="11" fill="none"
+                        stroke-linecap="round">
+                        <animate attributeName="d"
+                            values="M 22,5 Q 32,15 34,22; M 22,5 Q 28,12 28,25; M 22,5 Q 32,15 34,22" dur="0.8s"
+                            repeatCount="indefinite" />
+                    </path>
+
+                    <!-- Hands -->
+                    <ellipse cx="-34" cy="22" rx="7" ry="9" fill="url(#skinTone)">
+                        <animate attributeName="cy" values="22;25;22" dur="0.8s" repeatCount="indefinite" />
+                    </ellipse>
+                    <ellipse cx="34" cy="22" rx="7" ry="9" fill="url(#skinTone)">
+                        <animate attributeName="cy" values="22;25;22" dur="0.8s" repeatCount="indefinite" />
+                    </ellipse>
+
+                    <!-- Legs walking -->
+                    <path d="M -8,44 L -14,52" stroke="#424242" stroke-width="12" stroke-linecap="round">
+                        <animate attributeName="d" values="M -8,44 L -14,52; M -8,44 L -18,52; M -8,44 L -14,52"
+                            dur="0.8s" repeatCount="indefinite" />
+                    </path>
+                    <path d="M 8,44 L 14,52" stroke="#424242" stroke-width="12" stroke-linecap="round">
+                        <animate attributeName="d" values="M 8,44 L 14,52; M 8,44 L 8,52; M 8,44 L 14,52" dur="0.8s"
+                            repeatCount="indefinite" />
+                    </path>
+
+                    <!-- Animation path -->
+                    <animateMotion dur="16s" repeatCount="indefinite" begin="5s">
+                        <mpath href="#walkPath" />
+                    </animateMotion>
+                </g>
+
+                <path id="walkPath" d="M 1385,442 L 800,442 L 220,442 L 220,442 L 800,442 L 1385,442 Z" fill="none"
+                    stroke="none" />
+
+                <!-- BIDIRECTIONAL DATA FLOW -->
+                <g id="dataFlow">
+                    <!-- Request going to police (Home → Police) -->
+                    <g id="requestPacket">
+                        <circle cx="0" cy="0" r="12" fill="#2196F3" opacity="0" filter="url(#glow)">
+                            <animate id="requestAnim" attributeName="opacity" values="0;0.9;0.9;0.9;0" dur="16s"
+                                keyTimes="0;0.05;0.2;0.35;0.4" repeatCount="indefinite" begin="2s" />
+                        </circle>
+                        <text x="0" y="6" text-anchor="middle" font-size="12" fill="white" font-weight="bold"
+                            opacity="0">
+                            <animate attributeName="opacity" values="0;0.9;0.9;0.9;0" dur="16s"
+                                keyTimes="0;0.05;0.2;0.35;0.4" repeatCount="indefinite" begin="2s" />
+                            📄
+                        </text>
+                        <text x="0" y="-18" text-anchor="middle" font-size="10" fill="#1565C0" font-weight="bold"
+                            opacity="0">
+                            <animate attributeName="opacity" values="0;0.9;0.9;0.9;0" dur="16s"
+                                keyTimes="0;0.05;0.2;0.35;0.4" repeatCount="indefinite" begin="2s" />
+                            REQUEST
+                        </text>
+                        <animateMotion dur="16s" repeatCount="indefinite" begin="2s" keyPoints="0;0;0.5;1;1"
+                            keyTimes="0;0.05;0.2;0.35;0.4" calcMode="linear">
+                            <mpath href="#requestPath" />
+                        </animateMotion>
+                    </g>
+
+                    <!-- Approval coming back (Police → Home) -->
+                    <g id="approvalPacket">
+                        <circle cx="0" cy="0" r="12" fill="#4CAF50" opacity="0" filter="url(#glow)">
+                            <animate id="approvalAnim" attributeName="opacity" values="0;0;0;0.9;0.9;0.9;0" dur="16s"
+                                keyTimes="0;0.5;0.55;0.7;0.85;0.9;1" repeatCount="indefinite" begin="2s" />
+                        </circle>
+                        <text x="0" y="6" text-anchor="middle" font-size="14" fill="white" font-weight="bold"
+                            opacity="0">
+                            <animate attributeName="opacity" values="0;0;0;0.9;0.9;0.9;0" dur="16s"
+                                keyTimes="0;0.5;0.55;0.7;0.85;0.9;1" repeatCount="indefinite" begin="2s" />
+                            ✓
+                        </text>
+                        <text x="0" y="-18" text-anchor="middle" font-size="10" fill="#2E7D32" font-weight="bold"
+                            opacity="0">
+                            <animate attributeName="opacity" values="0;0;0;0.9;0.9;0.9;0" dur="16s"
+                                keyTimes="0;0.5;0.55;0.7;0.85;0.9;1" repeatCount="indefinite" begin="2s" />
+                            APPROVED
+                        </text>
+                        <animateMotion dur="16s" repeatCount="indefinite" begin="2s" keyPoints="0;0;0;0.5;1;1;1"
+                            keyTimes="0;0.5;0.55;0.7;0.85;0.9;1" calcMode="linear">
+                            <mpath href="#approvalPath" />
+                        </animateMotion>
+                    </g>
+
+                    <!-- WiFi signals -->
+                    <g id="wifiWaves">
+                        <path d="M 250,270 Q 280,240 310,270" stroke="#4CAF50" stroke-width="3" fill="none"
+                            opacity="0.5" stroke-linecap="round">
+                            <animate attributeName="opacity" values="0.2;0.7;0.2" dur="2.5s" repeatCount="indefinite" />
+                        </path>
+                        <path d="M 235,285 Q 280,225 325,285" stroke="#4CAF50" stroke-width="3" fill="none"
+                            opacity="0.3" stroke-linecap="round">
+                            <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2.5s" repeatCount="indefinite"
+                                begin="0.5s" />
+                        </path>
+                    </g>
+                </g>
+
+                <!-- Paths for data flow -->
+                <path id="requestPath" d="M 270,280 Q 800,200 1385,320" fill="none" stroke="none" />
+                <path id="approvalPath" d="M 1385,320 Q 800,200 270,280" fill="none" stroke="none" />
+
+                <!-- SUCCESS DOWNLOAD INDICATOR -->
+                <g id="downloadSuccess" opacity="0">
+                    <circle cx="220" cy="310" r="42" fill="#4CAF50" filter="url(#glow)" />
+                    <circle cx="220" cy="310" r="34" fill="#66BB6A" />
+                    <text x="220" y="332" text-anchor="middle" font-size="48" fill="white" font-weight="bold">✓</text>
+                    <text x="220" y="362" text-anchor="middle" font-size="17" font-weight="bold"
+                        fill="#1B5E20">CERTIFICATE</text>
+                    <text x="220" y="380" text-anchor="middle" font-size="15" fill="#2E7D32">READY</text>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-panel">
+            <button class="control-btn" onclick="restartAnimation()">🔄 Restart</button>
+            <button class="control-btn" onclick="toggleAnimation()">⏯️ Pause/Play</button>
+            <button class="control-btn" onclick="changeSpeed('slow')">🐢 Slow</button>
+            <button class="control-btn" onclick="changeSpeed('normal')">▶️ Normal</button>
+            <button class="control-btn" onclick="changeSpeed('fast')">⚡ Fast</button>
+        </div>
+
+        <!-- Status Display -->
+        <div class="info-panel">
+            <div class="status-display">
+                <div class="status-header">
+                    <div class="status-icon" id="statusIcon">📱</div>
+                    <div class="status-text">
+                        <h3 id="statusTitle">Citizen applying from home</h3>
+                        <p id="statusDetail">Filing online complaint via mobile app</p>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- <div class="legend-grid">
+                <div class="legend-item">📱 Mobile App - File complaint from home</div>
+                <div class="legend-item">💻 Laptop - Senior citizen certificate</div>
+                <div class="legend-item">📤 Blue Packet - Request sent to station</div>
+                <div class="legend-item">✅ Green Packet - Approval sent back home</div>
+                <div class="legend-item">👮 Physical Verification - Officer visits</div>
+                <div class="legend-item">🖥️ Police Desktop - Process applications</div>
+            </div> -->
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <strong>Odisha Police</strong> - Smart Policing, Digital Services | सत्यमेव जयते | ସତ୍ୟମେବ ଜୟତେ
+        </div>
+    </div>
+
+    <script>
+        let isPaused = false;
+        let currentScenario = 'complaint';
+        let currentSpeed = 'normal';
+        let animationStartTime;
+        let statusInterval;
+
+        const speeds = { slow: 20000, normal: 16000, fast: 10000 };
+
+        const scenarios = {
+            complaint: {
+                icon: '📱',
+                messages: [
+                    { progress: 0, title: "Citizen applying from home", detail: "Filing online complaint via mobile app" },
+                    { progress: 12, title: "Request sent to police station", detail: "Digital application transmitted" },
+                    { progress: 20, title: "Police receives complaint", detail: "Officer reviewing on desktop" },
+                    { progress: 30, title: "Verification initiated", detail: "Officer assigned for follow-up" },
+                    { progress: 45, title: "Officer traveling to location", detail: "Physical verification in progress" },
+                    { progress: 70, title: "Verification complete", detail: "Officer returning to station" },
+                    { progress: 80, title: "Approval sent back to citizen", detail: "Digitally transmitted from station" },
+                    { progress: 92, title: "Case updated - Citizen notified", detail: "Status available on app" }
+                ]
+            },
+            character: {
+                icon: '📱',
+                messages: [
+                    { progress: 0, title: "Citizen applying from home", detail: "Character certificate via mobile" },
+                    { progress: 10, title: "Request sent to police", detail: "Application transmitted digitally" },
+                    { progress: 18, title: "Application received", detail: "Request in police system" },
+                    { progress: 28, title: "Police reviewing request", detail: "Officer checking on desktop" },
+                    { progress: 38, title: "Verification assigned", detail: "Officer dispatched for home visit" },
+                    { progress: 55, title: "Officer at citizen's home", detail: "Physical verification in progress" },
+                    { progress: 68, title: "Verification complete", detail: "Officer approving on system" },
+                    { progress: 78, title: "Certificate approved", detail: "Approval sent back digitally" },
+                    { progress: 90, title: "Certificate ready for download", detail: "Citizen can download now" }
+                ]
+            },
+            senior: {
+                icon: '💻',
+                messages: [
+                    { progress: 0, title: "Senior citizen at home", detail: "Opening police portal on laptop" },
+                    { progress: 8, title: "Filling application form", detail: "Senior citizen certificate request" },
+                    { progress: 15, title: "Request transmitted", detail: "Application sent to police station" },
+                    { progress: 25, title: "Application received", detail: "Police reviewing documents" },
+                    { progress: 35, title: "Home visit scheduled", detail: "Officer assigned for verification" },
+                    { progress: 50, title: "Officer at senior's home", detail: "Age & residence verification" },
+                    { progress: 65, title: "Verification complete", detail: "Officer confirming details" },
+                    { progress: 75, title: "Certificate approved", detail: "Approval transmitted back" },
+                    { progress: 88, title: "Certificate generated", detail: "Ready for instant download" },
+                    { progress: 95, title: "Download available", detail: "Senior can download certificate" }
+                ]
+            }
+        };
+
+        function selectScenario(scenario) {
+            currentScenario = scenario;
+
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            const smartphone = document.getElementById('smartphone');
+            const laptop = document.getElementById('laptop');
+            const seniorCitizen = document.getElementById('seniorCitizen');
+            const citizenDevice = document.getElementById('citizenWithDevice');
+
+            if (scenario === 'senior') {
+                citizenDevice.style.opacity = '0';
+                seniorCitizen.style.opacity = '1';
+            } else {
+                citizenDevice.style.opacity = '1';
+                seniorCitizen.style.opacity = '0';
+
+                if (scenario === 'complaint' || scenario === 'character') {
+                    smartphone.style.opacity = '1';
+                    laptop.style.opacity = '0';
+                }
+            }
+
+            document.getElementById('statusIcon').textContent = scenarios[scenario].icon;
+            restartAnimation();
+        }
+
+        function updateStatus() {
+            const duration = speeds[currentSpeed];
+            animationStartTime = Date.now();
+
+            clearInterval(statusInterval);
+
+            statusInterval = setInterval(() => {
+                if (isPaused) return;
+
+                const elapsed = Date.now() - animationStartTime;
+                const progress = Math.min(((elapsed % duration) / duration) * 100, 100);
+
+                document.getElementById('progressBar').style.width = progress + '%';
+
+                const messages = scenarios[currentScenario].messages;
+                let currentMsg = messages[0];
+
+                for (let msg of messages) {
+                    if (progress >= msg.progress) currentMsg = msg;
+                }
+
+                document.getElementById('statusTitle').textContent = currentMsg.title;
+                document.getElementById('statusDetail').textContent = currentMsg.detail;
+
+                const downloadEl = document.getElementById('downloadSuccess');
+                if (progress >= 88 && (currentScenario === 'character' || currentScenario === 'senior')) {
+                    downloadEl.setAttribute('opacity', '1');
+                } else {
+                    downloadEl.setAttribute('opacity', '0');
+                }
+            }, 50);
+        }
+
+        function restartAnimation() {
+            const svg = document.getElementById('mainSvg');
+            svg.pauseAnimations();
+            svg.setCurrentTime(0);
+            svg.unpauseAnimations();
+            updateStatus();
+        }
+
+        function toggleAnimation() {
+            const svg = document.getElementById('mainSvg');
+
+            if (isPaused) {
+                svg.unpauseAnimations();
+                isPaused = false;
+            } else {
+                svg.pauseAnimations();
+                isPaused = true;
+            }
+        }
+
+        function changeSpeed(speed) {
+            currentSpeed = speed;
+            const duration = speeds[speed] / 1000;
+
+            document.querySelectorAll('animateMotion').forEach(el => {
+                el.setAttribute('dur', duration + 's');
+            });
+
+            // Data flow animations should match the main duration
+            document.querySelectorAll('#dataFlow animate, #dataFlow animateMotion').forEach(el => {
+                el.setAttribute('dur', duration + 's');
+            });
+
+            restartAnimation();
+        }
+
+        async function loadLogo() {
+            try {
+                const response = await fetch('/mnt/user-data/uploads/Odisha_Police_Logo.png');
+                const blob = await response.blob();
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    const base64 = reader.result;
+                    document.getElementById('headerLogo').src = base64;
+                    document.querySelectorAll('image[href*="Odisha_Police_Logo"]').forEach(img => {
+                        img.setAttribute('href', base64);
+                    });
+                };
+                reader.readAsDataURL(blob);
+            } catch (e) {
+                console.log('Using direct path');
+            }
+        }
+
+        loadLogo();
+        updateStatus();
+    </script>
+</body>
+
+</html>
