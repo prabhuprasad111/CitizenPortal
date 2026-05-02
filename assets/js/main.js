@@ -194,7 +194,7 @@
       if (!navmenulink.hash) return;
       let section = document.querySelector(navmenulink.hash);
       if (!section) return;
-      let position = window.scrollY + 200;
+      let position = window.scrollY + 230;
       if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
         document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
         navmenulink.classList.add('active');
@@ -234,6 +234,67 @@
   document.querySelector('.client-swiper').addEventListener('mouseleave', function () {
     clientSwiper.autoplay.start();
   });
+
+  /**
+   * Citizen portal toolbar: optional font scaling, contrast toggle, persisted in localStorage
+   */
+  (function portalAccessibilityPrefs() {
+    const STORAGE_FONT = 'portalFontStep';
+    const STORAGE_HC = 'portalHighContrast';
+
+    function applyPortalFont(step) {
+      let s = parseInt(step, 10);
+      if (Number.isNaN(s)) s = 0;
+      s = Math.max(-1, Math.min(1, s));
+      if (s === 0) document.documentElement.removeAttribute('data-font-step');
+      else document.documentElement.setAttribute('data-font-step', String(s));
+      document.querySelectorAll('.btn-font-size').forEach(function (btn) {
+        btn.classList.toggle('active',
+          parseInt(btn.getAttribute('data-font-step'), 10) === s);
+      });
+      try {
+        localStorage.setItem(STORAGE_FONT, String(s));
+      } catch (_e) { /* ignore */ }
+    }
+
+    function applyPortalContrast(on) {
+      document.documentElement.classList.toggle('portal-high-contrast', on);
+      try {
+        localStorage.setItem(STORAGE_HC, on ? '1' : '0');
+      } catch (_e) { /* ignore */ }
+    }
+
+    document.querySelectorAll('.btn-font-size').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        applyPortalFont(btn.getAttribute('data-font-step'));
+      });
+    });
+
+    const ct = document.getElementById('portalContrastToggle');
+    if (ct) {
+      ct.addEventListener('click', function () {
+        applyPortalContrast(!document.documentElement.classList.contains('portal-high-contrast'));
+      });
+    }
+
+    const resetBtn = document.getElementById('portalResetPrefs');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        applyPortalFont(0);
+        applyPortalContrast(false);
+        try {
+          localStorage.removeItem(STORAGE_FONT);
+          localStorage.removeItem(STORAGE_HC);
+        } catch (_e) { /* ignore */ }
+      });
+    }
+
+    try {
+      var fs = localStorage.getItem(STORAGE_FONT);
+      if (fs !== null && fs !== '') applyPortalFont(fs);
+      if (localStorage.getItem(STORAGE_HC) === '1') applyPortalContrast(true);
+    } catch (_e) { /* ignore */ }
+  })();
 
 })();
 

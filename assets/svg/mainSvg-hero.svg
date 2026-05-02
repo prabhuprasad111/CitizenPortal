@@ -1,0 +1,321 @@
+<svg id="mainSvg" viewBox="0 0 1600 650" xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter id="mainShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+      <feOffset dx="2" dy="4" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="mainGlow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B0E0E6;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="skinTone" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFDBAC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F1C27D;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="khakiUniform" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#C9B382;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A89160;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="650" fill="url(#skyGrad)" />
+
+  <g id="sun">
+    <circle cx="1450" cy="100" r="50" fill="#FFD700" opacity="0.9">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="4s" repeatCount="indefinite" />
+    </circle>
+    <g opacity="0.6">
+      <line x1="1450" y1="40" x2="1450" y2="10" stroke="#FFD700" stroke-width="4" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" from="0 1450 100" to="360 1450 100" dur="20s"
+          repeatCount="indefinite" />
+      </line>
+      <line x1="1510" y1="100" x2="1540" y2="100" stroke="#FFD700" stroke-width="4" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" from="0 1450 100" to="360 1450 100" dur="20s"
+          repeatCount="indefinite" />
+      </line>
+      <line x1="1500" y1="150" x2="1520" y2="170" stroke="#FFD700" stroke-width="4" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" from="0 1450 100" to="360 1450 100" dur="20s"
+          repeatCount="indefinite" />
+      </line>
+      <line x1="1400" y1="150" x2="1380" y2="170" stroke="#FFD700" stroke-width="4" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" from="0 1450 100" to="360 1450 100" dur="20s"
+          repeatCount="indefinite" />
+      </line>
+    </g>
+  </g>
+
+  <g opacity="0.8">
+    <g id="cloud1">
+      <ellipse cx="250" cy="100" rx="50" ry="30" fill="white" />
+      <ellipse cx="220" cy="95" rx="35" ry="25" fill="white" />
+      <ellipse cx="280" cy="95" rx="40" ry="28" fill="white" />
+      <ellipse cx="250" cy="85" rx="30" ry="20" fill="white" />
+    </g>
+    <g id="cloud2">
+      <ellipse cx="1100" cy="130" rx="60" ry="35" fill="white" />
+      <ellipse cx="1060" cy="125" rx="40" ry="28" fill="white" />
+      <ellipse cx="1140" cy="125" rx="45" ry="30" fill="white" />
+      <ellipse cx="1100" cy="110" rx="35" ry="22" fill="white" />
+    </g>
+  </g>
+  <rect x="0" y="450" width="1600" height="200" fill="#7cb342" />
+  <rect x="0" y="450" width="1600" height="20" fill="#558b2f" />
+
+  <rect x="0" y="420" width="1600" height="60" fill="#424242" />
+  <g>
+    <rect x="0" y="445" width="80" height="5" fill="#FFEB3B" />
+    <rect x="120" y="445" width="80" height="5" fill="#FFEB3B" />
+    <rect x="240" y="445" width="80" height="5" fill="#FFEB3B" />
+    <rect x="360" y="445" width="80" height="5" fill="#FFEB3B" />
+    <rect x="480" y="445" width="80" height="5" fill="#FFEB3B" />
+    <rect x="600" y="445" width="80" height="5" fill="#FFEB3B" />
+    <rect x="720" y="445" width="80" height="5" fill="#FFEB3B" />
+    <rect x="840" y="445" width="80" height="5" fill="#FFEB3B" />
+    <rect x="960" y="445" width="80" height="5" fill="#FFEB3B" />
+    <rect x="1080" y="445" width="80" height="5" fill="#FFEB3B" />
+    <rect x="1200" y="445" width="80" height="5" fill="#FFEB3B" />
+    <rect x="1320" y="445" width="80" height="5" fill="#FFEB3B" />
+    <rect x="1440" y="445" width="80" height="5" fill="#FFEB3B" />
+  </g>
+
+  <g id="trees">
+    <rect x="600" y="380" width="20" height="70" fill="#6D4C41" rx="3" />
+    <ellipse cx="610" cy="370" rx="50" ry="55" fill="#4CAF50" />
+    <ellipse cx="590" cy="350" rx="35" ry="40" fill="#66BB6A" />
+    <ellipse cx="630" cy="350" rx="35" ry="40" fill="#66BB6A" />
+    <rect x="980" y="380" width="20" height="70" fill="#6D4C41" rx="3" />
+    <ellipse cx="990" cy="370" rx="50" ry="55" fill="#4CAF50" />
+    <ellipse cx="970" cy="350" rx="35" ry="40" fill="#66BB6A" />
+    <ellipse cx="1010" cy="350" rx="35" ry="40" fill="#66BB6A" />
+  </g>
+
+  <g id="citizenHome" filter="url(#mainShadow)">
+    <rect x="100" y="250" width="240" height="170" fill="#e57373" rx="5" />
+    <polygon points="100,250 220,180 340,250" fill="#C62828" />
+    <rect x="270" y="200" width="25" height="50" fill="#8D6E63" rx="2" />
+    <rect x="265" y="195" width="35" height="10" fill="#6D4C41" rx="2" />
+    <rect x="180" y="340" width="80" height="80" fill="#5D4037" rx="8" />
+    <rect x="185" y="345" width="70" height="70" fill="#6D4C41" rx="6" />
+    <circle cx="245" cy="380" r="6" fill="#FFD700" />
+    <rect x="220" y="345" width="3" height="70" fill="#4E342E" />
+    <g id="leftWindow">
+      <rect x="115" y="280" width="60" height="55" fill="#90CAF9" stroke="#1565C0" stroke-width="3" rx="4" />
+      <rect x="118" y="283" width="54" height="49" fill="#BBDEFB" rx="2" />
+      <line x1="145" y1="283" x2="145" y2="332" stroke="#1565C0" stroke-width="3" />
+      <line x1="118" y1="307.5" x2="172" y2="307.5" stroke="#1565C0" stroke-width="3" />
+    </g>
+    <g id="rightWindow">
+      <rect x="265" y="280" width="60" height="55" fill="#90CAF9" stroke="#1565C0" stroke-width="3" rx="4" />
+      <rect x="268" y="283" width="54" height="49" fill="#BBDEFB" rx="2" />
+      <line x1="295" y1="283" x2="295" y2="332" stroke="#1565C0" stroke-width="3" />
+      <line x1="268" y1="307.5" x2="322" y2="307.5" stroke="#1565C0" stroke-width="3" />
+    </g>
+    <ellipse cx="90" cy="425" rx="20" ry="15" fill="#4CAF50" />
+    <ellipse cx="350" cy="425" rx="20" ry="15" fill="#4CAF50" />
+  </g>
+  <g id="citizenWithDevice">
+    <rect x="170" y="360" width="70" height="12" fill="#78909C" rx="4" />
+    <rect x="175" y="372" width="10" height="48" fill="#546E7A" rx="3" />
+    <rect x="225" y="372" width="10" height="48" fill="#546E7A" rx="3" />
+    <rect x="175" y="320" width="10" height="40" fill="#546E7A" rx="3" />
+    <rect x="225" y="320" width="10" height="40" fill="#546E7A" rx="3" />
+    <rect x="175" y="315" width="60" height="8" fill="#78909C" rx="4" />
+
+    <g id="realisticPerson">
+      <rect x="195" y="365" width="12" height="40" fill="#2C3E50" rx="6" />
+      <rect x="213" y="365" width="12" height="40" fill="#2C3E50" rx="6" />
+      <ellipse cx="201" cy="406" rx="10" ry="6" fill="#212121" />
+      <ellipse cx="219" cy="406" rx="10" ry="6" fill="#212121" />
+      <ellipse cx="210" cy="340" rx="24" ry="30" fill="#42A5F5" />
+      <path d="M 200,325 L 210,330 L 220,325" fill="#1976D2" />
+      <circle cx="210" cy="335" r="2" fill="#1565C0" />
+      <circle cx="210" cy="345" r="2" fill="#1565C0" />
+      <circle cx="210" cy="355" r="2" fill="#1565C0" />
+      <path d="M 186,330 Q 170,338 170,355" stroke="#42A5F5" stroke-width="11" fill="none" stroke-linecap="round" />
+      <path d="M 234,330 Q 250,338 250,355" stroke="#42A5F5" stroke-width="11" fill="none" stroke-linecap="round" />
+      <ellipse cx="170" cy="358" rx="8" ry="10" fill="url(#skinTone)" />
+      <ellipse cx="250" cy="358" rx="8" ry="10" fill="url(#skinTone)" />
+      <rect x="202" y="318" width="16" height="12" fill="url(#skinTone)" rx="3" />
+      <ellipse cx="210" cy="300" rx="20" ry="23" fill="url(#skinTone)" />
+      <ellipse cx="190" cy="300" rx="4" ry="6" fill="#F1C27D" />
+      <ellipse cx="230" cy="300" rx="4" ry="6" fill="#F1C27D" />
+      <path
+        d="M 190,285 Q 185,278 192,273 Q 200,268 210,268 Q 220,268 228,273 Q 235,278 230,285 Q 228,290 225,292 L 220,287 Q 215,285 210,285 Q 205,285 200,287 L 195,292 Q 192,290 190,285 Z"
+        fill="#2C3E50" />
+      <ellipse cx="200" cy="300" rx="5" ry="4" fill="white" />
+      <ellipse cx="220" cy="300" rx="5" ry="4" fill="white" />
+      <circle cx="200" cy="300" r="3" fill="#3E2723" />
+      <circle cx="220" cy="300" r="3" fill="#3E2723" />
+      <path d="M 202,315 Q 210,319 218,315" stroke="#D84315" stroke-width="2.5" fill="none" stroke-linecap="round" />
+    </g>
+
+    <g id="smartphone">
+      <rect x="170" y="350" width="38" height="65" fill="#1A1A1A" rx="6" />
+      <rect x="173" y="357" width="32" height="51" fill="#0D47A1" rx="2" filter="url(#mainGlow)">
+        <animate attributeName="fill" values="#0D47A1;#1565C0;#0D47A1" dur="3s" repeatCount="indefinite" />
+      </rect>
+      <rect x="175" y="359" width="28" height="10" fill="#1976D2" rx="2" />
+      <image href="../img/Odisha_Police_Logo.png" x="176" y="360" width="8" height="8" xlink:href="../img/Odisha_Police_Logo.png" />
+      <text x="191.5" y="366" text-anchor="middle" font-size="5" fill="#FFD700" font-weight="bold">ODISHA</text>
+      <rect x="176" y="371" width="26" height="5" fill="#FFFFFF" opacity="0.9" rx="1" />
+      <rect x="176" y="378" width="26" height="5" fill="#FFFFFF" opacity="0.9" rx="1" />
+      <rect x="176" y="385" width="20" height="5" fill="#FFFFFF" opacity="0.9" rx="1" />
+      <rect x="176" y="393" width="26" height="11" fill="#4CAF50" rx="2" />
+      <text x="189" y="400" text-anchor="middle" font-size="6" fill="white" font-weight="bold">SUBMIT</text>
+      <circle cx="182" cy="380" r="1.5" fill="#1976D2">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      <ellipse cx="191.5" cy="354" rx="3" ry="2" fill="#263238" />
+    </g>
+  </g>
+  <g id="policeStation" filter="url(#mainShadow)">
+    <rect x="1220" y="230" width="320" height="190" fill="#FFF9C4" rx="5" />
+    <rect x="1245" y="290" width="25" height="130" fill="white" stroke="#CFD8DC" stroke-width="2" rx="3" />
+    <rect x="1350" y="290" width="25" height="130" fill="white" stroke="#CFD8DC" stroke-width="2" rx="3" />
+    <rect x="1425" y="290" width="25" height="130" fill="white" stroke="#CFD8DC" stroke-width="2" rx="3" />
+    <rect x="1500" y="290" width="25" height="130" fill="white" stroke="#CFD8DC" stroke-width="2" rx="3" />
+    <text x="1385" y="273" text-anchor="middle" font-size="20" font-weight="bold" fill="#FFD700">POLICE STATION</text>
+    <text x="1385" y="245" text-anchor="middle" font-size="16" font-weight="bold" fill="#C62828">ଆଦର୍ଶ ଥାନା</text>
+    <rect x="1355" y="340" width="80" height="80" fill="#37474F" rx="8" />
+    <rect x="1360" y="345" width="70" height="70" fill="#263238" rx="6" />
+    <rect x="1250" y="300" width="55" height="60" fill="#BBDEFB" stroke="#1565C0" stroke-width="3" rx="4" />
+    <line x1="1277.5" y1="300" x2="1277.5" y2="360" stroke="#1565C0" stroke-width="3" />
+    <rect x="1465" y="300" width="55" height="60" fill="#BBDEFB" stroke="#1565C0" stroke-width="3" rx="4" />
+    <circle cx="1385" cy="310" r="25" fill="white" stroke="#1565C0" stroke-width="3" />
+    <image href="../img/Odisha_Police_Logo.png" x="1365" y="290" width="40" height="40" xlink:href="../img/Odisha_Police_Logo.png" />
+  </g>
+
+  <g id="policeOfficerDesk">
+    <rect x="1310" y="380" width="150" height="15" fill="#78909C" rx="4" />
+    <rect x="1315" y="395" width="12" height="50" fill="#546E7A" rx="3" />
+    <rect x="1443" y="395" width="12" height="50" fill="#546E7A" rx="3" />
+    <g id="desktopComputer">
+      <rect x="1340" y="320" width="90" height="60" fill="#263238" rx="4" />
+      <rect x="1345" y="325" width="80" height="50" fill="#0D47A1" rx="2" filter="url(#mainGlow)">
+        <animate attributeName="fill" values="#0D47A1;#1565C0;#0D47A1" dur="3s" repeatCount="indefinite" />
+      </rect>
+      <rect x="1348" y="328" width="74" height="12" fill="#1976D2" rx="2" />
+      <text x="1385" y="337" text-anchor="middle" font-size="7" fill="#FFD700" font-weight="bold">APPLICATION</text>
+      <circle cx="1355" cy="368" r="4" fill="#FF9800">
+        <animate attributeName="fill" values="#FF9800;#4CAF50" dur="4s" repeatCount="indefinite" />
+      </circle>
+    </g>
+    <g id="officerSitting">
+      <ellipse cx="1385" cy="365" rx="26" ry="34" fill="url(#khakiUniform)" />
+      <rect x="1377" y="343" width="16" height="10" fill="url(#skinTone)" rx="2" />
+      <ellipse cx="1385" cy="318" rx="22" ry="25" fill="url(#skinTone)" />
+      <ellipse cx="1385" cy="308" rx="24" ry="10" fill="url(#khakiUniform)" />
+      <circle cx="1385" cy="305" r="7" fill="#FFD700" stroke="#DAA520" stroke-width="1.5" />
+      <image href="../img/Odisha_Police_Logo.png" x="1379" y="299" width="12" height="12" xlink:href="../img/Odisha_Police_Logo.png" />
+      <rect x="1373" y="368" width="24" height="14" fill="#1565C0" rx="2" />
+      <text x="1385" y="377" text-anchor="middle" font-size="9" fill="#FFD700" font-weight="bold">POLICE</text>
+    </g>
+  </g>
+  <path id="walkPath" d="M 1385,442 L 800,442 L 220,442 L 220,442 L 800,442 L 1385,442 Z" fill="none" stroke="none" />
+
+  <g id="walkingOfficer">
+    <ellipse cx="0" cy="52" rx="20" ry="7" fill="black" opacity="0.2" />
+    <ellipse cx="0" cy="12" rx="22" ry="32" fill="url(#khakiUniform)" />
+    <rect x="-22" y="28" width="44" height="7" fill="#6D4C41" rx="2" />
+    <rect x="-8" y="-14" width="16" height="10" fill="url(#skinTone)" rx="2" />
+    <ellipse cx="0" cy="-30" rx="20" ry="23" fill="url(#skinTone)" />
+    <ellipse cx="0" cy="-40" rx="22" ry="9" fill="url(#khakiUniform)" />
+    <circle cx="0" cy="-43" r="6" fill="#FFD700" stroke="#DAA520" stroke-width="1" />
+    <image href="../img/Odisha_Police_Logo.png" x="-5" y="-48" width="10" height="10" xlink:href="../img/Odisha_Police_Logo.png" />
+    <rect x="-10" y="0" width="20" height="12" fill="#1565C0" rx="2" />
+    <text x="0" y="8" text-anchor="middle" font-size="7" fill="#FFD700" font-weight="bold">POLICE</text>
+    <path d="M -22,5 Q -32,15 -34,22" stroke="url(#khakiUniform)" stroke-width="11" fill="none" stroke-linecap="round">
+      <animate attributeName="d"
+        values="M -22,5 Q -32,15 -34,22; M -22,5 Q -28,12 -28,25; M -22,5 Q -32,15 -34,22" dur="0.8s"
+        repeatCount="indefinite" />
+    </path>
+    <path d="M 22,5 Q 32,15 34,22" stroke="url(#khakiUniform)" stroke-width="11" fill="none" stroke-linecap="round">
+      <animate attributeName="d" values="M 22,5 Q 32,15 34,22; M 22,5 Q 28,12 28,25; M 22,5 Q 32,15 34,22"
+        dur="0.8s" repeatCount="indefinite" />
+    </path>
+    <ellipse cx="-34" cy="22" rx="7" ry="9" fill="url(#skinTone)">
+      <animate attributeName="cy" values="22;25;22" dur="0.8s" repeatCount="indefinite" />
+    </ellipse>
+    <ellipse cx="34" cy="22" rx="7" ry="9" fill="url(#skinTone)">
+      <animate attributeName="cy" values="22;25;22" dur="0.8s" repeatCount="indefinite" />
+    </ellipse>
+    <path d="M -8,44 L -14,52" stroke="#424242" stroke-width="12" stroke-linecap="round">
+      <animate attributeName="d" values="M -8,44 L -14,52; M -8,44 L -18,52; M -8,44 L -14,52" dur="0.8s"
+        repeatCount="indefinite" />
+    </path>
+    <path d="M 8,44 L 14,52" stroke="#424242" stroke-width="12" stroke-linecap="round">
+      <animate attributeName="d" values="M 8,44 L 14,52; M 8,44 L 8,52; M 8,44 L 14,52" dur="0.8s"
+        repeatCount="indefinite" />
+    </path>
+    <animateMotion dur="16s" repeatCount="indefinite" begin="5s">
+      <mpath xlink:href="#walkPath" href="#walkPath" />
+    </animateMotion>
+  </g>
+
+  <path id="requestPath" d="M 270,280 Q 800,200 1385,320" fill="none" stroke="none" />
+  <path id="approvalPath" d="M 1385,320 Q 800,200 270,280" fill="none" stroke="none" />
+
+  <g id="dataFlow">
+    <g id="requestPacket">
+      <circle cx="0" cy="0" r="12" fill="#2196F3" opacity="0" filter="url(#mainGlow)">
+        <animate id="requestAnim" attributeName="opacity" values="0;0.9;0.9;0.9;0" dur="16s"
+          keyTimes="0;0.05;0.2;0.35;0.4" repeatCount="indefinite" begin="2s" />
+      </circle>
+      <text x="0" y="-18" text-anchor="middle" font-size="10" fill="#1565C0" font-weight="bold" opacity="0">
+        <animate attributeName="opacity" values="0;0.9;0.9;0.9;0" dur="16s" keyTimes="0;0.05;0.2;0.35;0.4"
+          repeatCount="indefinite" begin="2s" />
+        REQUEST
+      </text>
+      <animateMotion dur="16s" repeatCount="indefinite" begin="2s" keyPoints="0;0;0.5;1;1"
+        keyTimes="0;0.05;0.2;0.35;0.4" calcMode="linear">
+        <mpath xlink:href="#requestPath" href="#requestPath" />
+      </animateMotion>
+    </g>
+    <g id="approvalPacket">
+      <circle cx="0" cy="0" r="12" fill="#4CAF50" opacity="0" filter="url(#mainGlow)">
+        <animate attributeName="opacity" values="0;0;0;0.9;0.9;0.9;0" dur="16s"
+          keyTimes="0;0.5;0.55;0.7;0.85;0.9;1" repeatCount="indefinite" begin="2s" />
+      </circle>
+      <text x="0" y="6" text-anchor="middle" font-size="14" fill="white" font-weight="bold" opacity="0">
+        <animate attributeName="opacity" values="0;0;0;0.9;0.9;0.9;0" dur="16s"
+          keyTimes="0;0.5;0.55;0.7;0.85;0.9;1" repeatCount="indefinite" begin="2s" />✓</text>
+      <text x="0" y="-18" text-anchor="middle" font-size="10" fill="#2E7D32" font-weight="bold" opacity="0">
+        <animate attributeName="opacity" values="0;0;0;0.9;0.9;0.9;0" dur="16s"
+          keyTimes="0;0.5;0.55;0.7;0.85;0.9;1" repeatCount="indefinite" begin="2s" />APPROVED</text>
+      <animateMotion dur="16s" repeatCount="indefinite" begin="2s" keyPoints="0;0;0;0.5;1;1;1"
+        keyTimes="0;0.5;0.55;0.7;0.85;0.9;1" calcMode="linear">
+        <mpath xlink:href="#approvalPath" href="#approvalPath" />
+      </animateMotion>
+    </g>
+    <g id="wifiWaves">
+      <path d="M 250,270 Q 280,240 310,270" stroke="#4CAF50" stroke-width="3" fill="none" opacity="0.5"
+        stroke-linecap="round">
+        <animate attributeName="opacity" values="0.2;0.7;0.2" dur="2.5s" repeatCount="indefinite" />
+      </path>
+      <path d="M 235,285 Q 280,225 325,285" stroke="#4CAF50" stroke-width="3" fill="none" opacity="0.3"
+        stroke-linecap="round">
+        <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2.5s" repeatCount="indefinite" begin="0.5s" />
+      </path>
+    </g>
+  </g>
+
+</svg>
