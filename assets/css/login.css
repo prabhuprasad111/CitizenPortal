@@ -130,18 +130,20 @@ html.portal-index body.login-page-body.index-page .login-main-centre {
   padding-top: max(env(safe-area-inset-top), clamp(176px, 22vw, 212px));
 }
 
-@media (max-width: 767.98px) {
-  /* Avoid vertical centering pushing the card under the fixed three-tier header on short viewports */
+/* Tablet / mobile: padding must clear full fixed header (utility+brand+nav, z-index 1000) or nav covers the card tabs */
+@media (max-width: 1199.98px) {
   html.portal-index body.login-page-body.index-page .login-main-centre {
     align-items: flex-start;
-    padding-top: max(env(safe-area-inset-top), clamp(220px, 52vw, 300px));
-    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    padding-top: max(env(safe-area-inset-top), clamp(220px, 12vh + 128px, 296px));
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
   }
 }
 
-@media (max-width: 399.98px) {
+@media (max-width: 575.98px) {
   html.portal-index body.login-page-body.index-page .login-main-centre {
-    padding-top: max(env(safe-area-inset-top), clamp(230px, 58vw, 310px));
+    padding-top: max(env(safe-area-inset-top), clamp(252px, 14vh + 136px, 318px));
   }
 }
 
@@ -185,6 +187,15 @@ html.portal-index body.login-page-body.index-page .login-main-centre {
   -webkit-backdrop-filter: blur(14px);
 }
 
+/* backdrop-filter + toggling [hidden] panels can fail to repaint on mobile WebKit until user interaction */
+@media (max-width: 767.98px) {
+  .login-card-inner {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.99);
+  }
+}
+
 /* Sign in · Citizen registration */
 .login-auth-switch {
   display: flex;
@@ -217,23 +228,48 @@ html.portal-index body.login-page-body.index-page .login-main-centre {
 
 @media (max-width: 575.98px) {
   .login-auth-switch {
-    gap: 0.28rem;
-    padding: 0.18rem;
+    gap: 0.32rem;
+    padding: 0.22rem;
   }
 
   .login-auth-tab {
-    padding: 0.42rem 0.35rem;
-    font-size: 0.58rem;
-    letter-spacing: 0.025em;
-    line-height: 1.2;
-    hyphens: auto;
+    padding: 0.52rem 0.4rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+    color: #1e293b;
+    hyphens: none;
     overflow-wrap: break-word;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 420px) {
+  .login-auth-switch {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+    padding: 0.35rem;
+  }
+
+  .login-auth-tab {
+    width: 100%;
+    max-width: 100%;
+    font-size: 0.78rem;
+    padding: 0.58rem 0.65rem;
+    letter-spacing: 0.03em;
   }
 }
 
 .login-auth-tab:hover,
 .login-auth-tab:focus-visible {
   color: var(--portal-navy);
+}
+
+.login-auth-tab--active:hover,
+.login-auth-tab--active:focus-visible {
+  color: #fff;
+  -webkit-text-fill-color: #fff;
 }
 
 .login-auth-tab:focus-visible {
@@ -243,12 +279,19 @@ html.portal-index body.login-page-body.index-page .login-main-centre {
 
 .login-auth-tab--active {
   color: #fff;
+  -webkit-text-fill-color: #fff;
   background: linear-gradient(180deg, #0b5cad 0%, var(--portal-navy) 55%, var(--portal-navy-deep) 100%);
   box-shadow: 0 2px 8px rgba(0, 53, 102, 0.22);
+  text-shadow: 0 1px 2px rgba(0, 24, 60, 0.45);
 }
 
 .login-panel[hidden] {
   display: none !important;
+}
+
+.login-panel:not([hidden]) {
+  /* Promote own layer after un-hiding (helps WebKit repaint when switching auth tabs) */
+  transform: translateZ(0);
 }
 
 .login-reg-title {

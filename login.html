@@ -514,6 +514,12 @@
         }
         if (isReg) syncRegPwdToggleUi();
         else syncPwdToggleUi();
+        var visible = isReg ? panelReg : panelSignin;
+        window.requestAnimationFrame(function () {
+          window.requestAnimationFrame(function () {
+            if (visible && !visible.hidden) void visible.offsetHeight;
+          });
+        });
       }
 
       if (tabSignin) tabSignin.addEventListener("click", function () { setAuthPanel("signin"); });
