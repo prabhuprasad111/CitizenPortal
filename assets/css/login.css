@@ -392,21 +392,21 @@ html.portal-index body.login-page-body.index-page .login-main-centre {
   color: var(--portal-navy-deep);
 }
 
-/*
- * Bilingual show/hide is defined in main.css (html.portal-index[.portal-lang-or] + .lang-en / .lang-or).
- * A global `.lang-or { display: none !important }` here overrides Odia mode and hides header/nav labels on login.
- */
-html.portal-index.portal-lang-or body.login-page-body {
-  font-family: "Noto Sans Oriya", "Noto Sans Odia", "Plus Jakarta Sans", system-ui, sans-serif;
+/* Odia strings only: Oriya font on .lang-or + sign-in placeholders; English UI keeps body font (main.css handles visibility). */
+html.portal-index.portal-lang-or body.login-page-body .lang-or {
+  font-family: "Noto Sans Oriya", "Noto Sans Odia", serif;
 }
 
 html.portal-index.portal-lang-or body.login-page-body .login-heading .lang-or {
   display: block;
   margin-top: 0.08rem;
-  font-family: "Noto Sans Oriya", "Noto Sans Odia", serif;
   font-size: clamp(1.72rem, 5vmin, 2.05rem);
   font-weight: 600;
   color: var(--portal-navy-deep);
+}
+
+html.portal-index.portal-lang-or body.login-page-body .login-input.portal-i18n-input {
+  font-family: "Noto Sans Oriya", "Noto Sans Odia", "Plus Jakarta Sans", system-ui, sans-serif;
 }
 
 .login-sub {
