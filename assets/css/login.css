@@ -131,8 +131,17 @@ html.portal-index body.login-page-body.index-page .login-main-centre {
 }
 
 @media (max-width: 767.98px) {
+  /* Avoid vertical centering pushing the card under the fixed three-tier header on short viewports */
   html.portal-index body.login-page-body.index-page .login-main-centre {
-    padding-top: max(env(safe-area-inset-top), clamp(200px, 38vw, 272px));
+    align-items: flex-start;
+    padding-top: max(env(safe-area-inset-top), clamp(220px, 52vw, 300px));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 399.98px) {
+  html.portal-index body.login-page-body.index-page .login-main-centre {
+    padding-top: max(env(safe-area-inset-top), clamp(230px, 58vw, 310px));
   }
 }
 
@@ -181,7 +190,7 @@ html.portal-index body.login-page-body.index-page .login-main-centre {
   display: flex;
   gap: 0.35rem;
   padding: 0.2rem;
-  margin: -0.15rem -0.15rem 0.85rem;
+  margin: 0 0 0.85rem;
   border-radius: 12px;
   background: rgba(241, 245, 249, 0.95);
   border: 1px solid rgba(148, 163, 184, 0.35);
@@ -189,6 +198,7 @@ html.portal-index body.login-page-body.index-page .login-main-centre {
 
 .login-auth-tab {
   flex: 1;
+  min-width: 0;
   border: none;
   border-radius: 9px;
   padding: 0.48rem 0.5rem;
@@ -203,6 +213,22 @@ html.portal-index body.login-page-body.index-page .login-main-centre {
     background 0.15s ease,
     color 0.15s ease,
     box-shadow 0.15s ease;
+}
+
+@media (max-width: 575.98px) {
+  .login-auth-switch {
+    gap: 0.28rem;
+    padding: 0.18rem;
+  }
+
+  .login-auth-tab {
+    padding: 0.42rem 0.35rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.025em;
+    line-height: 1.2;
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
 }
 
 .login-auth-tab:hover,
@@ -366,30 +392,21 @@ html.portal-index body.login-page-body.index-page .login-main-centre {
   color: var(--portal-navy-deep);
 }
 
-/* English / ଓଡ଼ିଆ toggle (whole UI, not bilingual mix) */
-.lang-or {
-  display: none !important;
+/*
+ * Bilingual show/hide is defined in main.css (html.portal-index[.portal-lang-or] + .lang-en / .lang-or).
+ * A global `.lang-or { display: none !important }` here overrides Odia mode and hides header/nav labels on login.
+ */
+html.portal-index.portal-lang-or body.login-page-body {
+  font-family: "Noto Sans Oriya", "Noto Sans Odia", "Plus Jakarta Sans", system-ui, sans-serif;
 }
 
-body.login-lang-or .lang-en {
-  display: none !important;
-}
-
-body.login-lang-or .lang-or {
-  display: inline !important;
-}
-
-body.login-lang-or .login-heading .lang-or {
-  display: block !important;
+html.portal-index.portal-lang-or body.login-page-body .login-heading .lang-or {
+  display: block;
   margin-top: 0.08rem;
   font-family: "Noto Sans Oriya", "Noto Sans Odia", serif;
   font-size: clamp(1.72rem, 5vmin, 2.05rem);
   font-weight: 600;
   color: var(--portal-navy-deep);
-}
-
-body.login-lang-or {
-  font-family: "Noto Sans Oriya", "Noto Sans Odia", "Plus Jakarta Sans", system-ui, sans-serif;
 }
 
 .login-sub {

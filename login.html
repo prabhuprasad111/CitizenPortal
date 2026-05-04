@@ -21,6 +21,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/portal-chatbot.css" rel="stylesheet">
   <link href="assets/css/login.css" rel="stylesheet">
 </head>
 
@@ -45,6 +46,11 @@
             aria-label="Reset display settings"><i class="bi bi-arrow-counterclockwise"></i></button>
           <button type="button" class="gov-util-icon" id="portalContrastToggle" title="Toggle contrast"
             aria-label="Toggle high contrast"><i class="bi bi-circle-half"></i></button>
+          <button type="button" class="gov-util-icon portal-sathi-util-trigger" id="portalSathiHeaderOpen"
+            title="SATHI help" aria-label="Open SATHI help assistant">
+            <img src="assets/img/policebot.png" alt="" class="portal-sathi-util-img" width="22" height="22"
+              decoding="async">
+          </button>
           <a href="#" class="gov-util-icon" title="Sitemap" aria-label="Sitemap"><i class="bi bi-diagram-3"></i></a>
           <a href="login.html" class="gov-util-link-login" aria-current="page"><i class="bi bi-lock-fill me-1"></i><span><span
                 class="lang-en">Login</span><span class="lang-or" lang="or">ଲଗଇନ୍</span></span></a>
@@ -223,10 +229,7 @@
               </a>
             </div>
 
-            <button type="submit" class="btn-login-submit">
-              <span class="lang-en">Sign in</span>
-              <span class="lang-or" lang="or">ଲଗଇନ୍ କରନ୍ତୁ</span>
-            </button>
+            <button type="submit" class="btn-login-submit" aria-label="Sign in">Sign in</button>
           </form>
         </div>
 
@@ -337,6 +340,52 @@
       height="400" decoding="async" loading="lazy">
   </footer>
 
+  <div id="portalSathiBot" class="portal-chatbot" data-open="false" lang="en">
+    <button type="button" class="portal-chatbot-launcher" id="portalChatbotToggle" aria-expanded="false"
+      aria-controls="portalChatbotPanel" title="Open SATHI help">
+      <img src="assets/img/policebot.png" alt="" width="56" height="56" decoding="async">
+      <span class="visually-hidden"><span class="lang-en">Open SATHI help assistant</span><span class="lang-or"
+          lang="or">SATHI ସହାୟତା ଖୋଲନ୍ତୁ</span></span>
+    </button>
+    <div class="portal-chatbot-panel" id="portalChatbotPanel" role="dialog" aria-modal="true"
+      aria-labelledby="portalChatbotTitle" hidden>
+      <div class="portal-chatbot-header">
+        <div class="portal-chatbot-header-top">
+          <button type="button" class="portal-chatbot-icon-btn" id="portalChatbotMenu"
+            title="Contact / help"><i class="bi bi-three-dots-vertical" aria-hidden="true"></i></button>
+          <button type="button" class="portal-chatbot-icon-btn" id="portalChatbotClose" title="Close"
+            aria-label="Close chat"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+        </div>
+        <div class="portal-chatbot-avatar-wrap">
+          <img src="assets/img/policebot.png" class="portal-chatbot-avatar" width="72" height="72" alt=""
+            decoding="async">
+        </div>
+        <h2 class="portal-chatbot-title" id="portalChatbotTitle">SATHI</h2>
+        <p class="portal-chatbot-sub"><span class="lang-en">Citizen Portal assistant</span><span class="lang-or"
+            lang="or">ନାଗରିକ ପୋର୍ଟାଲ୍ ସହାୟିକା</span></p>
+      </div>
+      <div class="portal-chatbot-body">
+        <div class="portal-chatbot-thread" id="portalChatbotThread" aria-live="polite"></div>
+        <div class="portal-chatbot-quick" id="portalChatbotQuick"></div>
+      </div>
+      <div class="portal-chatbot-input-row">
+        <label class="visually-hidden" for="portalChatbotInput"><span class="lang-en">Message SATHI</span><span
+            class="lang-or" lang="or">SATHI କୁ ଲେଖନ୍ତୁ</span></label>
+        <input type="text" id="portalChatbotInput" class="portal-chatbot-input" maxlength="500"
+          data-placeholder-en="Search or start asking anything to SATHI…"
+          data-placeholder-or="SATHI କୁ ପ୍ରଶ୍ନ ଲେଖନ୍ତୁ…" autocomplete="off">
+        <button type="button" class="portal-chatbot-send" id="portalChatbotSend"
+          aria-label="Send message"><i class="bi bi-send-fill" aria-hidden="true"></i></button>
+      </div>
+      <div class="portal-chatbot-footer-meta">
+        <p>© <span class="lang-en">2026 Citizen Portal · Odisha Police</span><span class="lang-or" lang="or">© 2026
+            ନାଗରିକ ପୋର୍ଟାଲ୍ · ଓଡ଼ିଶା ପୋଲିସ୍</span></p>
+        <button type="button" class="portal-chatbot-reset" id="portalChatbotReset"><span class="lang-en">Reset
+            chat</span><span class="lang-or" lang="or">ଚାଟ୍ ପୁନଃସେଟ୍</span></button>
+      </div>
+    </div>
+  </div>
+
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -345,6 +394,7 @@
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/portal-chatbot.js"></script>
 
   <script>
     (function () {
