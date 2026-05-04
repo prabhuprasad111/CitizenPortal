@@ -15,6 +15,7 @@
   function toggleScrolled() {
     const selectBody = document.querySelector('body');
     const selectHeader = document.querySelector('#header');
+    if (!selectHeader) return;
     if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
     window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
   }
@@ -28,33 +29,50 @@
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
   function mobileNavToogle() {
+    if (!mobileNavToggleBtn) return;
     document.querySelector('body').classList.toggle('mobile-nav-active');
     mobileNavToggleBtn.classList.toggle('bi-list');
     mobileNavToggleBtn.classList.toggle('bi-x');
   }
-  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+  if (mobileNavToggleBtn) {
+    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+  }
 
   /**
-   * Hide mobile nav on same-page/hash links
+   * Mobile: close menu when following a real link; keep it open for dropdown parents (href="#")
+   * so Useful Links / nested items can expand. Desktop: no-op here (dropdowns use hover).
    */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
+  document.querySelectorAll('#navmenu a').forEach(function (navLink) {
+    navLink.addEventListener('click', function (e) {
+      if (!document.querySelector('.mobile-nav-active')) return;
+      var parentLi = navLink.closest('li');
+      var href = navLink.getAttribute('href') || '';
+      if (parentLi && parentLi.classList.contains('dropdown') && href === '#') {
+        e.preventDefault();
+        var submenu = navLink.nextElementSibling;
+        if (submenu && submenu.tagName === 'UL') {
+          navLink.classList.toggle('active');
+          submenu.classList.toggle('dropdown-active');
+        }
+        return;
       }
+      mobileNavToogle();
     });
-
   });
 
   /**
-   * Toggle mobile nav dropdowns
+   * Chevron toggles submenu; stopPropagation so the #navmenu a handler does not close the drawer / double-toggle.
    */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function (e) {
+  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(function (toggle) {
+    toggle.addEventListener('click', function (e) {
       e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
+      e.stopPropagation();
+      var anchor = this.parentNode;
+      if (!anchor || anchor.tagName !== 'A') return;
+      var submenu = anchor.nextElementSibling;
+      if (!submenu || submenu.tagName !== 'UL') return;
+      anchor.classList.toggle('active');
+      submenu.classList.toggle('dropdown-active');
     });
   });
 
@@ -103,13 +121,15 @@
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
-  });
+  }
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
@@ -118,6 +138,7 @@
    * Animation on scroll function and init
    */
   function aosInit() {
+    if (typeof AOS === 'undefined') return;
     AOS.init({
       duration: 600,
       easing: 'ease-in-out',
@@ -130,14 +151,18 @@
   /**
    * Initiate glightbox
    */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+  if (typeof GLightbox !== 'undefined') {
+    GLightbox({
+      selector: '.glightbox'
+    });
+  }
 
   /**
    * Initiate Pure Counter
    */
-  new PureCounter();
+  if (typeof PureCounter !== 'undefined' && document.querySelector('.purecounter')) {
+    new PureCounter();
+  }
 
   /**
    * Init swiper sliders
@@ -234,31 +259,33 @@
   /**
    * Client Swiper
    */
-  var clientSwiper = new Swiper('.client-swiper', {
-    slidesPerView: 5,
-    spaceBetween: 10,
-    loop: true,
-    speed: 4000, // Smooth continuous speed
-    autoplay: {
-      delay: 1, // Very low delay for continuous movement
-      disableOnInteraction: false,
-    },
-    freeMode: true, // Enable free mode for seamless movement
-    freeModeMomentum: false, // Disable momentum for constant speed
-    breakpoints: {
-      320: { slidesPerView: 2 },
-      768: { slidesPerView: 3 },
-      1200: { slidesPerView: 4 }
-    }
-  });
+  var clientSwiperEl = document.querySelector('.client-swiper');
+  if (clientSwiperEl && typeof Swiper !== 'undefined') {
+    var clientSwiper = new Swiper('.client-swiper', {
+      slidesPerView: 5,
+      spaceBetween: 10,
+      loop: true,
+      speed: 4000, // Smooth continuous speed
+      autoplay: {
+        delay: 1, // Very low delay for continuous movement
+        disableOnInteraction: false,
+      },
+      freeMode: true, // Enable free mode for seamless movement
+      freeModeMomentum: false, // Disable momentum for constant speed
+      breakpoints: {
+        320: { slidesPerView: 2 },
+        768: { slidesPerView: 3 },
+        1200: { slidesPerView: 4 }
+      }
+    });
 
-  // Pause on hover
-  document.querySelector('.client-swiper').addEventListener('mouseenter', function () {
-    clientSwiper.autoplay.stop();
-  });
-  document.querySelector('.client-swiper').addEventListener('mouseleave', function () {
-    clientSwiper.autoplay.start();
-  });
+    clientSwiperEl.addEventListener('mouseenter', function () {
+      clientSwiper.autoplay.stop();
+    });
+    clientSwiperEl.addEventListener('mouseleave', function () {
+      clientSwiper.autoplay.start();
+    });
+  }
 
   /**
    * Citizen portal toolbar: optional font scaling, contrast toggle, persisted in localStorage
@@ -266,6 +293,54 @@
   (function portalAccessibilityPrefs() {
     const STORAGE_FONT = 'portalFontStep';
     const STORAGE_HC = 'portalHighContrast';
+    const STORAGE_LANG = 'portalUiLang';
+
+    function syncPortalFormPlaceholders(orMode) {
+      document.querySelectorAll('.portal-i18n-input').forEach(function (el) {
+        var ph = orMode ? (el.getAttribute('data-ph-or') || '') : (el.getAttribute('data-ph-en') || '');
+        el.placeholder = ph;
+      });
+      document.querySelectorAll('.portal-newsletter-submit').forEach(function (btn) {
+        var v = orMode
+          ? (btn.getAttribute('data-label-or') || 'Subscribe')
+          : (btn.getAttribute('data-label-en') || 'Subscribe');
+        btn.value = v;
+      });
+    }
+
+    function applyPortalUiLang(orMode) {
+      document.documentElement.lang = orMode ? 'or' : 'en';
+      document.documentElement.classList.toggle('portal-lang-or', orMode);
+      const elEn = document.getElementById('portalLangEn');
+      const elOr = document.getElementById('portalLangOr');
+      if (elEn) {
+        elEn.classList.toggle('gov-lang-active', !orMode);
+        elEn.setAttribute('aria-pressed', orMode ? 'false' : 'true');
+      }
+      if (elOr) {
+        elOr.classList.toggle('gov-lang-active', orMode);
+        elOr.setAttribute('aria-pressed', orMode ? 'true' : 'false');
+      }
+      try {
+        localStorage.setItem(STORAGE_LANG, orMode ? 'or' : 'en');
+      } catch (_e) { /* ignore */ }
+
+      if (document.documentElement.classList.contains('portal-index')) {
+        if (document.body.classList.contains('login-page-body')) {
+          document.title = orMode
+            ? 'ଲଗଇନ୍ · ଓଡ଼ିଶା ନାଗରିକ ପୋର୍ଟାଲ୍'
+            : 'Login · Citizen Portal | Odisha Police';
+        } else {
+          document.title = orMode
+            ? 'ନାଗରିକ ପୋର୍ଟାଲ୍ | ଓଡ଼ିଶା ପୋଲିସ୍'
+            : 'Citizen Portal || Odisha Police';
+        }
+        syncPortalFormPlaceholders(orMode);
+      }
+      try {
+        document.dispatchEvent(new CustomEvent('portalUiLangChanged', { detail: { orMode: orMode } }));
+      } catch (_e) { /* ignore */ }
+    }
 
     function applyPortalFont(step) {
       let s = parseInt(step, 10);
@@ -307,11 +382,31 @@
       resetBtn.addEventListener('click', function () {
         applyPortalFont(0);
         applyPortalContrast(false);
+        applyPortalUiLang(false);
         try {
           localStorage.removeItem(STORAGE_FONT);
           localStorage.removeItem(STORAGE_HC);
+          localStorage.removeItem(STORAGE_LANG);
         } catch (_e) { /* ignore */ }
       });
+    }
+
+    const langEn = document.getElementById('portalLangEn');
+    const langOr = document.getElementById('portalLangOr');
+    if (langEn && langOr) {
+      langEn.addEventListener('click', function (e) {
+        e.preventDefault();
+        applyPortalUiLang(false);
+      });
+      langOr.addEventListener('click', function (e) {
+        e.preventDefault();
+        applyPortalUiLang(true);
+      });
+      try {
+        applyPortalUiLang(localStorage.getItem(STORAGE_LANG) === 'or');
+      } catch (_e) {
+        applyPortalUiLang(false);
+      }
     }
 
     try {

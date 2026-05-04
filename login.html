@@ -1,44 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="portal-index">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login · Citizen Portal | ନାଗରିକ ପୋର୍ଟାଲ୍</title>
+  <title>Login · Citizen Portal | Odisha Police</title>
   <meta name="description" content="Secure login for the Odisha Citizen Portal — English or ଓଡ଼ିଆ">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
   <link href="assets/img/Odisha_Police_Logo.png" rel="icon" sizes="any">
 
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
   <link href="assets/css/login.css" rel="stylesheet">
 </head>
 
-<body class="login-page-body">
+<body class="login-page-body index-page">
   <div id="preloader" aria-busy="true" aria-live="polite"></div>
 
-  <nav class="login-lang-bar" role="toolbar" aria-label="Display language">
-    <button type="button" class="login-lang-btn login-lang-active" data-login-lang="en" id="loginLangEn" aria-pressed="true">
-      English
-    </button>
-    <button type="button" class="login-lang-btn" data-login-lang="or" id="loginLangOr" aria-pressed="false" lang="or">
-      ଓଡ଼ିଆ
-    </button>
-  </nav>
+  <header id="header" class="portal-site-header d-flex flex-column align-items-stretch fixed-top scroll-up-sticky">
+    <div class="gov-utility-bar">
+      <div
+        class="container-fluid container-xl gov-utility-inner d-flex flex-wrap align-items-center justify-content-between">
+        <div class="gov-utility-left">
+          <span class="gov-utility-title">Government of Odisha <span class="gov-header-odia" lang="or"> | ଓଡ଼ିଶା
+              ସରକାର</span></span>
+        </div>
+        <div class="gov-utility-right d-flex flex-wrap align-items-center justify-content-end gap-2">
+          <div class="gov-accessibility-group d-flex align-items-center gap-1" aria-label="Text size controls">
+            <button type="button" class="btn-font-size" data-font-step="-1" title="Smaller text">A-</button>
+            <button type="button" class="btn-font-size active" data-font-step="0" title="Default text size">A</button>
+            <button type="button" class="btn-font-size" data-font-step="1" title="Larger text">A+</button>
+          </div>
+          <button type="button" class="gov-util-icon" id="portalResetPrefs" title="Reset display settings"
+            aria-label="Reset display settings"><i class="bi bi-arrow-counterclockwise"></i></button>
+          <button type="button" class="gov-util-icon" id="portalContrastToggle" title="Toggle contrast"
+            aria-label="Toggle high contrast"><i class="bi bi-circle-half"></i></button>
+          <a href="#" class="gov-util-icon" title="Sitemap" aria-label="Sitemap"><i class="bi bi-diagram-3"></i></a>
+          <a href="login.html" class="gov-util-link-login" aria-current="page"><i class="bi bi-lock-fill me-1"></i><span><span
+                class="lang-en">Login</span><span class="lang-or" lang="or">ଲଗଇନ୍</span></span></a>
+          <div class="gov-lang-inline" role="group" aria-label="Display language">
+            <button type="button" class="gov-lang-btn gov-lang-active" id="portalLangEn" aria-pressed="true"
+              title="English">English</button>
+            <span class="gov-lang-sep" aria-hidden="true">|</span>
+            <button type="button" class="gov-lang-btn" id="portalLangOr" lang="or" aria-pressed="false"
+              title="ଓଡ଼ିଆ">ଓଡ଼ିଆ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gov-brand-strip">
+      <div
+        class="container-fluid container-xl gov-brand-inner d-flex align-items-center justify-content-between flex-wrap gap-3 py-3">
+        <a href="index.html" class="gov-brand-main d-flex align-items-center gap-3 text-decoration-none">
+          <img src="assets/img/Odisha_Police_Logo.png" alt="" class="gov-brand-logo" data-aos="fade-in">
+          <div class="gov-brand-text text-start">
+            <h1 class="gov-brand-title mb-0">Citizen Portal </h1>
+            <p class="gov-brand-sub mb-0">Government of Odisha </p>
+          </div>
+          <img src="assets/img/OdishaSasan.png" class="gov-brand-emblem img-fluid" alt="">
+        </a>
+        <div class="gov-official-slot d-none d-md-flex align-items-center gap-3">
+          <div class="gov-official-copy text-md-end">
+            <div class="gov-official-name"><span class="lang-en">Sri. Mohan Charan Majhi</span><span class="lang-or"
+                lang="or">ଶ୍ରୀ ମୋହନ ଚରଣ ମାଝି</span></div>
+            <div class="gov-official-role"><span class="lang-en">Chief Minister of Odisha</span><span class="lang-or"
+                lang="or">ମୁଖ୍ୟମନ୍ତ୍ରୀ, ଓଡ଼ିଶା</span></div>
+          </div>
+          <img src="assets/img/mohanmajhi.jpg" class="gov-official-photo rounded-circle object-fit-cover" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="gov-nav-strip">
+      <div class="container-fluid container-xl position-relative d-flex align-items-center gov-nav-inner">
+        <nav id="navmenu" class="navmenu navmenu-portal flex-grow-1">
+          <ul>
+            <li><a href="index.html#hero"><i class="bi bi-house-door-fill me-1" aria-hidden="true"></i><span
+                  class="align-middle"><span class="lang-en">Home</span><span class="lang-or" lang="or">ମୁଖ୍ୟ
+                    ପୃଷ୍ଠା</span></span></a></li>
+            <li><a href="index.html#about"><span class="lang-en">About</span><span class="lang-or" lang="or">ପରିଚୟ</span></a></li>
+            <li><a href="index.html#services"><span class="lang-en">Citizen Services</span><span class="lang-or" lang="or">ନାଗରିକ
+                  ସେବା</span></a></li>
+            <li class="dropdown"><a href="#"><span><span class="lang-en">Useful Links</span><span class="lang-or"
+                    lang="or">ଉପଯୋଗୀ ଲିଙ୍କ୍</span></span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li><a href="#"><span class="lang-en">Government of Odisha</span><span class="lang-or" lang="or">ଓଡ଼ିଶା
+                      ସରକାର</span></a></li>
+                <li class="dropdown"><a href="#"><span><span class="lang-en">National Crime Records Bureau</span><span
+                        class="lang-or" lang="or">ଜାତୀୟ ଅପରାଧ ରେକର୍ଡ ବ୍ୟୁରୋ</span></span> <i
+                      class="bi bi-chevron-down toggle-dropdown"></i></a>
+                  <ul>
+                    <li><a href="#"><span class="lang-en">State Crime Records Bureau, Odisha</span><span class="lang-or"
+                          lang="or">ରାଜ୍ୟ ଅପରାଧ ରେକର୍ଡ ବ୍ୟୁରୋ, ଓଡ଼ିଶା</span></a></li>
+                    <li><a href="#"><span class="lang-en">Others</span><span class="lang-or"
+                          lang="or">ଅନ୍ୟାନ୍ୟ</span></a>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">INTERPOL</a></li>
+                <li><a href="#"><span class="lang-en">Bureau of Police Research &amp; Development</span><span
+                      class="lang-or" lang="or">ପୋଲିସ୍ ଗବେଷଣା ଓ ଉନ୍ନୟନ ବ୍ୟୁରୋ</span></a></li>
+                <li><a href="#">CHRI</a></li>
+              </ul>
+            </li>
+            <li><a href="index.html#gallary"><span class="lang-en">Gallery</span><span class="lang-or"
+                  lang="or">ଗ୍ୟାଲେରୀ</span></a>
+            </li>
+            <li><a href="index.html#team"><span class="lang-en">FAQ's</span><span class="lang-or" lang="or">ପ୍ରଚଳିତ
+                  ପ୍ରଶ୍ନ</span></a>
+            </li>
+            <li><a href="index.html#contact"><span class="lang-en">Contact</span><span class="lang-or"
+                  lang="or">ଯୋଗାଯୋଗ</span></a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+      </div>
+    </div>
+  </header>
 
   <main class="login-main-centre">
-    <div class="login-card-shell">
+    <div class="login-card-shell" id="loginCardShell">
       <svg class="login-patta-frame" viewBox="0 0 440 620" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
           <linearGradient id="pattaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#c45a09" />
-            <stop offset="50%" stop-color="#e9830f" />
-            <stop offset="100%" stop-color="#b42318" />
+            <stop offset="0%" stop-color="#0a4f8c" />
+            <stop offset="50%" stop-color="#0760c9" />
+            <stop offset="100%" stop-color="#003566" />
           </linearGradient>
         </defs>
         <rect x="3" y="3" width="434" height="614" rx="20" fill="none" stroke="url(#pattaGrad)" stroke-width="2.2" />
@@ -51,80 +149,177 @@
       </svg>
 
       <div class="login-card-inner">
-        <div class="login-brand-row">
-          <div class="login-konark-wheel-wrap">
-            <div class="login-wheel-spin" role="img"
-              aria-label="Konark Sun Temple wheel · କୋଣାର୍କ ସୂର୍ଯ୍ୟମନ୍ଦିରର ଚକ">
-              <div class="login-wheel-rotator">
-                <img class="login-wheel-img" src="assets/img/konark.png" alt=""
-                  width="400" height="400" decoding="async" fetchpriority="high">
-              </div>
-            </div>
-          </div>
-
-          <h1 class="login-heading">
-            <span class="lang-en">Welcome</span>
-            <span class="lang-or" lang="or">ସ୍ୱାଗତ</span>
-          </h1>
-          <p class="login-sub">
-            <span class="lang-en">Odisha Citizen Portal</span>
-            <span class="lang-or" lang="or">ଓଡ଼ିଶା ନାଗରିକ ପୋର୍ଟାଲ୍</span>
-          </p>
+        <div class="login-auth-switch" role="tablist" aria-label="Sign in or register">
+          <button type="button" class="login-auth-tab login-auth-tab--active" id="loginTabSignin" role="tab"
+            aria-selected="true" aria-controls="loginPanelSignin" data-login-panel="signin">Sign in</button>
+          <button type="button" class="login-auth-tab" id="loginTabRegister" role="tab" aria-selected="false"
+            aria-controls="loginPanelRegister" data-login-panel="register">Citizen registration</button>
         </div>
 
-        <form class="login-form" action="#" method="post" autocomplete="on" novalidate>
-          <div class="login-field">
-            <label class="login-label" for="username">
-              <span class="lang-en">Username</span>
-              <span class="lang-or" lang="or">ବ୍ୟବହାରକାରୀ ନାମ</span>
-            </label>
-            <div class="login-input-wrap">
-              <i class="bi bi-person-fill" aria-hidden="true"></i>
-              <input class="login-input" type="text" id="username" name="username" required spellcheck="false"
-                autocapitalize="none" data-ph-en="Enter your username"
-                data-ph-or="ବ୍ୟବହାରକାରୀ ନାମ ଲେଖନ୍ତୁ">
-            </div>
-          </div>
-
-          <div class="login-field">
-            <label class="login-label" for="password">
-              <span class="lang-en">Password</span>
-              <span class="lang-or" lang="or">ପାସ୍ୱାର୍ଡ</span>
-            </label>
-            <div class="login-input-wrap">
-              <i class="bi bi-shield-lock-fill" aria-hidden="true"></i>
-              <input class="login-input login-input--password" type="password" id="password" name="password" required
-                autocomplete="current-password" data-ph-en="Enter your password"
-                data-ph-or="ପାସ୍ୱାର୍ଡ ଲେଖନ୍ତୁ">
-              <div class="login-password-actions">
-                <button class="btn-toggle-password" type="button" id="togglePassword"
-                  aria-pressed="false" aria-controls="password" data-show-en="Show password"
-                  data-hide-en="Hide password" data-show-or="ପାସ୍ୱାର୍ଡ ଦେଖାନ୍ତୁ" data-hide-or="ପାସ୍ୱାର୍ଡ ଲୁଚାନ୍ତୁ">
-                  <i class="bi bi-eye-fill" aria-hidden="true"></i>
-                </button>
+        <div class="login-panel" id="loginPanelSignin" role="tabpanel" aria-labelledby="loginTabSignin">
+          <div class="login-brand-row">
+            <div class="login-konark-wheel-wrap">
+              <div class="login-wheel-spin" role="img" aria-label="Konark Sun Temple wheel · କୋଣାର୍କ ସୂର୍ଯ୍ୟମନ୍ଦିରର ଚକ">
+                <div class="login-wheel-rotator">
+                  <img class="login-wheel-img" src="assets/img/konark.png" alt="" width="400" height="400"
+                    decoding="async" fetchpriority="high">
+                </div>
               </div>
             </div>
+
+            <h1 class="login-heading">
+              <span class="lang-en">Welcome</span>
+              <span class="lang-or" lang="or">ସ୍ୱାଗତ</span>
+            </h1>
+            <p class="login-sub">
+              <span class="lang-en">Odisha Citizen Portal</span>
+              <span class="lang-or" lang="or">ଓଡ଼ିଶା ନାଗରିକ ପୋର୍ଟାଲ୍</span>
+            </p>
           </div>
 
-          <div class="login-meta">
-            <label class="login-check">
-              <input type="checkbox" id="remember" name="remember" value="1">
-              <span>
-                <span class="lang-en">Remember me</span>
-                <span class="lang-or" lang="or">ମନେରଖିବେ</span>
-              </span>
-            </label>
-            <a class="login-forgot" href="#">
-              <span class="lang-en">Forgot password?</span>
-              <span class="lang-or" lang="or">ପାସ୍ୱାର୍ଡ ଭୁଲି ଗଲେ?</span>
-            </a>
-          </div>
+          <form class="login-form" id="loginFormSignin" action="#" method="post" autocomplete="on" novalidate>
+            <div class="login-field">
+              <label class="login-label" for="username">
+                <span class="lang-en">Username</span>
+                <span class="lang-or" lang="or">ବ୍ୟବହାରକାରୀ ନାମ</span>
+              </label>
+              <div class="login-input-wrap">
+                <i class="bi bi-person-fill" aria-hidden="true"></i>
+                <input class="login-input portal-i18n-input" type="text" id="username" name="username" required spellcheck="false"
+                  autocapitalize="none" data-ph-en="Enter your username" data-ph-or="ବ୍ୟବହାରକାରୀ ନାମ ଲେଖନ୍ତୁ">
+              </div>
+            </div>
 
-          <button type="submit" class="btn-login-submit">
-            <span class="lang-en">Sign in</span>
-            <span class="lang-or" lang="or">ଲଗଇନ୍ କରନ୍ତୁ</span>
-          </button>
-        </form>
+            <div class="login-field">
+              <label class="login-label" for="password">
+                <span class="lang-en">Password</span>
+                <span class="lang-or" lang="or">ପାସ୍ୱାର୍ଡ</span>
+              </label>
+              <div class="login-input-wrap">
+                <i class="bi bi-shield-lock-fill" aria-hidden="true"></i>
+                <input class="login-input login-input--password portal-i18n-input" type="password" id="password" name="password" required
+                  autocomplete="current-password" data-ph-en="Enter your password" data-ph-or="ପାସ୍ୱାର୍ଡ ଲେଖନ୍ତୁ">
+                <div class="login-password-actions">
+                  <button class="btn-toggle-password" type="button" id="togglePassword" aria-pressed="false"
+                    aria-controls="password" data-show-en="Show password" data-hide-en="Hide password"
+                    data-show-or="ପାସ୍ୱାର୍ଡ ଦେଖାନ୍ତୁ" data-hide-or="ପାସ୍ୱାର୍ଡ ଲୁଚାନ୍ତୁ">
+                    <i class="bi bi-eye-fill" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="login-meta">
+              <label class="login-check">
+                <input type="checkbox" id="remember" name="remember" value="1">
+                <span>
+                  <span class="lang-en">Remember me</span>
+                  <span class="lang-or" lang="or">ମନେରଖିବେ</span>
+                </span>
+              </label>
+              <a class="login-forgot" href="#">
+                <span class="lang-en">Forgot password?</span>
+                <span class="lang-or" lang="or">ପାସ୍ୱାର୍ଡ ଭୁଲି ଗଲେ?</span>
+              </a>
+            </div>
+
+            <button type="submit" class="btn-login-submit">
+              <span class="lang-en">Sign in</span>
+              <span class="lang-or" lang="or">ଲଗଇନ୍ କରନ୍ତୁ</span>
+            </button>
+          </form>
+        </div>
+
+        <div class="login-panel" id="loginPanelRegister" role="tabpanel" hidden aria-labelledby="loginTabRegister">
+          <h2 class="login-reg-title">Citizen registration</h2>
+          <form class="login-reg-form" id="loginFormRegister" action="#" method="post" autocomplete="on" novalidate>
+            <div class="row g-2 g-md-3">
+              <div class="col-md-4">
+                <label class="login-reg-label" for="regFirstName">First name <abbr class="text-danger"
+                    title="required">*</abbr></label>
+                <input class="form-control login-reg-control" type="text" id="regFirstName" name="firstName" required
+                  maxlength="80" autocomplete="given-name">
+              </div>
+              <div class="col-md-4">
+                <label class="login-reg-label" for="regMiddleName">Middle name</label>
+                <input class="form-control login-reg-control" type="text" id="regMiddleName" name="middleName"
+                  maxlength="80" autocomplete="additional-name">
+              </div>
+              <div class="col-md-4">
+                <label class="login-reg-label" for="regLastName">Last name</label>
+                <input class="form-control login-reg-control" type="text" id="regLastName" name="lastName"
+                  maxlength="80" autocomplete="family-name">
+              </div>
+              <div class="col-12">
+                <label class="login-reg-label" for="regMobile">Mobile number <abbr class="text-danger"
+                    title="required">*</abbr></label>
+                <div class="input-group login-reg-mobile-group">
+                  <span class="input-group-text login-reg-cc" id="regCcLabel">+91</span>
+                  <input class="form-control login-reg-control" type="tel" id="regMobile" name="mobile"
+                    inputmode="numeric" pattern="[1-9][0-9]{9}" maxlength="10" required autocomplete="tel-national"
+                    aria-describedby="regMobileHint" placeholder="10-digit mobile number">
+                </div>
+                <p class="login-reg-hint" id="regMobileHint">The mobile number must be of 10 digits and mobile no.
+                  should not start with 0.</p>
+              </div>
+              <div class="col-12">
+                <label class="login-reg-label" for="regEmail">Email ID</label>
+                <input class="form-control login-reg-control" type="email" id="regEmail" name="email"
+                  autocomplete="email" placeholder="emailid@mail.com" aria-describedby="regEmailHint">
+                <p class="login-reg-hint" id="regEmailHint">(Ex:- emailid@mail.com)</p>
+              </div>
+              <div class="col-md-6">
+                <label class="login-reg-label" for="regGender">Gender <abbr class="text-danger"
+                    title="required">*</abbr></label>
+                <select class="form-select login-reg-control" id="regGender" name="gender" required>
+                  <option value="male" selected>Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="login-reg-label" for="regDob">Date of birth <abbr class="text-danger"
+                    title="required">*</abbr></label>
+                <input class="form-control login-reg-control" type="date" id="regDob" name="dob" required
+                  max="9999-12-31" autocomplete="bday" aria-describedby="regDobHint">
+                <p class="login-reg-hint mb-0" id="regDobHint">Use calendar or enter as DD/MM/YYYY in supported
+                  browsers.</p>
+              </div>
+              <div class="col-12">
+                <label class="login-reg-label" for="regLoginId">Login ID <abbr class="text-danger"
+                    title="required">*</abbr></label>
+                <input class="form-control login-reg-control" type="text" id="regLoginId" name="loginId" required
+                  minlength="6" maxlength="30" pattern="[A-Za-z0-9]{6,30}" autocomplete="username"
+                  aria-describedby="regLoginIdHint">
+                <p class="login-reg-hint" id="regLoginIdHint">Login ID should be of 6 to 30 alphanumeric.</p>
+              </div>
+              <div class="col-12">
+                <label class="login-reg-label" for="regPassword">Password <abbr class="text-danger"
+                    title="required">*</abbr></label>
+                <div class="login-input-wrap">
+                  <i class="bi bi-shield-lock-fill" aria-hidden="true"></i>
+                  <input class="login-input login-input--password login-reg-control-padded" type="password"
+                    id="regPassword" name="regPassword" required autocomplete="new-password"
+                    aria-describedby="regPasswordHint">
+                  <div class="login-password-actions">
+                    <button class="btn-toggle-password" type="button" id="toggleRegPassword" aria-pressed="false"
+                      aria-controls="regPassword" data-show-en="Show password" data-hide-en="Hide password"
+                      data-show-or="ପାସ୍ୱାର୍ଡ ଦେଖାନ୍ତୁ" data-hide-or="ପାସ୍ୱାର୍ଡ ଲୁଚାନ୍ତୁ">
+                      <i class="bi bi-eye-fill" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+                <p class="login-reg-hint" id="regPasswordHint">Password should be combination of a-z, 0-9 &amp; special
+                  characters or more.</p>
+              </div>
+            </div>
+            <div class="login-reg-actions d-flex flex-wrap gap-2 justify-content-end mt-3">
+              <button type="submit" class="btn btn-login-submit btn-sm px-4">Submit</button>
+              <button type="reset" class="btn btn-outline-secondary btn-sm px-3">Clear</button>
+              <button type="button" class="btn btn-outline-secondary btn-sm px-3" id="loginRegClose">Close</button>
+            </div>
+          </form>
+        </div>
 
         <div class="login-footer-links">
           <a href="index.html" id="loginBackHome" data-loader-on-leave="1">
@@ -138,16 +333,21 @@
   </main>
 
   <footer class="login-saura-footer">
-    <img class="login-bottom-art" src="assets/img/bottom.png" alt="Odisha Saura folk art border" width="2400"
+    <img class="login-bottom-art" src="assets/img/bottom1.png" alt="Odisha Saura folk art border" width="2400"
       height="400" decoding="async" loading="lazy">
   </footer>
 
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
   <script>
     (function () {
-      var STORAGE = "citizenPortalLoginLang";
-      var TITLE_EN = "Login · Citizen Portal | Odisha";
-      var TITLE_OR = "ଲଗଇନ୍ · ଓଡ଼ିଶା ନାଗରିକ ପୋର୍ଟାଲ୍";
-
       function qs(id) {
         return document.getElementById(id);
       }
@@ -158,12 +358,16 @@
       }
       window.addEventListener("load", removePreloader);
 
+      function orUiMode() {
+        return document.documentElement.classList.contains("portal-lang-or");
+      }
+
       function syncPwdToggleUi() {
         var inputPw = qs("password");
         var toggleBtn = qs("togglePassword");
         var icon = toggleBtn && toggleBtn.querySelector("i");
         if (!inputPw || !toggleBtn) return;
-        var orMode = document.body.classList.contains("login-lang-or");
+        var orMode = orUiMode();
         var reveal = inputPw.type === "text";
         toggleBtn.setAttribute("aria-pressed", reveal ? "true" : "false");
         var show = orMode ? toggleBtn.dataset.showOr : toggleBtn.dataset.showEn;
@@ -175,43 +379,10 @@
         }
       }
 
-      function setLang(orMode) {
-        document.documentElement.lang = orMode ? "or" : "en";
-        document.body.classList.toggle("login-lang-or", orMode);
-        var ben = qs("loginLangEn");
-        var bor = qs("loginLangOr");
-        if (ben) {
-          ben.classList.toggle("login-lang-active", !orMode);
-          ben.setAttribute("aria-pressed", orMode ? "false" : "true");
-        }
-        if (bor) {
-          bor.classList.toggle("login-lang-active", orMode);
-          bor.setAttribute("aria-pressed", orMode ? "true" : "false");
-        }
-        document.title = orMode ? TITLE_OR : TITLE_EN;
-
-        var user = qs("username");
-        var pass = qs("password");
-        if (user) user.placeholder = orMode ? (user.dataset.phOr || "") : (user.dataset.phEn || "");
-        if (pass) pass.placeholder = orMode ? (pass.dataset.phOr || "") : (pass.dataset.phEn || "");
-
-        try {
-          sessionStorage.setItem(STORAGE, orMode ? "or" : "en");
-        } catch (_e) { }
-
+      document.addEventListener("portalUiLangChanged", function () {
         syncPwdToggleUi();
-      }
-
-      var btnEn = qs("loginLangEn");
-      var btnOr = qs("loginLangOr");
-      var initialOr = false;
-      try {
-        initialOr = sessionStorage.getItem(STORAGE) === "or";
-      } catch (_e) { }
-
-      if (btnEn) btnEn.addEventListener("click", function () { setLang(false); });
-      if (btnOr) btnOr.addEventListener("click", function () { setLang(true); });
-      setLang(initialOr);
+        syncRegPwdToggleUi();
+      });
 
       function showLeaveLoader() {
         if (qs("preloader")) return;
@@ -240,7 +411,67 @@
         });
       }
 
+      var inputRegPw = qs("regPassword");
+      var toggleRegBtn = qs("toggleRegPassword");
+
+      function syncRegPwdToggleUi() {
+        if (!inputRegPw || !toggleRegBtn) return;
+        var icon = toggleRegBtn.querySelector("i");
+        var orMode = orUiMode();
+        var reveal = inputRegPw.type === "text";
+        toggleRegBtn.setAttribute("aria-pressed", reveal ? "true" : "false");
+        var show = orMode ? toggleRegBtn.dataset.showOr : toggleRegBtn.dataset.showEn;
+        var hide = orMode ? toggleRegBtn.dataset.hideOr : toggleRegBtn.dataset.hideEn;
+        toggleRegBtn.setAttribute("aria-label", reveal ? hide : show);
+        if (icon) {
+          icon.classList.toggle("bi-eye-fill", !reveal);
+          icon.classList.toggle("bi-eye-slash-fill", reveal);
+        }
+      }
+
+      if (toggleRegBtn && inputRegPw) {
+        toggleRegBtn.addEventListener("click", function () {
+          inputRegPw.type = inputRegPw.type === "password" ? "text" : "password";
+          syncRegPwdToggleUi();
+        });
+        toggleRegBtn.addEventListener("keydown", function (e) {
+          if (e.key === " " || e.key === "Enter") {
+            e.preventDefault();
+            toggleRegBtn.click();
+          }
+        });
+      }
+
+      var shell = qs("loginCardShell");
+      var tabSignin = qs("loginTabSignin");
+      var tabReg = qs("loginTabRegister");
+      var panelSignin = qs("loginPanelSignin");
+      var panelReg = qs("loginPanelRegister");
+      var btnRegClose = qs("loginRegClose");
+
+      function setAuthPanel(mode) {
+        var isReg = mode === "register";
+        if (shell) shell.classList.toggle("login-card-shell--register", isReg);
+        if (panelSignin) panelSignin.hidden = isReg;
+        if (panelReg) panelReg.hidden = !isReg;
+        if (tabSignin) {
+          tabSignin.classList.toggle("login-auth-tab--active", !isReg);
+          tabSignin.setAttribute("aria-selected", isReg ? "false" : "true");
+        }
+        if (tabReg) {
+          tabReg.classList.toggle("login-auth-tab--active", isReg);
+          tabReg.setAttribute("aria-selected", isReg ? "true" : "false");
+        }
+        if (isReg) syncRegPwdToggleUi();
+        else syncPwdToggleUi();
+      }
+
+      if (tabSignin) tabSignin.addEventListener("click", function () { setAuthPanel("signin"); });
+      if (tabReg) tabReg.addEventListener("click", function () { setAuthPanel("register"); });
+      if (btnRegClose) btnRegClose.addEventListener("click", function () { setAuthPanel("signin"); });
+
       syncPwdToggleUi();
+      syncRegPwdToggleUi();
     })();
   </script>
 </body>

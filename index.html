@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -39,7 +39,8 @@
       <div
         class="container-fluid container-xl gov-utility-inner d-flex flex-wrap align-items-center justify-content-between">
         <div class="gov-utility-left">
-          <span class="gov-utility-title">Government of Odisha | ଓଡ଼ିଶା ସରକାର</span>
+          <span class="gov-utility-title">Government of Odisha <span class="gov-header-odia" lang="or"> | ଓଡ଼ିଶା
+              ସରକାର</span></span>
         </div>
         <div class="gov-utility-right d-flex flex-wrap align-items-center justify-content-end gap-2">
           <div class="gov-accessibility-group d-flex align-items-center gap-1" aria-label="Text size controls">
@@ -52,9 +53,14 @@
           <button type="button" class="gov-util-icon" id="portalContrastToggle" title="Toggle contrast"
             aria-label="Toggle high contrast"><i class="bi bi-circle-half"></i></button>
           <a href="#" class="gov-util-icon" title="Sitemap" aria-label="Sitemap"><i class="bi bi-diagram-3"></i></a>
-          <a href="login.html" class="gov-util-link-login"><i class="bi bi-lock-fill me-1"></i><span>Login</span></a>
-          <div class="gov-lang-inline">
-            <a href="#">English</a><span class="gov-lang-sep">|</span><a href="#">Odia</a>
+          <a href="login.html" class="gov-util-link-login"><i class="bi bi-lock-fill me-1"></i><span><span
+                class="lang-en">Login</span><span class="lang-or" lang="or">ଲଗଇନ୍</span></span></a>
+          <div class="gov-lang-inline" role="group" aria-label="Display language">
+            <button type="button" class="gov-lang-btn gov-lang-active" id="portalLangEn" aria-pressed="true"
+              title="English">English</button>
+            <span class="gov-lang-sep" aria-hidden="true">|</span>
+            <button type="button" class="gov-lang-btn" id="portalLangOr" lang="or" aria-pressed="false"
+              title="ଓଡ଼ିଆ">ଓଡ଼ିଆ</button>
           </div>
         </div>
       </div>
@@ -67,15 +73,17 @@
         <a href="index.html" class="gov-brand-main d-flex align-items-center gap-3 text-decoration-none">
           <img src="assets/img/Odisha_Police_Logo.png" alt="" class="gov-brand-logo" data-aos="fade-in">
           <div class="gov-brand-text text-start">
-            <h1 class="gov-brand-title mb-0">Citizen Portal</h1>
-            <p class="gov-brand-sub mb-0">Government of Odisha</p>
+            <h1 class="gov-brand-title mb-0">Citizen Portal </h1>
+            <p class="gov-brand-sub mb-0">Government of Odisha </p>
           </div>
           <img src="assets/img/OdishaSasan.png" class="gov-brand-emblem img-fluid" alt="">
         </a>
         <div class="gov-official-slot d-none d-md-flex align-items-center gap-3">
           <div class="gov-official-copy text-md-end">
-            <div class="gov-official-name">Sri. Mohan Charan Majhi</div>
-            <div class="gov-official-role">Chief Minister of Odisha</div>
+            <div class="gov-official-name"><span class="lang-en">Sri. Mohan Charan Majhi</span><span class="lang-or"
+                lang="or">ଶ୍ରୀ ମୋହନ ଚରଣ ମାଝି</span></div>
+            <div class="gov-official-role"><span class="lang-en">Chief Minister of Odisha</span><span class="lang-or"
+                lang="or">ମୁଖ୍ୟମନ୍ତ୍ରୀ, ଓଡ଼ିଶା</span></div>
           </div>
           <img src="assets/img/mohanmajhi.jpg" class="gov-official-photo rounded-circle object-fit-cover" alt="">
         </div>
@@ -88,28 +96,41 @@
         <nav id="navmenu" class="navmenu navmenu-portal flex-grow-1">
           <ul>
             <li><a href="#hero" class="active"><i class="bi bi-house-door-fill me-1" aria-hidden="true"></i><span
-                  class="align-middle">Home</span></a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Citizen Services</a></li>
-            <li class="dropdown"><a href="#"><span>Useful Links</span> <i
-                  class="bi bi-chevron-down toggle-dropdown"></i></a>
+                  class="align-middle"><span class="lang-en">Home</span><span class="lang-or" lang="or">ମୁଖ୍ୟ
+                    ପୃଷ୍ଠା</span></span></a></li>
+            <li><a href="#about"><span class="lang-en">About</span><span class="lang-or" lang="or">ପରିଚୟ</span></a></li>
+            <li><a href="#services"><span class="lang-en">Citizen Services</span><span class="lang-or" lang="or">ନାଗରିକ
+                  ସେବା</span></a></li>
+            <li class="dropdown"><a href="#"><span><span class="lang-en">Useful Links</span><span class="lang-or"
+                    lang="or">ଉପଯୋଗୀ ଲିଙ୍କ୍</span></span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
-                <li><a href="#">Government of Odisha</a></li>
-                <li class="dropdown"><a href="#"><span>Natinal Crime Records Bureau</span> <i
+                <li><a href="#"><span class="lang-en">Government of Odisha</span><span class="lang-or" lang="or">ଓଡ଼ିଶା
+                      ସରକାର</span></a></li>
+                <li class="dropdown"><a href="#"><span><span class="lang-en">National Crime Records Bureau</span><span
+                        class="lang-or" lang="or">ଜାତୀୟ ଅପରାଧ ରେକର୍ଡ ବ୍ୟୁରୋ</span></span> <i
                       class="bi bi-chevron-down toggle-dropdown"></i></a>
                   <ul>
-                    <li><a href="#">State crime Record Bureau, Odisha</a></li>
-                    <li><a href="#">Others</a></li>
+                    <li><a href="#"><span class="lang-en">State Crime Records Bureau, Odisha</span><span class="lang-or"
+                          lang="or">ରାଜ୍ୟ ଅପରାଧ ରେକର୍ଡ ବ୍ୟୁରୋ, ଓଡ଼ିଶା</span></a></li>
+                    <li><a href="#"><span class="lang-en">Others</span><span class="lang-or"
+                          lang="or">ଅନ୍ୟାନ୍ୟ</span></a>
+                    </li>
                   </ul>
                 </li>
                 <li><a href="#">INTERPOL</a></li>
-                <li><a href="#">Bureau of Police Reserach & Development</a></li>
+                <li><a href="#"><span class="lang-en">Bureau of Police Research &amp; Development</span><span
+                      class="lang-or" lang="or">ପୋଲିସ୍ ଗବେଷଣା ଓ ଉନ୍ନୟନ ବ୍ୟୁରୋ</span></a></li>
                 <li><a href="#">CHRI</a></li>
               </ul>
             </li>
-            <li><a href="#gallary">Gallary</a></li>
-            <li><a href="#team">FAQ's</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#gallary"><span class="lang-en">Gallery</span><span class="lang-or"
+                  lang="or">ଗ୍ୟାଲେରୀ</span></a>
+            </li>
+            <li><a href="#team"><span class="lang-en">FAQ's</span><span class="lang-or" lang="or">ପ୍ରଚଳିତ
+                  ପ୍ରଶ୍ନ</span></a>
+            </li>
+            <li><a href="#contact"><span class="lang-en">Contact</span><span class="lang-or"
+                  lang="or">ଯୋଗାଯୋଗ</span></a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -127,11 +148,10 @@
           <!-- Left: animated service journey (Citizen ⇄ Virtual Police Station) -->
           <div class="col-lg-7 portal-hero-left">
             <div class="portal-hero-svg-card">
-              <p class="portal-hero-intro mb-2">
-                <strong>Availing CCTNS services from home:</strong> apply online · police station alerted · approve ·
-                get SMS /
-                certificate on your device.
-              </p>
+              <p class="portal-hero-intro mb-2"><span class="lang-en"><strong>Availing CCTNS services from
+                    home:</strong> apply online · police station alerted · approve · get SMS / certificate on your
+                  device.</span><span class="lang-or" lang="or"><strong>ଘରୁ CCTNS ସେବା:</strong> ଅନଲାଇନ୍ ଆବେଦନ · ଥାନାକୁ
+                  ସୂଚନା · ଅନୁମୋଦନ · SMS / ପ୍ରମାଣପତ୍ର ଡିଭାଇସ୍‌ରେ ।</span></p>
               <div class="portal-hero-svg-wrap">
                 <object id="mainSvg" class="portal-hero-svg-main"
                   title="Citizen submits from home · data to police station · digitally approved back"
@@ -142,147 +162,171 @@
             </div>
           </div>
 
-          <!-- Right: tabbed updates + shortcuts + quote (DES-style hero panel, adapted for Citizen Portal) -->
+          <!-- Right: service spotlight + tabbed updates + quick links + quote -->
           <div class="col-lg-5 portal-hero-right">
             <div class="portal-events-card portal-hero-aside-card h-100 d-flex flex-column gap-3">
 
-              <div class="portal-tab-shell border rounded-3 overflow-hidden bg-white">
-                <ul class="nav portal-hero-tabs mb-0" id="portalHeroTabs" role="tablist">
-                  <li class="flex-fill portal-hero-tab-item" role="presentation">
-                    <button class="portal-hero-tab active w-100" id="pht-tab1" data-bs-toggle="tab"
-                      data-bs-target="#pht-pane1" type="button" role="tab" aria-controls="pht-pane1"
-                      aria-selected="true">Circulars &amp; notices</button>
-                  </li>
-                  <li class="flex-fill portal-hero-tab-item" role="presentation">
-                    <button class="portal-hero-tab w-100" id="pht-tab2" data-bs-toggle="tab" data-bs-target="#pht-pane2"
-                      type="button" role="tab" aria-controls="pht-pane2" aria-selected="false">Announcements</button>
-                  </li>
-                  <li class="flex-fill portal-hero-tab-item" role="presentation">
-                    <button class="portal-hero-tab w-100" id="pht-tab3" data-bs-toggle="tab" data-bs-target="#pht-pane3"
-                      type="button" role="tab" aria-controls="pht-pane3" aria-selected="false">Latest releases</button>
-                  </li>
-                </ul>
-
-                <div class="tab-content portal-hero-tab-panels">
-                  <div class="tab-pane fade show active portal-hero-tab-panel" id="pht-pane1" role="tabpanel"
-                    aria-labelledby="pht-tab1">
-                    <ul class="portal-hero-linklist list-unstyled mb-0">
-                      <li>
-                        <a href="#services">
-                          <span class="portal-hero-chevron" aria-hidden="true">&gt;</span>
-                          <span class="portal-hero-linktext"><span class="portal-hero-new">NEW</span> e‑FIR (MV theft) —
-                            guidelines, self‑declarations, and Virtual PS workflow.</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#services">
-                          <span class="portal-hero-chevron" aria-hidden="true">&gt;</span>
-                          <span class="portal-hero-linktext">Character certificate &amp; tenant / PG verification —
-                            documents list and photo upload tips.</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#services">
-                          <span class="portal-hero-chevron" aria-hidden="true">&gt;</span>
-                          <span class="portal-hero-linktext">Sahayata app (Android / iOS) • SR number by SMS • O‑in‑C
-                            alerted on submission.</span>
-                        </a>
-                      </li>
-                    </ul>
-                    <a class="portal-hero-viewall" href="#services">View All</a>
+              <div class="portal-hero-spotlight border rounded-3 overflow-hidden bg-white">
+                <div class="portal-hero-spotlight-head px-3 py-2">
+                  <div class="d-flex flex-wrap align-items-baseline justify-content-between gap-2">
+                    <h2 class="portal-hero-spotlight-title mb-0"><span class="lang-en">Online services</span><span
+                        class="lang-or" lang="or">ଅନଲାଇନ୍ ସେବା</span></h2>
+                    <a class="portal-hero-spotlight-all small fw-bold text-decoration-none" href="#services"><span
+                        class="lang-en">Browse all <span aria-hidden="true">→</span></span><span class="lang-or"
+                        lang="or">ସମସ୍ତ ଦେଖନ୍ତୁ <span aria-hidden="true">→</span></span></a>
                   </div>
-                  <div class="tab-pane fade portal-hero-tab-panel" id="pht-pane2" role="tabpanel"
-                    aria-labelledby="pht-tab2">
-                    <ul class="portal-hero-linklist list-unstyled mb-0">
-                      <li>
-                        <a href="#">
-                          <span class="portal-hero-chevron" aria-hidden="true">&gt;</span>
-                          <span class="portal-hero-linktext">Mandatory (*) fields • verified mobile / email —
-                            corrections are limited after filing.</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span class="portal-hero-chevron" aria-hidden="true">&gt;</span>
-                          <span class="portal-hero-linktext">Cyber safety week — phishing, OTP fraud, helpline &
-                            reporting channels.</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span class="portal-hero-chevron" aria-hidden="true">&gt;</span>
-                          <span class="portal-hero-linktext">Holiday bandobast &amp; public assistance booth locations
-                            (district pages).</span>
-                        </a>
-                      </li>
-                    </ul>
-                    <a class="portal-hero-viewall" href="#">View All</a>
-                  </div>
-                  <div class="tab-pane fade portal-hero-tab-panel" id="pht-pane3" role="tabpanel"
-                    aria-labelledby="pht-tab3">
-                    <ul class="portal-hero-linklist list-unstyled mb-0">
-                      <li>
-                        <a href="#">
-                          <span class="portal-hero-chevron" aria-hidden="true">&gt;</span>
-                          <span class="portal-hero-linktext">Service catalogue refresh — bilingual forms &
-                            acknowledgement PDF.</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span class="portal-hero-chevron" aria-hidden="true">&gt;</span>
-                          <span class="portal-hero-linktext">CCTNS integration updates • Virtual PS onboarding for
-                            station staff.</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span class="portal-hero-chevron" aria-hidden="true">&gt;</span>
-                          <span class="portal-hero-linktext">Open data dashboards (district-wise) • scheduled
-                            publications.</span>
-                        </a>
-                      </li>
-                    </ul>
-                    <a class="portal-hero-viewall" href="#">View All</a>
-                  </div>
+                  <p class="portal-hero-spotlight-lead small text-muted mb-0 mt-1"><span class="lang-en">Jump to a
+                      service — same catalogue as Citizen Services below.</span><span class="lang-or" lang="or">ସେବା
+                      ବାଛନ୍ତୁ — ତଳେ ଥିବା ନାଗରିକ ସେବା ସହ ସମାନ ତାଲିକା ।</span></p>
+                </div>
+                <div class="portal-hero-icon-wave" role="list" aria-label="Popular citizen services">
+                  <a href="#services" class="portal-hero-icon-tile" role="listitem">
+                    <span class="portal-hero-icon-img-wrap">
+                      <img src="assets/img/dashboard/New/VirtualPoliceStation.png" width="52" height="52"
+                        decoding="async" alt="Virtual Police Station">
+                    </span>
+                    <span class="portal-hero-icon-tile-label"><span class="lang-en">Virtual PS</span><span
+                        class="lang-or" lang="or">ଭର୍ଚୁଆଲ୍ ଥାନା</span></span>
+                  </a>
+                  <a href="#services" class="portal-hero-icon-tile" role="listitem">
+                    <span class="portal-hero-icon-img-wrap">
+                      <img src="assets/img/dashboard/New/e-FIR.png" width="52" height="52" decoding="async" alt="e-FIR">
+                    </span>
+                    <span class="portal-hero-icon-tile-label"><span class="lang-en">e‑FIR</span><span class="lang-or"
+                        lang="or">ଇ-ଏଫ୍‌ଆଇଆର୍</span></span>
+                  </a>
+                  <a href="#services" class="portal-hero-icon-tile" role="listitem">
+                    <span class="portal-hero-icon-img-wrap">
+                      <img src="assets/img/dashboard/New/LostProperty.png" width="52" height="52" decoding="async"
+                        alt="Lost property">
+                    </span>
+                    <span class="portal-hero-icon-tile-label"><span class="lang-en">Lost property</span><span
+                        class="lang-or" lang="or">ହଜିଲା ସମ୍ପତ୍ତି</span></span>
+                  </a>
+                  <a href="#services" class="portal-hero-icon-tile" role="listitem">
+                    <span class="portal-hero-icon-img-wrap">
+                      <img src="assets/img/dashboard/New/CharacterCertificate.png" width="52" height="52"
+                        decoding="async" alt="Character certificate">
+                    </span>
+                    <span class="portal-hero-icon-tile-label"><span class="lang-en">Character</span><span
+                        class="lang-or" lang="or">ଚରିତ୍ର</span></span>
+                  </a>
+                  <a href="#services" class="portal-hero-icon-tile" role="listitem">
+                    <span class="portal-hero-icon-img-wrap">
+                      <img src="assets/img/dashboard/New/PG_Tenant.png" width="52" height="52" decoding="async"
+                        alt="PG and tenant verification">
+                    </span>
+                    <span class="portal-hero-icon-tile-label"><span class="lang-en">PG / Tenant</span><span
+                        class="lang-or" lang="or">ପିଜି / ଭଡ଼ାଟିଆ</span></span>
+                  </a>
+                  <a href="#services" class="portal-hero-icon-tile" role="listitem">
+                    <span class="portal-hero-icon-img-wrap">
+                      <img src="assets/img/dashboard/New/EmployeeVerification.png" width="52" height="52"
+                        decoding="async" alt="Employee verification">
+                    </span>
+                    <span class="portal-hero-icon-tile-label"><span class="lang-en">Employee verify</span><span
+                        class="lang-or" lang="or">କର୍ମଚାରୀ ଯାଞ୍ଚ</span></span>
+                  </a>
+                  <a href="#services" class="portal-hero-icon-tile" role="listitem">
+                    <span class="portal-hero-icon-img-wrap">
+                      <img src="assets/img/dashboard/New/MissingPerson.png" width="52" height="52" decoding="async"
+                        alt="Missing person">
+                    </span>
+                    <span class="portal-hero-icon-tile-label"><span class="lang-en">Missing person</span><span
+                        class="lang-or" lang="or">ନିଖୋଜ ବ୍ୟକ୍ତି</span></span>
+                  </a>
+                  <a href="#services" class="portal-hero-icon-tile" role="listitem">
+                    <span class="portal-hero-icon-img-wrap">
+                      <img src="assets/img/dashboard/New/EventPerformance.png" width="52" height="52" decoding="async"
+                        alt="Event and performance permission">
+                    </span>
+                    <span class="portal-hero-icon-tile-label"><span class="lang-en">Events</span><span class="lang-or"
+                        lang="or">କାର୍ଯ୍ୟକ୍ରମ</span></span>
+                  </a>
+                  <a href="#services" class="portal-hero-icon-tile" role="listitem">
+                    <span class="portal-hero-icon-img-wrap">
+                      <img src="assets/img/dashboard/New/ProtestStrike.png" width="52" height="52" decoding="async"
+                        alt="Protest and strike intimation">
+                    </span>
+                    <span class="portal-hero-icon-tile-label"><span class="lang-en">Protest / strike</span><span
+                        class="lang-or" lang="or">ବିକ୍ଷୋଭ / ଧର୍ମଘଟ</span></span>
+                  </a>
+                  <a href="#services" class="portal-hero-icon-tile" role="listitem">
+                    <span class="portal-hero-icon-img-wrap">
+                      <img src="assets/img/dashboard/New/FinalForm.png" width="52" height="52" decoding="async"
+                        alt="Forms and final submissions">
+                    </span>
+                    <span class="portal-hero-icon-tile-label"><span class="lang-en">Forms</span><span class="lang-or"
+                        lang="or">ଫର୍ମ</span></span>
+                  </a>
                 </div>
               </div>
 
+
               <div class="row g-3 flex-grow-1 align-items-stretch portal-hero-bottom">
                 <div class="col-12 col-xl-5">
-                  <div class="d-flex flex-column gap-2 portal-hero-navy-stack h-100">
-                    <a href="login.html" class="portal-hero-navy-btn"><i class="bi bi-graph-up-arrow"
-                        aria-hidden="true"></i><span>View dashboard · Login</span></a>
-                    <a href="#services" class="portal-hero-navy-btn"><i class="bi bi-table"
-                        aria-hidden="true"></i><span>Browse citizen services</span></a>
-                    <a href="#" class="portal-hero-navy-btn"><i class="bi bi-person-badge"
-                        aria-hidden="true"></i><span>Register / profile setup</span></a>
-                    <a href="#" class="portal-hero-navy-btn"><i class="bi bi-mortarboard"
-                        aria-hidden="true"></i><span>Safety &amp; awareness</span></a>
-                    <a href="#" class="portal-hero-navy-btn"><i class="bi bi-share"
-                        aria-hidden="true"></i><span>Official social updates</span></a>
+                  <div class="d-flex flex-column gap-2 portal-hero-navy-stack h-100" role="navigation"
+                    aria-label="Quick citizen links">
+                    <!-- <a href="#" class="portal-hero-navy-btn"><i class="bi bi-telephone-fill"
+                        aria-hidden="true"></i><span>Emergency numbers</span></a> -->
+                    <!-- <a href="#" class="portal-hero-navy-btn"><i class="bi bi-pc-display-horizontal"
+                        aria-hidden="true"></i><span>Digital police</span></a> -->
+                    <a href="#" class="portal-hero-navy-btn"><i class="bi bi-lightbulb-fill"
+                        aria-hidden="true"></i><span><span class="lang-en">Citizen tips</span><span class="lang-or"
+                          lang="or">ନାଗରିକ ଟିପ୍ସ</span></span></a>
+                    <a href="#" class="portal-hero-navy-btn"><i class="bi bi-patch-check-fill"
+                        aria-hidden="true"></i><span><span class="lang-en">Verify</span><span class="lang-or"
+                          lang="or">ଯାଞ୍ଚ କରନ୍ତୁ</span></span></a>
+                    <a href="#" class="portal-hero-navy-btn"><i class="bi bi-journal-bookmark-fill"
+                        aria-hidden="true"></i><span><span class="lang-en">Odisha Right to Public Services
+                          Act</span><span class="lang-or" lang="or">ଓଡ଼ିଶା ଲୋକସେବା ଅଧିକାର ଆଇନ୍</span></span></a>
                   </div>
                 </div>
                 <div class="col-12 col-xl-7">
                   <blockquote class="portal-hero-quote mb-0 h-100 d-flex flex-column justify-content-center">
                     <div class="portal-hero-quote-panel position-relative">
                       <span class="portal-hero-quote-peg" aria-hidden="true"></span>
-                      <p class="portal-hero-quote-text mb-0">“We look forward to your feedback to improving experience
-                        of citizens in getting quality service from the police promptly.”</p>
-                      <footer class="portal-hero-quote-by">IPS. Y. B Khurania</footer>
+                      <p class="portal-hero-quote-text mb-0"><span class="lang-en">“We look forward to your feedback
+                          to improving experience of citizens in getting quality service from the police
+                          promptly.”</span><span class="lang-or" lang="or">“ନାଗରିକଙ୍କ ଅଭିଜ୍ଞତା ଉନ୍ନତ କରିବା ପାଇଁ ଆପଣଙ୍କ
+                          ମତାମତ ଆମେ ଆଶା କରୁ — ପୋଲିସ୍ ଠାରୁ ସମୟାନୁବର୍ତ୍ତୀ ଗୁଣାତ୍ମକ ସେବା ।”</span></p>
+                      <footer class="portal-hero-quote-by"><span class="lang-en">IPS. Y. B Khurania</span><span
+                          class="lang-or" lang="or">ଆଇପିଏସ୍ ଓାଇ. ବି. ଖୁରାନିଆ</span></footer>
                     </div>
                   </blockquote>
                 </div>
               </div>
 
-              <p class="portal-hero-mini-line mb-0 text-center text-muted"><strong>Help desk:</strong> 0674‑2973888
+              <!-- <p class="portal-hero-mini-line mb-0 text-center text-muted"><strong>Help desk:</strong> 0674‑2973888
                 &nbsp;·&nbsp; <strong>Email:</strong> dirscrb.odpol@nic.in &nbsp;·&nbsp; Government of Odisha · Citizen
-                Portal</p>
+                Portal</p> -->
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Scrolling notices: edge-to-edge above About (#002750 / white text) -->
+    <div class="portal-ticker-bar portal-ticker-bar--above-about" role="region" aria-label="Portal announcements">
+      <div class="portal-ticker-mask">
+        <div class="portal-ticker-track">
+          <div class="portal-ticker-group">
+            <span class="lang-en">Citizen Portal, Odisha Police welcomes you — access online police services (CCTNS),
+              e-FIR, certificates, and help desk 0674-2973888.</span>
+            <span class="lang-or" lang="or">ନାଗରିକ ପୋର୍ଟାଲ୍, ଓଡ଼ିଶା ପୋଲିସ୍ ଆପଣଙ୍କୁ ସ୍ୱାଗତ କରୁଛି — ଅନଲାଇନ୍ ପୋଲିସ୍ ସେବା
+              (CCTNS), ଇ-ଏଫ୍‌ଆଇଆର୍, ପ୍ରମାଣପତ୍ର ଓ ସହାୟତା ୦୬୭୪-୨୯୭୩୮୮୮ ।</span>
+            <span class="portal-ticker-dot" aria-hidden="true">&nbsp;·&nbsp;</span>
+          </div>
+          <div class="portal-ticker-group" aria-hidden="true">
+            <span class="lang-en">Citizen Portal, Odisha Police welcomes you — access online police services (CCTNS),
+              e-FIR, certificates, and help desk 0674-2973888.</span>
+            <span class="lang-or" lang="or">ନାଗରିକ ପୋର୍ଟାଲ୍, ଓଡ଼ିଶା ପୋଲିସ୍ ଆପଣଙ୍କୁ ସ୍ୱାଗତ କରୁଛି — ଅନଲାଇନ୍ ପୋଲିସ୍ ସେବା
+              (CCTNS), ଇ-ଏଫ୍‌ଆଇଆର୍, ପ୍ରମାଣପତ୍ର ଓ ସହାୟତା ୦୬୭୪-୨୯୭୩୮୮୮ ।</span>
+            <span class="portal-ticker-dot" aria-hidden="true">&nbsp;·&nbsp;</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- About Section -->
     <section id="about" class="about section">
@@ -293,53 +337,69 @@
 
             <img src="assets/img/Services.png" class="img-fluid rounded-4 mb-4" alt="">
             <p class="fst-italic">
-            <h3>DGP's Message</h3>
+            <h3><span class="lang-en">DGP's Message</span><span class="lang-or" lang="or">ଡିଜିପିଙ୍କ ବାର୍ତ୍ତା</span></h3>
             </p>
             <ul>
-              <li><i style="color: var(--accent-color);" class="bi bi-check-circle-fill"></i> <span>Odisha Police is
-                  committed to deliver good governance
-                  in the state through use of innovations in the field of communication and information technology and
-                  in this process it has taken a major step by introducing an ambitious as well as mission mode
-                  project namely “Crime & Criminal Tracking Network and System (CCTNS)”.</span></li>
-              <li><i style="color: var(--accent-color);" class="bi bi-check-circle-fill"></i> <span>Odisha Police is
-                  committed to delivering time-bound
-                  services to citizens by the use of the new-age technology. The purpose of the Citizen Portal is to
-                  provide a number of services to citizens on the internet. Currently we are providing 18 services
-                  through this portal. We will be adding more services to this bouquet in the future. We are
-                  constantly looking for ways through which extra services can be availed by residents without
-                  physically visiting a Police Station or other offices.</span></li>
-              <li><i style="color: var(--accent-color);" class="bi bi-check-circle-fill"></i> <span> People may download
-                  our Mobile App “Sahayata”,
-                  available on Android and iOS platforms, for availing these services using mobile phone
-                  devices.</span></li>
+              <li><i style="color: var(--accent-color);" class="bi bi-check-circle-fill"></i> <span><span
+                    class="lang-en">Odisha Police is committed to deliver good governance in the state through use of
+                    innovations in the field of communication and information technology and in this process it has
+                    taken a major step by introducing an ambitious as well as mission mode project namely “Crime &amp;
+                    Criminal Tracking Network and System (CCTNS)”.</span><span class="lang-or" lang="or">ଓଡ଼ିଶା ପୋଲିସ୍
+                    ସୂଚନା ଓ ପ୍ରଯୁକ୍ତି କ୍ଷେତ୍ରରେ ନୂତନତା ମାଧ୍ୟମରେ ଶୁଶାସନ ପ୍ରଦାନ ପାଇଁ ପ୍ରତିବଦ୍ଧ; ଏହା ଅନ୍ତର୍ଗତ “CCTNS” ପରି
+                    ଏକ
+                    ମିଶନ ମୋଡ୍ ପ୍ରକଳ୍ପ ଗ୍ରହଣ କରାଯାଇଛି ।</span></span></li>
+              <li><i style="color: var(--accent-color);" class="bi bi-check-circle-fill"></i> <span><span
+                    class="lang-en">Odisha Police is committed to delivering time-bound services to citizens by the use
+                    of the new-age technology. The purpose of the Citizen Portal is to provide a number of services to
+                    citizens on the internet. Currently we are providing 18 services through this portal. We will be
+                    adding more services to this bouquet in the future. We are constantly looking for ways through
+                    which extra services can be availed by residents without physically visiting a Police Station or
+                    other offices.</span><span class="lang-or" lang="or">ନାଗରିକଙ୍କୁ ସମୟାନୁବର୍ତ୍ତୀ ସେବା ଦେବା ପାଇଁ ଆଧୁନିକ
+                    ପ୍ରଯୁକ୍ତି ବ୍ୟବହାର କରାଯାଉଛି । ନାଗରିକ ପୋର୍ଟାଲ୍ ମାଧ୍ୟମରେ ଇଣ୍ଟରନେଟ୍‌ରେ ବିଭିନ୍ନ ସେବା ଉପଲବ୍ଧ; ଏହି ସମୟରେ
+                    ୧୮ଟି
+                    ସେବା ଦିଆଯାଉଛି । ଭବିଷ୍ୟତରେ ଅଧିକ ସେବା ଯୋଡ଼ା ହେବ । ଥାନାକୁ ନ ଯାଇ ସେବା ପାଇବା ପାଇଁ ଚେଷ୍ଟା ଜାରି ରହିଛି
+                    ।</span></span>
+              </li>
+              <li><i style="color: var(--accent-color);" class="bi bi-check-circle-fill"></i> <span><span
+                    class="lang-en">People may download our Mobile App “Sahayata”, available on Android and iOS
+                    platforms, for availing these services using mobile phone devices.</span><span class="lang-or"
+                    lang="or">ଏହି ସେବା ପାଇଁ “ସହାୟତା” ମୋବାଇଲ୍ ଆପ୍ (ଆଣ୍ଡ୍ରଏଡ୍ / ଆଇଓଏସ୍) ଡାଉନଲୋଡ୍ କରି ବ୍ୟବହାର କରିପାରିବେ
+                    ।</span></span>
+              </li>
             </ul>
-            <p>
-              We look forward to your feedback to improving experience of citizens in getting quality service from the
-              police promptly.
-            </p>
+            <p><span class="lang-en">We look forward to your feedback to improving experience of citizens in getting
+                quality service from the police promptly.</span><span class="lang-or" lang="or">ନାଗରିକଙ୍କ ଅଭିଜ୍ଞତା
+                ଉନ୍ନତ କରିବା ପାଇଁ ଆପଣଙ୍କ ମତାମତ ଆମେ ଆଶା କରୁ ।</span></p>
           </div>
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
             <div class="content ps-0 ps-lg-5">
               <p class="fst-italic">
                 <!-- <h3>DGP's Message</h3> -->
-              <h3>About Citizen Portal</h3>
+              <h3><span class="lang-en">About Citizen Portal</span><span class="lang-or" lang="or">ନାଗରିକ ପୋର୍ଟାଲ୍
+                  ବିଷୟରେ</span></h3>
               </p>
-              <p>
-                Odisha Police is implementing Crime and Criminal Tracking Network and Systems (CCTNS) which is a Mission
-                Mode Project of Government of India. Under CCTNS Project all Police Stations and Higher Police Offices
-                in
-                the State and across the Country is being computerized and networked. For convenience all Police offices
-                are interconnected and work is undertaken in a centralized application.
-              </p>
-              <p>
-                Odisha Police is committed towards time bound delivery of services to the Citizens and provide good
-                governance in the State. In order to provide better and quick services to Citizens, Odisha Police has
-                launched Online "Citizen Portal" under CCTNS Project. "Citizen Portal" will enable citizens to access
-                information, request for different Police services, complaints and to get copy of FIR as well as to
-                track
-                the status of different services provided to the Citizens.
-                To avail the services create a user account provided in the right side panel of this page and log into
-                this Portal. To know more click on "Help".</p>
+              <p><span class="lang-en">Odisha Police is implementing Crime and Criminal Tracking Network and Systems
+                  (CCTNS) which is a Mission Mode Project of Government of India. Under CCTNS Project all Police
+                  Stations
+                  and Higher Police Offices in the State and across the Country is being computerized and networked. For
+                  convenience all Police offices are interconnected and work is undertaken in a centralized
+                  application.</span><span class="lang-or" lang="or">ଓଡ଼ିଶା ପୋଲିସ୍ CCTNS କାର୍ଯ୍ୟକ୍ରମ ଲାଗୁ କରୁଛି — ଏହା
+                  ଭାରତ
+                  ସରକାରଙ୍କ ଏକ ମିଶନ ମୋଡ୍ ପ୍ରକଳ୍ପ । ସମସ୍ତ ଥାନା ଓ ଉଚ୍ଚ କାର୍ଯ୍ୟାଳୟ କମ୍ପ୍ୟୁଟରାଇଜ୍ ଓ ନେଟୱର୍କ୍ ହେଉଛି;
+                  କେନ୍ଦ୍ରୀକୃତ
+                  ଆପ୍ଲିକେସନ୍‌ରେ କାର୍ଯ୍ୟ ହେଉଛି ।</span></p>
+              <p><span class="lang-en">Odisha Police is committed towards time bound delivery of services to the
+                  Citizens and provide good governance in the State. In order to provide better and quick services to
+                  Citizens, Odisha Police has launched Online "Citizen Portal" under CCTNS Project. "Citizen Portal"
+                  will enable citizens to access information, request for different Police services, complaints and to
+                  get copy of FIR as well as to track the status of different services provided to the Citizens. To
+                  avail the services create a user account provided in the right side panel of this page and log into
+                  this Portal. To know more click on "Help".</span><span class="lang-or" lang="or">ନାଗରିକଙ୍କୁ
+                  ସମୟାନୁବର୍ତ୍ତୀ
+                  ସେବା ଓ ଶୁଶାସନ ଦେବା ପାଇଁ ପ୍ରତିବଦ୍ଧ । ଅନଲାଇନ୍ “ନାଗରିକ ପୋର୍ଟାଲ୍” ମାଧ୍ୟମରେ ସୂଚନା, ପୋଲିସ୍ ସେବା ଅନୁରୋଧ,
+                  ଅଭିଯୋଗ,
+                  ଏଫ୍‌ଆଇଆର୍ ନକଲ ଓ ସେବା ସ୍ଥିତି ଜାଣିହେବ । ସେବା ପାଇଁ ଆକାଉଣ୍ଟ ସୃଷ୍ଟି କରି ଲଗଇନ୍ କରନ୍ତୁ; ଅଧିକ ଜାଣିବା ପାଇଁ
+                  “Help” ଦେଖନ୍ତୁ ।</span></p>
 
               <div class="position-relative mt-4">
                 <img src="assets/img/YBK.jpg" class="img-fluid rounded-4" alt="">
@@ -366,18 +426,20 @@
               <div>
                 <span data-purecounter-start="0" data-purecounter-end="8469" data-purecounter-duration="1"
                   class="purecounter"></span>
-                <p>Complaint Registered</p>
+                <p><span class="lang-en">Complaint Registered</span><span class="lang-or" lang="or">ଅଭିଯୋଗ
+                    ପଞ୍ଜିକୃତ</span></p>
               </div>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item d-flex align-items-center w-100 h-100">
-              <i class="bi bi-person-vcard-fill color-orange flex-shrink-0"></i>
+              <i class="bi bi-person-vcard color-orange flex-shrink-0"></i>
               <div>
                 <span data-purecounter-start="0" data-purecounter-end="346323" data-purecounter-duration="1"
                   class="purecounter"></span>
-                <p>Character Certificate Request</p>
+                <p><span class="lang-en">Character Certificate Request</span><span class="lang-or" lang="or">ଚରିତ୍ର
+                    ପ୍ରମାଣପତ୍ର ଅନୁରୋଧ</span></p>
               </div>
             </div>
           </div><!-- End Stats Item -->
@@ -388,7 +450,8 @@
               <div>
                 <span data-purecounter-start="0" data-purecounter-end="179" data-purecounter-duration="1"
                   class="purecounter"></span>
-                <p>Request for FIR Copy</p>
+                <p><span class="lang-en">Request for FIR Copy</span><span class="lang-or" lang="or">ଏଫ୍‌ଆଇଆର୍ ନକଲ
+                    ଅନୁରୋଧ</span></p>
               </div>
             </div>
           </div><!-- End Stats Item -->
@@ -399,7 +462,8 @@
               <div>
                 <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
                   class="purecounter"></span>
-                <p> Event / Performance Request</p>
+                <p><span class="lang-en">Event / Performance Request</span><span class="lang-or" lang="or">କାର୍ଯ୍ୟକ୍ରମ
+                    / ପରିବେଷଣ ଅନୁରୋଧ</span></p>
               </div>
             </div>
           </div><!-- End Stats Item -->
@@ -410,7 +474,8 @@
               <div>
                 <span data-purecounter-start="0" data-purecounter-end="71" data-purecounter-duration="1"
                   class="purecounter"></span>
-                <p> Procession Request</p>
+                <p><span class="lang-en">Procession Request</span><span class="lang-or" lang="or">ଶୋଭାଯାତ୍ରା
+                    ଅନୁରୋଧ</span></p>
               </div>
             </div>
           </div><!-- End Stats Item -->
@@ -421,7 +486,8 @@
               <div>
                 <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1"
                   class="purecounter"></span>
-                <p> Protest / Strike Request</p>
+                <p><span class="lang-en">Protest / Strike Request</span><span class="lang-or" lang="or">ବିକ୍ଷୋଭ / ଧର୍ମଘଟ
+                    ଅନୁରୋଧ</span></p>
               </div>
             </div>
           </div><!-- End Stats Item -->
@@ -432,7 +498,9 @@
               <div>
                 <span data-purecounter-start="0" data-purecounter-end="131" data-purecounter-duration="1"
                   class="purecounter"></span>
-                <p> Tenant/PG Verification Request</p>
+                <p><span class="lang-en">Tenant/PG Verification Request</span><span class="lang-or"
+                    lang="or">ଭଡ଼ାଟିଆ/ପିଜି
+                    ଯାଞ୍ଚ ଅନୁରୋଧ</span></p>
               </div>
             </div>
           </div><!-- End Stats Item -->
@@ -443,7 +511,8 @@
               <div>
                 <span data-purecounter-start="0" data-purecounter-end="829" data-purecounter-duration="1"
                   class="purecounter"></span>
-                <p>Request For Lost Property</p>
+                <p><span class="lang-en">Request For Lost Property</span><span class="lang-or" lang="or">ହଜିଲା ସମ୍ପତ୍ତି
+                    ଅନୁରୋଧ</span></p>
               </div>
             </div>
           </div><!-- End Stats Item -->
@@ -459,8 +528,8 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
-        <p>Citizen Sevices<br></p>
+        <h2><span class="lang-en">Services</span><span class="lang-or" lang="or">ସେବା</span></h2>
+        <p><span class="lang-en">Citizen Services</span><span class="lang-or" lang="or">ନାଗରିକ ସେବା</span><br></p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -475,10 +544,12 @@
                   <img src="assets/img/dashboard/VP.png" style="width: 52px;" class="img-fluid" alt="">
                 </div>
                 <a href="service-details.html" class="stretched-link">
-                  <h3>Virtual Police Station</h3>
+                  <h3><span class="lang-en">Virtual Police Station</span><span class="lang-or" lang="or">ଭର୍ଚୁଆଲ୍ ପୋଲିସ୍
+                      ଷ୍ଟେସନ୍</span></h3>
                 </a>
-                <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure
-                  perferendis.</p>
+                <p><span class="lang-en">Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus
+                    dolores iure perferendis.</span><span class="lang-or" lang="or">ଅନଲାଇନ୍ ମାଧ୍ୟମରେ ଥାନା ସେବା ଓ ଅଭିଯୋଗ
+                    ପ୍ରକ୍ରିୟା ।</span></p>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -493,10 +564,12 @@
                   <img src="assets/img/dashboard/LP.png" style="width: 48px;" class="img-fluid" alt="">
                 </div>
                 <a href="service-details.html" class="stretched-link">
-                  <h3>Lost Property</h3>
+                  <h3><span class="lang-en">Lost Property</span><span class="lang-or" lang="or">ହଜିଲା ସମ୍ପତ୍ତି</span>
+                  </h3>
                 </a>
-                <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut
-                  nesciunt dolorem.</p>
+                <p><span class="lang-en">Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti
+                    neque eum hic non ut nesciunt dolorem.</span><span class="lang-or" lang="or">ହଜିଲା ଜିନିଷ ବିଷୟରେ
+                    ଅନଲାଇନ୍ ଅଭିଯୋଗ ଓ ଅନୁସନ୍ଧାନ ସେବା ।</span></p>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -511,10 +584,14 @@
                   <img src="assets/img/dashboard/CC.png" style="width: 37px;" class="img-fluid" alt="">
                 </div>
                 <a href="service-details.html" class="stretched-link">
-                  <h3>Character Certificate</h3>
+                  <h3><span class="lang-en">Character Certificate</span><span class="lang-or" lang="or">ଚରିତ୍ର
+                      ପ୍ରମାଣପତ୍ର</span></h3>
                 </a>
-                <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci
-                  eos earum corrupti.</p>
+                <p><span class="lang-en">Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel
+                    qui
+                    id voluptas adipisci eos earum corrupti.</span><span class="lang-or" lang="or">ଚରିତ୍ର ପ୍ରମାଣପତ୍ର
+                    ପାଇଁ
+                    ଅନଲାଇନ୍ ଆବେଦନ ଓ ସ୍ଥିତି ଜାଣନ୍ତୁ ।</span></p>
               </div>
             </div>
           </div>
@@ -635,25 +712,29 @@
             <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
               <!-- <i class="bi bi-binoculars"></i> -->
               <i class="bi bi-brightness-high"></i>
-              <h4 class="d-none d-lg-block">Event/ Performance</h4>
+              <h4 class="d-none d-lg-block"><span class="lang-en">Event/ Performance</span><span class="lang-or"
+                  lang="or">କାର୍ଯ୍ୟକ୍ରମ/ପରିବେଷଣ</span></h4>
             </a>
           </li>
           <li class="nav-item col-3">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
               <i class="bi bi-box-seam"></i>
-              <h4 class="d-none d-lg-block">Employee Verification</h4>
+              <h4 class="d-none d-lg-block"><span class="lang-en">Employee Verification</span><span class="lang-or"
+                  lang="or">କର୍ମଚାରୀ ଯାଞ୍ଚ</span></h4>
             </a>
           </li>
           <li class="nav-item col-3">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
               <i class="bi bi-brightness-high"></i>
-              <h4 class="d-none d-lg-block">Procession</h4>
+              <h4 class="d-none d-lg-block"><span class="lang-en">Procession</span><span class="lang-or"
+                  lang="or">ଶୋଭାଯାତ୍ରା</span></h4>
             </a>
           </li>
           <li class="nav-item col-3">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4">
               <i class="bi bi-command"></i>
-              <h4 class="d-none d-lg-block">Tenant/PG Verification</h4>
+              <h4 class="d-none d-lg-block"><span class="lang-en">Tenant/PG Verification</span><span class="lang-or"
+                  lang="or">ଭଡ଼ାଟିଆ/ପିଜି ଯାଞ୍ଚ</span></h4>
             </a>
           </li>
         </ul><!-- End Tab Nav -->
@@ -663,12 +744,13 @@
           <div class="tab-pane fade active show" id="features-tab-1">
             <div class="row">
               <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>About Event/ Performance</h3>
+                <h3><span class="lang-en">About event / performance</span><span class="lang-or" lang="or">କାର୍ଯ୍ୟକ୍ରମ /
+                    ପରିବେଷଣ ବିଷୟରେ</span></h3>
 
-                <p>
-                  Request for Event/Performance is among one of the citizen services provided by Odisha Police
-                  under CCTNS Project.
-                </p>
+                <p><span class="lang-en">Request for event/performance is among the citizen services provided by Odisha
+                    Police under the CCTNS project.</span><span class="lang-or" lang="or">କାର୍ଯ୍ୟକ୍ରମ/ପରିବେଷଣ ଅନୁରୋଧ
+                    ଓଡ଼ିଶା
+                    ପୋଲିସ୍ ଦ୍ୱାରା CCTNS ପ୍ରକଳ୍ପ ଅନ୍ତର୍ଗତ ନାଗରିକ ସେବା ମଧ୍ୟରୁ ଅନ୍ୟତମ ।</span></p>
                 <p class="fst-italic">
                   This service is available to the citizen who are residing
                   in the area of Commissionerate of police Cuttack and Bhubaneswar and to the citizens residing
@@ -1051,10 +1133,10 @@
 
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-product">Product</li>
-            <li data-filter=".filter-branding">Branding</li>
-            <li data-filter=".filter-books">Books</li>
+            <li data-filter=".filter-app">Awarded</li>
+            <li data-filter=".filter-product">Meetings</li>
+            <li data-filter=".filter-branding">Launch</li>
+            <li data-filter=".filter-books">Achievements</li>
           </ul><!-- End Portfolio Filters -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
@@ -1274,8 +1356,8 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Leaders</h2>
-        <p>CHECK OUR LEADERS </p>
+        <h2><span class="lang-en">Leaders</span><span class="lang-or" lang="or">ନେତୃବୃନ୍ଦ</span></h2>
+        <p><span class="lang-en">CHECK OUR LEADERS</span><span class="lang-or" lang="or">ଆମ ନେତୃବୃନ୍ଦ</span></p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -1287,7 +1369,9 @@
               <div class="pic"><img src="assets/img/team/Mohan2.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Sri. Mohan Charan Majhi</h4>
-                <span>Hon'ble Chief Minister of Odisha</span>
+                <span><span class="lang-en">Hon'ble Chief Minister of Odisha</span><span class="lang-or"
+                    lang="or">ମାନ୍ୟବର
+                    ମୁଖ୍ୟମନ୍ତ୍ରୀ, ଓଡ଼ିଶା</span></span>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -1303,7 +1387,8 @@
               <div class="pic"><img src="assets/img/team/kanakB.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Sri. Kanak Vardhan Singh Deo</h4>
-                <span>Deputy Chief Minister of Odisha</span>
+                <span><span class="lang-en">Deputy Chief Minister of Odisha</span><span class="lang-or" lang="or">ଉପ
+                    ମୁଖ୍ୟମନ୍ତ୍ରୀ, ଓଡ଼ିଶା</span></span>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -1319,7 +1404,8 @@
               <div class="pic"><img src="assets/img/team/prabhati.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Smt. Pravati Parida</h4>
-                <span>Deputy Chief Minister of Odisha</span>
+                <span><span class="lang-en">Deputy Chief Minister of Odisha</span><span class="lang-or" lang="or">ଉପ
+                    ମୁଖ୍ୟମନ୍ତ୍ରୀ, ଓଡ଼ିଶା</span></span>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -1341,8 +1427,9 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Reach Us with below Address</p>
+        <h2><span class="lang-en">Contact</span><span class="lang-or" lang="or">ଯୋଗାଯୋଗ</span></h2>
+        <p><span class="lang-en">Reach us with the address below</span><span class="lang-or" lang="or">ତଳେ ଥିବା ଠିକଣାରେ
+            ଯୋଗାଯୋଗ କରନ୍ତୁ</span></p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -1355,10 +1442,12 @@
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
                   data-aos-delay="200">
                   <i class="bi bi-geo-alt"></i>
-                  <h3>Address</h3>
+                  <h3><span class="lang-en">Address</span><span class="lang-or" lang="or">ଠିକଣା</span></h3>
                   <p>
-                    State Crime Records Bureau
-                    Rasulgarh, Bhubaneswar, Odisha-751010, India</p>
+                    <span class="lang-en">State Crime Records Bureau<br>Rasulgarh, Bhubaneswar, Odisha-751010,
+                      India</span><span class="lang-or" lang="or">ରାଜ୍ୟ ଅପରାଧ ରେକର୍ଡ ବ୍ୟୁରୋ<br>ରାସୁଲଗଡ଼, ଭୁବନେଶ୍ୱର,
+                      ଓଡ଼ିଶା-୭୫୧୦୧୦, ଭାରତ</span>
+                  </p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -1366,7 +1455,8 @@
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
                   data-aos-delay="300">
                   <i class="bi bi-telephone"></i>
-                  <h3>Call Us (Help Desk)</h3>
+                  <h3><span class="lang-en">Call us (Help desk)</span><span class="lang-or" lang="or">କଲ୍ କରନ୍ତୁ (ସହାୟତା
+                      ଡେସ୍କ)</span></h3>
                   <p>0674 2973888</p>
                 </div>
               </div><!-- End Info Item -->
@@ -1375,7 +1465,7 @@
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
                   data-aos-delay="400">
                   <i class="bi bi-envelope"></i>
-                  <h3>Email Us</h3>
+                  <h3><span class="lang-en">Email us</span><span class="lang-or" lang="or">ଇମେଲ୍ କରନ୍ତୁ</span></h3>
                   <p>: dirscrb.odpol@nic.in</p>
                 </div>
               </div><!-- End Info Item -->
@@ -1389,27 +1479,35 @@
               <div class="row gy-4">
 
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                  <input type="text" name="name" class="form-control portal-i18n-input" placeholder="Your Name"
+                    data-ph-en="Your Name" data-ph-or="ଆପଣଙ୍କ ନାମ" required="">
                 </div>
 
                 <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                  <input type="email" class="form-control portal-i18n-input" name="email" placeholder="Your Email"
+                    data-ph-en="Your Email" data-ph-or="ଆପଣଙ୍କ ଇମେଲ୍" required="">
                 </div>
 
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                  <input type="text" class="form-control portal-i18n-input" name="subject" placeholder="Subject"
+                    data-ph-en="Subject" data-ph-or="ବିଷୟ" required="">
                 </div>
 
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="4" placeholder="Message" required=""></textarea>
+                  <textarea class="form-control portal-i18n-input" name="message" rows="4" placeholder="Message"
+                    data-ph-en="Message" data-ph-or="ବାର୍ତ୍ତା" required=""></textarea>
                 </div>
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
+                  <div class="loading"><span class="lang-en">Loading</span><span class="lang-or" lang="or">ଲୋଡ୍
+                      ହେଉଛି…</span></div>
                   <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                  <div class="sent-message"><span class="lang-en">Your message has been sent. Thank you!</span><span
+                      class="lang-or" lang="or">ଆପଣଙ୍କ ବାର୍ତ୍ତା ପଠାଗଲା । ଧନ୍ୟବାଦ!</span></div>
 
-                  <button type="submit">Send Message</button>
+                  <button type="submit"><span class="lang-en">Send Message</span><span class="lang-or"
+                      lang="or">ବାର୍ତ୍ତା
+                      ପଠାନ୍ତୁ</span></button>
                 </div>
 
               </div>
@@ -1429,16 +1527,25 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about" data-aos="fade-up" data-aos-delay="100">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Citizen Portal</span>
+            <span class="sitename"><span class="lang-en">Citizen Portal</span><span class="lang-or" lang="or">ନାଗରିକ
+                ପୋର୍ଟାଲ୍</span></span>
           </a>
           <div class="footer-contact pt-3">
-            <p>
-              State Crime Records Bureau</p>
-            <p>Rasulgarh, Bhubaneswar</p>
-            <p>Odisha-751010, India</p>
-            <p class="mt-3"><strong>Help-Desk :</strong> <span> 0674 2973888</span></p>
-            <p class="mt-3"><strong>Fax :</strong> <span> (91-674) 258723</span></p>
-            <p><strong>Email:</strong> <span>dirscrb.odpol@nic.in</span></p>
+            <p><span class="lang-en">State Crime Records Bureau</span><span class="lang-or" lang="or">ରାଜ୍ୟ ଅପରାଧ ରେକର୍ଡ
+                ବ୍ୟୁରୋ</span></p>
+            <p><span class="lang-en">Rasulgarh, Bhubaneswar</span><span class="lang-or" lang="or">ରାସୁଲଗଡ଼,
+                ଭୁବନେଶ୍ୱର</span></p>
+            <p><span class="lang-en">Odisha-751010, India</span><span class="lang-or" lang="or">ଓଡ଼ିଶା-୭୫୧୦୧୦,
+                ଭାରତ</span></p>
+            <p class="mt-3"><strong><span class="lang-en">Help desk:</span><span class="lang-or" lang="or">ସହାୟତା
+                  ଡେସ୍କ:</span></strong> <span> 0674 2973888</span></p>
+            <p class="mt-3"><strong><span class="lang-en">Fax:</span><span class="lang-or"
+                  lang="or">ଫ୍ୟାକ୍ସ:</span></strong>
+              <span> (91-674) 258723</span>
+            </p>
+            <p><strong><span class="lang-en">Email:</span><span class="lang-or" lang="or">ଇମେଲ୍:</span></strong>
+              <span>dirscrb.odpol@nic.in</span>
+            </p>
           </div>
           <div class="social-links d-flex mt-4">
             <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -1449,35 +1556,52 @@
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links" data-aos="fade-up" data-aos-delay="200">
-          <h4>Useful Links</h4>
+          <h4><span class="lang-en">Useful Links</span><span class="lang-or" lang="or">ଉପଯୋଗୀ ଲିଙ୍କ୍</span></h4>
           <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#"><span class="lang-en">Home</span><span class="lang-or"
+                  lang="or">ମୁଖ୍ୟ ପୃଷ୍ଠା</span></a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#"><span class="lang-en">About us</span><span
+                  class="lang-or" lang="or">ଆମ ବିଷୟରେ</span></a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#"><span class="lang-en">Services</span><span
+                  class="lang-or" lang="or">ସେବା</span></a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#"><span class="lang-en">Terms of service</span><span
+                  class="lang-or" lang="or">ସେବା ସର୍ତ୍ତାବଳୀ</span></a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#"><span class="lang-en">Privacy policy</span><span
+                  class="lang-or" lang="or">ଗୋପନୀୟତା ନୀତି</span></a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links" data-aos="fade-up" data-aos-delay="300">
-          <h4>Our Services</h4>
+          <h4><span class="lang-en">Our Services</span><span class="lang-or" lang="or">ଆମ ସେବା</span></h4>
           <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#"><span class="lang-en">Virtual Police Station</span><span
+                  class="lang-or" lang="or">ଭର୍ଚୁଆଲ୍ ଥାନା</span></a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#"><span class="lang-en">Lost property</span><span
+                  class="lang-or" lang="or">ହଜିଲା ସମ୍ପତ୍ତି</span></a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#"><span class="lang-en">Character certificate</span><span
+                  class="lang-or" lang="or">ଚରିତ୍ର ପ୍ରମାଣପତ୍ର</span></a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#"><span class="lang-en">e-FIR</span><span class="lang-or"
+                  lang="or">ଇ-ଏଫ୍‌ଆଇଆର୍</span></a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#"><span class="lang-en">Citizen tips</span><span
+                  class="lang-or" lang="or">ନାଗରିକ ଟିପ୍ସ</span></a></li>
           </ul>
         </div>
 
         <div class="col-lg-4 col-md-12 footer-newsletter" data-aos="fade-up" data-aos-delay="400">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
+          <h4><span class="lang-en">Our newsletter</span><span class="lang-or" lang="or">ଆମ ନ୍ୟୁଜ୍‌ଲେଟର୍</span></h4>
+          <p><span class="lang-en">Subscribe to our newsletter and receive the latest news about our products and
+              services!</span><span class="lang-or" lang="or">ନ୍ୟୁଜ୍‌ଲେଟର୍ ସବସ୍କ୍ରାଇବ କରି ନବୀନତମ ସୂଚନା ପାଆନ୍ତୁ ।</span>
+          </p>
           <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
+            <div class="newsletter-form"><input type="email" name="email" class="portal-i18n-input"
+                data-ph-en="Your email" data-ph-or="ଆପଣଙ୍କ ଇମେଲ୍" placeholder="Your email"><input type="submit"
+                value="Subscribe" class="portal-newsletter-submit" data-label-en="Subscribe" data-label-or="ସବସ୍କ୍ରାଇବ">
+            </div>
+            <div class="loading"><span class="lang-en">Loading</span><span class="lang-or" lang="or">ଲୋଡ୍ ହେଉଛି…</span>
+            </div>
             <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
+            <div class="sent-message"><span class="lang-en">Your subscription request has been sent. Thank
+                you!</span><span class="lang-or" lang="or">ସବସ୍କ୍ରାଇବ ଅନୁରୋଧ ପଠାଗଲା । ଧନ୍ୟବାଦ!</span></div>
           </form>
         </div>
 
@@ -1486,16 +1610,18 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename"><a href="http://cctns.op.gov.in/CCTNSWeb/Login.aspx"
-            target="_blank">SCRB</a></strong>
-        <span>All Rights Reserved</span>
+      <p>© <span><span class="lang-en">Copyright</span><span class="lang-or" lang="or">କପିରାଇଟ୍</span></span> <strong
+          class="px-1 sitename"><a href="http://cctns.op.gov.in/CCTNSWeb/Login.aspx" target="_blank">SCRB</a></strong>
+        <span><span class="lang-en">All rights reserved</span><span class="lang-or" lang="or">ସମସ୍ତ ଅଧିକାର
+            ସଂରକ୍ଷିତ</span></span>
       </p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Design & Developed by <a href="https://kpmg.com/in/en.html" target="_blank">KPMG</a>
+        <span class="lang-en">Design &amp; developed by</span><span class="lang-or" lang="or">ଡିଜାଇନ୍ ଓ ବିକାଶ</span>
+        <a href="https://kpmg.com/in/en.html" target="_blank">KPMG</a>
       </div>
     </div>
     <div class="rotating-image-wrapper">
