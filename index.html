@@ -153,17 +153,67 @@
         <div class="row g-4 g-lg-3 align-items-stretch">
           <!-- Left: animated service journey (Citizen ⇄ Virtual Police Station) -->
           <div class="col-lg-7 portal-hero-left">
-            <div class="portal-hero-svg-card">
-              <p class="portal-hero-intro mb-2"><span class="lang-en"><strong>Availing CCTNS services from
+            <div class="portal-hero-svg-card h-100">
+              <!-- <p class="portal-hero-intro mb-2"><span class="lang-en"><strong>Availing CCTNS services from
                     home:</strong> apply online · police station alerted · approve · get SMS / certificate on your
                   device.</span><span class="lang-or" lang="or"><strong>ଘରୁ CCTNS ସେବା:</strong> ଅନଲାଇନ୍ ଆବେଦନ · ଥାନାକୁ
-                  ସୂଚନା · ଅନୁମୋଦନ · SMS / ପ୍ରମାଣପତ୍ର ଡିଭାଇସ୍‌ରେ ।</span></p>
-              <div class="portal-hero-svg-wrap">
-                <object id="mainSvg" class="portal-hero-svg-main"
-                  title="Citizen submits from home · data to police station · digitally approved back"
-                  data="assets/svg/mainSvg-hero.svg" type="image/svg+xml"
-                  aria-label="Illustration: citizen applies online; police processes; digitally approved response"
-                  role="img"></object>
+                  ସୂଚନା · ଅନୁମୋଦନ · SMS / ପ୍ରମାଣପତ୍ର ଡିଭାଇସ୍‌ରେ ।</span></p> -->
+              <div class="portal-hero-metrics-wrap">
+                <div class="swiper portal-hero-metrics-swiper" aria-label="Citizen services overview">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide portal-hero-metrics-slide portal-hero-metrics-slide--illustration">
+                      <div class="portal-hero-svg-wrap portal-hero-svg-wrap--metrics">
+                        <img id="heroMainIllustration" class="portal-hero-svg-main" src="assets/svg/mainSvg-hero.svg"
+                          width="1600" height="650" decoding="async" fetchpriority="high"
+                          alt="Citizen submits from home; police processes digitally; illustration">
+                      </div>
+                    </div>
+                    <div class="swiper-slide portal-hero-metrics-slide portal-hero-metrics-slide--chart">
+                      <div class="portal-hero-chart-slide-inner">
+                        <h3 class="portal-hero-chart-title mb-1"><span class="lang-en">Character certificates — all
+                            districts &amp; units</span><span class="lang-or" lang="or">ଚରିତ୍ର ପ୍ରମାଣପତ୍ର — ସମସ୍ତ ଜିଲ୍ଲା
+                            ଓ ଗୋଷ୍ଠି</span></h3>
+                        <p class="portal-hero-chart-note small text-muted mb-2 mb-lg-3"><span class="lang-en">All Odisha
+                            districts plus common police units (replace with live API data when ready).</span><span
+                            class="lang-or" lang="or">୩୦ ଜିଲ୍ଲା ଓ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ଗୋଷ୍ଠି — ଜୀବନ୍ତ ଡାଟା API ଠାରୁ ଯୋଡ଼ନ୍ତୁ
+                            ।</span></p>
+                        <div class="portal-hero-apex-scroll">
+                          <div id="portalHeroChartBar" class="portal-hero-apex" role="img"
+                            aria-label="Bar chart character certificates by district"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide portal-hero-metrics-slide portal-hero-metrics-slide--chart">
+                      <div class="portal-hero-chart-slide-inner">
+                        <h3 class="portal-hero-chart-title mb-1"><span class="lang-en">Citizen logins</span><span
+                            class="lang-or" lang="or">ନାଗରିକ ଲଗଇନ୍</span></h3>
+                        <p class="portal-hero-chart-note small text-muted mb-2 mb-lg-3"><span class="lang-en">User
+                            logins
+                            across every district/unit (same set as character chart).</span><span class="lang-or"
+                            lang="or">ସମସ୍ତ ଜିଲ୍ଲା/ଗୋଷ୍ଠିର ଲଗଇନ୍ ସଂଖ୍ୟା ।</span></p>
+                        <div class="portal-hero-apex-scroll portal-hero-apex-scroll--line">
+                          <div id="portalHeroChartLine" class="portal-hero-apex portal-hero-apex--line" role="img"
+                            aria-label="Line chart citizen logins by district"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide portal-hero-metrics-slide portal-hero-metrics-slide--chart">
+                      <div class="portal-hero-chart-slide-inner">
+                        <h3 class="portal-hero-chart-title mb-1"><span class="lang-en">Category-wise service usage</span><span
+                            class="lang-or" lang="or">ଶ୍ରେଣୀ ଅନୁସାରେ ସେବା ବ୍ୟବହାର</span></h3>
+                        <p class="portal-hero-chart-note small text-muted mb-2 mb-lg-3"><span class="lang-en">Citizen activity split across key portal service categories.</span><span class="lang-or"
+                            lang="or">ପୋର୍ଟାଲର ମୁଖ୍ୟ ସେବା ଶ୍ରେଣୀ ଅନୁଯାୟୀ ନାଗରିକ କାର୍ଯ୍ୟକଳାପ ।</span></p>
+                        <div class="portal-hero-apex-scroll portal-hero-apex-scroll--line">
+                          <div id="portalHeroChartCategory" class="portal-hero-apex portal-hero-apex--category" role="img"
+                            aria-label="Category wise service usage chart"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-pagination portal-hero-metrics-pagination"></div>
+                  <div class="swiper-button-prev portal-hero-metrics-prev" aria-label="Previous"></div>
+                  <div class="swiper-button-next portal-hero-metrics-next" aria-label="Next"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -1697,11 +1747,13 @@
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.54.1/dist/apexcharts.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/portal-hero-charts.js"></script>
   <script src="assets/js/portal-chatbot.js"></script>
 
 </body>
