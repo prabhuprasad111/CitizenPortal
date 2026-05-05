@@ -2373,24 +2373,11 @@ body.scrolled .portal-site-header {
   }
 
   .portal-ticker-track {
-    animation: none;
-    width: 100%;
-    max-width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-    white-space: normal;
-    padding: 0.5rem 0.75rem;
-    box-sizing: border-box;
+    animation: portalTickerMarquee 16s linear infinite;
   }
 
   .portal-ticker-group {
-    white-space: normal;
-    padding: 0;
-  }
-
-  .portal-ticker-group[aria-hidden="true"] {
-    display: none;
+    white-space: nowrap;
   }
 }
 

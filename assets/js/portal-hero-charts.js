@@ -52,7 +52,7 @@
   var ACCENT = "#0b5cad";
   var ACCENT_DEEP = "#003566";
 
-  var SLIDE_AUToplay_MS = 8000;
+  var SLIDE_AUToplay_MS = 5000;
 
   function seedFromLabel(name) {
     var h = 2166136261;
@@ -312,21 +312,18 @@
     var el = document.querySelector(".portal-hero-metrics-swiper");
     if (!el || typeof Swiper === "undefined") return;
 
-    var reduceMo = prefersReducedMotion();
     swiperInstance = new Swiper(el, {
       loop: false,
-      speed: reduceMo ? 200 : 450,
+      speed: 450,
       spaceBetween: 0,
       autoHeight: false,
       watchOverflow: true,
-      autoplay: reduceMo
-        ? false
-        : {
-          delay: SLIDE_AUToplay_MS,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-          waitForTransition: true,
-        },
+      autoplay: {
+        delay: SLIDE_AUToplay_MS,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+        waitForTransition: true,
+      },
       pagination: {
         el: el.querySelector(".portal-hero-metrics-pagination"),
         clickable: true,
