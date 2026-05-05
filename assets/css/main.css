@@ -2647,8 +2647,8 @@ html.portal-high-contrast body {
 .portal-hero-metrics-swiper {
   position: relative;
   box-sizing: border-box;
-  height: min(450px, 60vh);
-  max-height: min(750px, 70vh);
+  height: min(400px, 50vh);
+  max-height: min(700px, 70vh);
   padding-bottom: 1.65rem;
   --portal-metric-accent: #0b5cad;
   --portal-metric-accent-deep: #003566;
