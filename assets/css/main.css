@@ -2653,6 +2653,58 @@ html.portal-high-contrast body {
   min-height: 0;
 }
 
+/* GIF slides: banner card (navy caps headline + gray body), matches portal hero reference */
+.portal-hero-metrics-slide--illustration {
+  padding: 0.5rem 2.45rem 0;
+  gap: 0.65rem;
+}
+
+.portal-hero-gif-banner {
+  background: #f4f6f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.9rem 1.05rem;
+  flex-shrink: 0;
+}
+
+.portal-hero-gif-banner-title {
+  font-family: var(--heading-font);
+  font-size: clamp(0.8rem, 1.15vw, 0.95rem);
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  color: #003566;
+  margin: 0 0 0.45rem 0;
+  line-height: 1.3;
+}
+
+.portal-hero-gif-banner-title .lang-en {
+  text-transform: uppercase;
+}
+
+.portal-hero-gif-banner-title .lang-or {
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.portal-hero-gif-banner-text {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #64748b;
+  font-weight: 400;
+}
+
+@media (max-width: 575.98px) {
+  .portal-hero-metrics-slide--illustration {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .portal-hero-gif-banner {
+    padding: 0.75rem 0.85rem;
+  }
+}
+
 .portal-hero-metrics-slide--illustration .portal-hero-svg-wrap--metrics {
   margin: 0;
   flex: 1 1 auto;
@@ -2734,9 +2786,17 @@ html.portal-high-contrast body {
 }
 
 @media (max-width: 575.98px) {
+  /*
+   * Short height (248px) left almost no room for GIF slides after the text banner.
+   * Taller box keeps chart slides scrollable inside while making hero GIFs readable.
+   */
   .portal-hero-metrics-swiper {
-    height: min(248px, 28vh);
-    max-height: min(248px, 28vh);
+    height: min(440px, 58vh);
+    max-height: min(520px, 68vh);
+  }
+
+  .portal-hero-metrics-slide--illustration .portal-hero-svg-wrap--metrics {
+    min-height: clamp(168px, 32vw, 240px);
   }
 
   .portal-hero-metrics-slide--chart {
