@@ -2116,9 +2116,19 @@ html.portal-index {
   padding-top: clamp(176px, 22vw, 212px);
 }
 
+/* Home anchor target should stop below fixed header so alert strip is visible. */
+#home {
+  scroll-margin-top: clamp(176px, 22vw, 212px);
+}
+
 @media (max-width: 767px) {
   .index-page .main {
-    padding-top: clamp(200px, 38vw, 272px);
+    /* Mobile header stack is taller (utility + brand + nav), keep alert ticker below it */
+    padding-top: clamp(248px, 46vw, 332px);
+  }
+
+  #home {
+    scroll-margin-top: clamp(248px, 46vw, 332px);
   }
 }
 
@@ -2386,6 +2396,143 @@ body.scrolled .portal-site-header {
 .portal-ticker-dot {
   opacity: 0.75;
   color: #fff;
+}
+
+/* Header-bottom alert: uses existing portal-ticker animation */
+.portal-alert-media {
+  background: #ffffff;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+section.portal-alert-media {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.portal-alert-media .portal-ticker-bar {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  background: #003b8e !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.portal-alert-media .portal-ticker-mask {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.portal-alert-media .portal-ticker-track {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  min-height: 34px;
+  transform: translateX(-50%);
+  animation: portalAlertTickerLtr 16s linear infinite;
+  will-change: transform;
+}
+
+.portal-alert-media .portal-ticker-group {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 0.83rem;
+  font-weight: 600;
+  line-height: 1.3;
+  padding: 0.45rem 2.2rem 0.45rem 0;
+}
+
+.portal-alert-new-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.65rem;
+  height: 1.45rem;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: #ffd43b;
+  color: #002750;
+  border: 1px solid #ffec99;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  animation: portalAlertBlink 1s steps(2, start) infinite;
+  margin-right: 0.45rem;
+}
+
+/* This notice should scroll left-to-right and be visible from first frame. */
+.portal-alert-media .portal-ticker-track {
+  animation-name: portalAlertTickerLtr;
+}
+
+@keyframes portalAlertTickerLtr {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes portalAlertBlink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  50.01%,
+  100% {
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .portal-alert-media {
+    margin-top: 12px !important;
+  }
+
+  /* Remove large default section top gap below the alert strip on mobile */
+  .portal-hero-split.section {
+    padding-top: 10px !important;
+  }
+
+  .portal-alert-media .portal-ticker-bar {
+    border-top: none;
+    border-bottom: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  .portal-alert-media .portal-ticker-mask {
+    padding-inline: 0.35rem;
+  }
+
+  .portal-alert-media .portal-ticker-track {
+    min-height: 38px;
+    animation-duration: 20s;
+  }
+
+  .portal-alert-media .portal-ticker-group {
+    font-size: 0.82rem;
+    line-height: 1.35;
+    padding: 0.5rem 1.4rem 0.5rem 0;
+  }
+
+  .portal-alert-new-badge {
+    min-width: 2.15rem;
+    height: 1.24rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.03em;
+    margin-right: 0.4rem;
+  }
 }
 
 @keyframes portalTickerMarquee {
