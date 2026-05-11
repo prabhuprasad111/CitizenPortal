@@ -1263,6 +1263,62 @@ section,
 }
 
 /*--------------------------------------------------------------
+# Portal About Map Section
+--------------------------------------------------------------*/
+.portal-about-map.section {
+  padding-top: 34px;
+  padding-bottom: 28px;
+  background: linear-gradient(180deg, #f7fbff 0%, #eef5ff 100%);
+}
+
+.portal-about-map-card {
+  background: #0b4f8a;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 51, 102, 0.2);
+  overflow: hidden;
+}
+
+.portal-about-map-head {
+  padding: 0.95rem 1rem 0.7rem;
+  color: #fff;
+}
+
+.portal-about-map-title {
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.portal-about-map-subtitle {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.portal-about-map-canvas {
+  width: 100%;
+  height: clamp(280px, 44vw, 420px);
+}
+
+@media (max-width: 575.98px) {
+  .portal-about-map.section {
+    padding-top: 16px;
+    padding-bottom: 14px;
+  }
+
+  .portal-about-map-head {
+    padding: 0.78rem 0.82rem 0.6rem;
+  }
+
+  .portal-about-map-canvas {
+    height: 265px;
+  }
+}
+
+/*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
 .about h3 {
@@ -2449,23 +2505,16 @@ section.portal-alert-media {
   padding: 0.45rem 2.2rem 0.45rem 0;
 }
 
-.portal-alert-new-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 2.65rem;
-  height: 1.45rem;
-  padding: 0 0.5rem;
-  border-radius: 999px;
-  background: #ffd43b;
-  color: #002750;
-  border: 1px solid #ffec99;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+.portal-alert-attention {
+  display: inline-block;
+  flex-shrink: 0;
+  width: auto;
+  height: 1.25rem;
+  max-height: 1.35rem;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 0.55rem;
   animation: portalAlertBlink 1s steps(2, start) infinite;
-  margin-right: 0.45rem;
 }
 
 /* This notice should scroll left-to-right and be visible from first frame. */
@@ -2526,12 +2575,10 @@ section.portal-alert-media {
     padding: 0.5rem 1.4rem 0.5rem 0;
   }
 
-  .portal-alert-new-badge {
-    min-width: 2.15rem;
-    height: 1.24rem;
-    font-size: 0.62rem;
-    letter-spacing: 0.03em;
-    margin-right: 0.4rem;
+  .portal-alert-attention {
+    height: 1.1rem;
+    max-height: 1.2rem;
+    margin-right: 0.45rem;
   }
 }
 
