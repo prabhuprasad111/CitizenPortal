@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import loginMainHtml from '@/content/login-main.html?raw';
 import { rewriteLegacyHtml } from '@/lib/rewriteLegacyHtml';
 import { publicAssetUrl } from '@/lib/publicAssetUrl';
-import '@/styles/login.css';
 
 export function LoginPage() {
   const navigate = useNavigate();
@@ -11,6 +10,7 @@ export function LoginPage() {
 
   useEffect(() => {
     document.body.classList.add('login-page-body', 'index-page');
+    window.scrollTo(0, 0);
     return () => document.body.classList.remove('login-page-body', 'index-page');
   }, []);
 
@@ -20,8 +20,11 @@ export function LoginPage() {
     const signinPanel = document.getElementById('loginPanelSignin');
     const registerPanel = document.getElementById('loginPanelRegister');
 
+    const shell = document.getElementById('loginCardShell');
+
     const showPanel = (panel: 'signin' | 'register') => {
       const isSignin = panel === 'signin';
+      shell?.classList.toggle('login-card-shell--register', !isSignin);
       signinTab?.classList.toggle('login-auth-tab--active', isSignin);
       registerTab?.classList.toggle('login-auth-tab--active', !isSignin);
       signinTab?.setAttribute('aria-selected', isSignin ? 'true' : 'false');

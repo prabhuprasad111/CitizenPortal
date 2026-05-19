@@ -2,10 +2,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { publicAssetUrl } from '@/lib/publicAssetUrl';
 import { goToHomeSection } from '@/lib/portalNav';
 
-type NavItem = { hash: string; icon?: string; labelEn: string; labelOr: string };
+type NavItem = { hash: string; labelEn: string; labelOr: string };
 
 const NAV: NavItem[] = [
-  { hash: '#home', icon: 'bi-house-door-fill', labelEn: 'Home', labelOr: 'ମୁଖ୍ୟ ପୃଷ୍ଠା' },
+  { hash: '#home', labelEn: 'Home', labelOr: 'ମୁଖ୍ୟ ପୃଷ୍ଠା' },
   { hash: '#about', labelEn: 'About', labelOr: 'ପରିଚୟ' },
   { hash: '#services', labelEn: 'Citizen Services', labelOr: 'ନାଗରିକ ସେବା' },
   { hash: '#gallary', labelEn: 'Gallery', labelOr: 'ଗ୍ୟାଲେରୀ' },
@@ -101,7 +101,6 @@ export function PortalHeader() {
               {NAV.map((item) => (
                 <li key={item.hash}>
                   <a href={item.hash} onClick={(e) => onNavSection(e, item.hash)}>
-                    {item.icon && <i className={`bi ${item.icon} me-1`} aria-hidden="true" />}
                     <span className="align-middle">
                       <span className="lang-en">{item.labelEn}</span>
                       <span className="lang-or" lang="or">{item.labelOr}</span>

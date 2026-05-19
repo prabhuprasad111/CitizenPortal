@@ -33,7 +33,11 @@ function AppRoutes() {
 export default function App() {
   useEffect(() => {
     document.documentElement.classList.add('portal-index');
-    return () => document.documentElement.classList.remove('portal-index');
+    document.body.classList.add('index-page');
+    return () => {
+      document.documentElement.classList.remove('portal-index');
+      document.body.classList.remove('index-page');
+    };
   }, []);
 
   return <AppRoutes />;

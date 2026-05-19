@@ -17,7 +17,8 @@ export function usePortalEffects() {
 
   useEffect(() => {
     document.body.classList.toggle('login-page-body', location.pathname === '/login');
-    document.body.classList.toggle('index-page', location.pathname !== '/login');
+    /* Keep index-page on login — login.css selectors require it (same as login.html body). */
+    document.body.classList.add('index-page');
   }, [location.pathname]);
 
   useEffect(() => {

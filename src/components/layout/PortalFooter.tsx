@@ -17,7 +17,11 @@ export function PortalFooter() {
   };
 
   return (
-    <footer id="footer" className="footer dark-background">
+    <footer
+      id="footer"
+      className="footer dark-background"
+      style={{ backgroundImage: `url(${publicAssetUrl('/assets/img/footerbg.png')})` }}
+    >
       <div className="container footer-top">
         <div className="row gy-4">
           <div className="col-lg-4 col-md-6 footer-about" data-aos="fade-up" data-aos-delay="100">
@@ -277,7 +281,14 @@ export function PortalFooter() {
 
       <div className="rotating-image-wrapper" aria-hidden="true">
         <div className="footer-konark-rotator">
-          <img src={publicAssetUrl('/assets/img/konark.png')} alt="" className="rotating-image" width={800} height={800} decoding="async" />
+          <img
+            src={publicAssetUrl('/assets/img/event-round.png')}
+            alt=""
+            className="rotating-image"
+            width={800}
+            height={800}
+            decoding="async"
+          />
         </div>
       </div>
     </footer>

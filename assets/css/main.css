@@ -89,7 +89,7 @@ html.portal-index.portal-lang-or .lang-or.is-block {
 
 .dark-background {
   /* --background-color: #000910; */
-  --background-color: #9dffce78;
+  --background-color: #8ed4c4;
 
   --default-color: #ffffff;
   --heading-color: #ffffff;
@@ -760,14 +760,26 @@ h6 {
   background-color: var(--gov-util-bg);
   font-size: 16px;
   position: relative;
+  overflow: hidden;
 
-  /* New additions */
   background-image: url('../img/footerbg.png');
-
-  /* Update this path */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.footer.dark-background .footer-newsletter .newsletter-form {
+  background-color: color-mix(in srgb, var(--background-color) 88%, #ffffff);
+  border-color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+.footer.dark-background .footer-newsletter .newsletter-form input[type=email] {
+  background-color: var(--background-color);
+  color: #0f172a;
+}
+
+.footer.dark-background .footer-newsletter .newsletter-form input[type=email]::placeholder {
+  color: color-mix(in srgb, #0f172a, transparent 35%);
 }
 
 .footer .footer-top {
@@ -930,17 +942,36 @@ h6 {
 
 .rotating-image-wrapper {
   position: absolute;
-  bottom: 40px;
-  right: -280px;
+  bottom: 20px;
+  right: max(-200px, -18vw);
   z-index: 0;
   opacity: 0.55;
-  width: min(820px, 72vw);
-  height: min(820px, 72vw);
+  width: min(720px, 58vw);
+  height: min(720px, 58vw);
   overflow: visible;
   pointer-events: none;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 991.98px) {
+  .rotating-image-wrapper {
+    width: min(520px, 70vw);
+    height: min(520px, 70vw);
+    right: max(-140px, -22vw);
+    opacity: 0.42;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .rotating-image-wrapper {
+    width: min(380px, 85vw);
+    height: min(380px, 85vw);
+    right: -120px;
+    bottom: 8px;
+    opacity: 0.35;
+  }
 }
 
 /* Rotate wrapper (not <img>) — reliable clockwise spin in Chromium/Edge */
@@ -2306,7 +2337,7 @@ body.index-page {
 
 html.portal-index #root {
   max-width: 100%;
-  overflow-x: clip;
+  /* Do not clip-x here — footer .rotating-image-wrapper extends past the right edge */
 }
 
 .index-page .main {
@@ -2771,14 +2802,15 @@ section.portal-alert-media {
   /* Prefer wrapping to clamping — keeps all links reachable without phantom horizontal scroll */
   .navmenu-portal>ul {
     flex-wrap: wrap;
-    row-gap: 2px;
+    row-gap: 4px;
     justify-content: center;
     align-items: center;
     width: 100%;
+    column-gap: 1rem;
   }
 
   .navmenu-portal>ul>li {
-    padding: 10px 14px !important;
+    padding: 10px 18px !important;
   }
 
   /* Top bar links only — do not target .dropdown ul a or submenu text stays white-on-white */
@@ -2818,8 +2850,7 @@ section.portal-alert-media {
   /* Common overflow zone: nowrap nav still wider than viewport */
   @media (max-width: 1539.98px) {
     .navmenu-portal>ul>li {
-      padding-left: 7px !important;
-      padding-right: 7px !important;
+      padding: 10px 14px !important;
     }
 
     .navmenu-portal>ul>li>a,
