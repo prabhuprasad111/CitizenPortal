@@ -110,12 +110,28 @@ body.login-page-body {
   }
 }
 
+/* React: header + main live inside #root — mirror standalone login.html body flex column */
+html.portal-index body.login-page-body #root,
+html.portal-index body.login-page-body .portal-layout--login {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 100%;
+}
+
+html.portal-index body.login-page-body .portal-layout--login .login-main-centre {
+  flex: 1 1 auto;
+}
+
 /* ── Main: centered card, flex fill (offset for fixed portal header, same as index) ── */
 .login-main-centre {
   flex: 1;
   min-height: 0;
   display: flex;
-  align-items: center;
+  /* Top-align so tabs + Konark wheel are not clipped under the fixed header when the card is tall */
+  align-items: flex-start;
   justify-content: center;
   padding: max(0.5rem, env(safe-area-inset-top))
     max(1rem, env(safe-area-inset-right))
@@ -125,14 +141,16 @@ body.login-page-body {
   z-index: 10;
 }
 
-html.portal-index body.login-page-body.index-page .login-main-centre {
+html.portal-index body.login-page-body.index-page .login-main-centre,
+html.portal-index body.login-page-body .login-main-centre {
+  align-items: flex-start;
   padding-top: max(env(safe-area-inset-top), clamp(176px, 22vw, 212px));
 }
 
 /* Tablet / mobile: padding must clear full fixed header (utility+brand+nav, z-index 1000) or nav covers the card tabs */
 @media (max-width: 1199.98px) {
-  html.portal-index body.login-page-body.index-page .login-main-centre {
-    align-items: flex-start;
+  html.portal-index body.login-page-body.index-page .login-main-centre,
+  html.portal-index body.login-page-body .login-main-centre {
     padding-top: max(env(safe-area-inset-top), clamp(220px, 12vh + 128px, 296px));
     padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
     padding-left: max(0.75rem, env(safe-area-inset-left));
@@ -141,9 +159,17 @@ html.portal-index body.login-page-body.index-page .login-main-centre {
 }
 
 @media (max-width: 575.98px) {
-  html.portal-index body.login-page-body.index-page .login-main-centre {
+  html.portal-index body.login-page-body.index-page .login-main-centre,
+  html.portal-index body.login-page-body .login-main-centre {
     padding-top: max(env(safe-area-inset-top), clamp(252px, 14vh + 136px, 318px));
   }
+}
+
+/* Bootstrap reboot must not flatten login card controls */
+.login-card-inner button.login-auth-tab,
+.login-card-inner .btn-login-submit,
+.login-card-inner .btn-toggle-password {
+  font-family: inherit;
 }
 
 .login-card-shell {
