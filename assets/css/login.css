@@ -1,0 +1,822 @@
+/**
+ * Citizen Portal — Odisha login (centered card, assets/img artwork)
+ */
+
+:root {
+  /* Aligned with Citizen Portal (main.css accent / hero blues) */
+  --portal-accent: #0760c9;
+  --portal-navy: #004a8d;
+  --portal-navy-deep: #003566;
+  --portal-ink: #1e293b;
+  --portal-muted: #64748b;
+  --portal-surface: #ffffff;
+  --portal-page: #f1f5f9;
+  --portal-ring: rgba(7, 96, 201, 0.28);
+  --od-card-bg: rgba(255, 255, 255, 0.98);
+  /* Legacy token names kept for fewer replacements */
+  --od-saffron: var(--portal-accent);
+  --od-deep-orange: var(--portal-navy-deep);
+  --od-crimson: #0a5cad;
+  --od-maroon: var(--portal-navy-deep);
+  --od-cream: var(--portal-page);
+  --od-ink: var(--portal-ink);
+  --od-stone: var(--portal-muted);
+  --od-ring: var(--portal-ring);
+
+  /* bottom.png mask: transparent at TOP (blends into page) → opaque toward BOTTOM */
+  --login-footer-mask-top: 0%;
+  --login-footer-mask-blend-mid: 36%;
+  --login-footer-mask-solid-from: 58%;
+
+  /* Page backdrop: line / grid tone (kept very light for readability) */
+  --login-bg-line: rgba(0, 53, 102, 0.055);
+  --login-bg-line-fine: rgba(7, 96, 201, 0.04);
+  --login-bg-wash: rgba(7, 96, 201, 0.11);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  height: auto;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+html.portal-index {
+  max-width: 100%;
+}
+
+body.login-page-body {
+  margin: 0;
+  min-height: 100dvh;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  color: var(--od-ink);
+  background-color: #e9eef5;
+  /* Layered: soft washes + diagonal hatch + grid (inspired by formal / folk band geometry, stays subtle) */
+  background-image:
+    repeating-linear-gradient(
+      118deg,
+      transparent 0,
+      transparent 14px,
+      var(--login-bg-line-fine) 14px,
+      var(--login-bg-line-fine) 15px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 35px,
+      var(--login-bg-line) 35px,
+      var(--login-bg-line) 36px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 35px,
+      var(--login-bg-line) 35px,
+      var(--login-bg-line) 36px
+    ),
+    radial-gradient(ellipse 100% 70% at 50% -15%, var(--login-bg-wash), transparent 58%),
+    radial-gradient(ellipse 90% 55% at 0% 45%, rgba(0, 74, 141, 0.07), transparent 52%),
+    radial-gradient(ellipse 80% 50% at 100% 55%, rgba(7, 96, 201, 0.06), transparent 48%),
+    linear-gradient(180deg, #f8fafc 0%, #eef2ff 36%, #e8edf3 100%);
+  background-repeat: repeat, repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 575.98px) {
+  body.login-page-body {
+    /* Slightly simpler backdrop on small screens (less moiré) */
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 40px,
+        var(--login-bg-line) 40px,
+        var(--login-bg-line) 41px
+      ),
+      radial-gradient(ellipse 100% 65% at 50% 0%, var(--login-bg-wash), transparent 55%),
+      linear-gradient(180deg, #f8fafc 0%, #eef2ff 38%, #e9eef5 100%);
+    background-repeat: repeat, no-repeat, no-repeat;
+  }
+}
+
+/* ── Main: centered card, flex fill (offset for fixed portal header, same as index) ── */
+.login-main-centre {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(0.5rem, env(safe-area-inset-top))
+    max(1rem, env(safe-area-inset-right))
+    calc(0.35rem + env(safe-area-inset-bottom))
+    max(1rem, env(safe-area-inset-left));
+  position: relative;
+  z-index: 10;
+}
+
+html.portal-index body.login-page-body.index-page .login-main-centre {
+  padding-top: max(env(safe-area-inset-top), clamp(176px, 22vw, 212px));
+}
+
+/* Tablet / mobile: padding must clear full fixed header (utility+brand+nav, z-index 1000) or nav covers the card tabs */
+@media (max-width: 1199.98px) {
+  html.portal-index body.login-page-body.index-page .login-main-centre {
+    align-items: flex-start;
+    padding-top: max(env(safe-area-inset-top), clamp(220px, 12vh + 128px, 296px));
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+  }
+}
+
+@media (max-width: 575.98px) {
+  html.portal-index body.login-page-body.index-page .login-main-centre {
+    padding-top: max(env(safe-area-inset-top), clamp(252px, 14vh + 136px, 318px));
+  }
+}
+
+.login-card-shell {
+  position: relative;
+  width: min(416px, 100%);
+  max-width: 100%;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-card-shell.login-card-shell--register {
+  width: min(560px, 100%);
+}
+
+.login-card-shell .login-card-inner {
+  overflow: visible;
+}
+
+.login-patta-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.login-card-inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.15rem, 3.2vmin, 1.85rem);
+  border-radius: 17px;
+  background: var(--od-card-bg);
+  box-shadow:
+    0 2px 4px rgba(15, 23, 42, 0.04),
+    0 22px 50px rgba(15, 23, 42, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.92) inset;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* backdrop-filter + toggling [hidden] panels can fail to repaint on mobile WebKit until user interaction */
+@media (max-width: 767.98px) {
+  .login-card-inner {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.99);
+  }
+}
+
+/* Sign in · Citizen registration */
+.login-auth-switch {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.2rem;
+  margin: 0 0 0.85rem;
+  border-radius: 12px;
+  background: rgba(241, 245, 249, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.login-auth-tab {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  border-radius: 9px;
+  padding: 0.48rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--portal-muted);
+  background: transparent;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+@media (max-width: 575.98px) {
+  .login-auth-switch {
+    gap: 0.32rem;
+    padding: 0.22rem;
+  }
+
+  .login-auth-tab {
+    padding: 0.52rem 0.4rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+    color: #1e293b;
+    hyphens: none;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 420px) {
+  .login-auth-switch {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+    padding: 0.35rem;
+  }
+
+  .login-auth-tab {
+    width: 100%;
+    max-width: 100%;
+    font-size: 0.78rem;
+    padding: 0.58rem 0.65rem;
+    letter-spacing: 0.03em;
+  }
+}
+
+.login-auth-tab:hover,
+.login-auth-tab:focus-visible {
+  color: var(--portal-navy);
+}
+
+.login-auth-tab--active:hover,
+.login-auth-tab--active:focus-visible {
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+}
+
+.login-auth-tab:focus-visible {
+  outline: 2px solid var(--portal-accent);
+  outline-offset: 2px;
+}
+
+.login-auth-tab--active {
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  background: linear-gradient(180deg, #0b5cad 0%, var(--portal-navy) 55%, var(--portal-navy-deep) 100%);
+  box-shadow: 0 2px 8px rgba(0, 53, 102, 0.22);
+  text-shadow: 0 1px 2px rgba(0, 24, 60, 0.45);
+}
+
+.login-panel[hidden] {
+  display: none !important;
+}
+
+.login-panel:not([hidden]) {
+  /* Promote own layer after un-hiding (helps WebKit repaint when switching auth tabs) */
+  transform: translateZ(0);
+}
+
+.login-reg-title {
+  margin: 0 0 0.85rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--portal-navy-deep);
+}
+
+.login-reg-form {
+  margin-top: 0.25rem;
+}
+
+.login-reg-label {
+  display: block;
+  margin-bottom: 0.28rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--portal-ink);
+}
+
+.login-reg-control,
+.login-reg-mobile-group .form-control {
+  font-size: 0.88rem;
+  border-color: rgba(148, 163, 184, 0.65);
+}
+
+.login-reg-control:focus,
+.login-reg-mobile-group .form-control:focus {
+  border-color: var(--portal-accent);
+  box-shadow: 0 0 0 0.2rem var(--portal-ring);
+}
+
+.login-reg-cc {
+  font-weight: 700;
+  color: var(--portal-navy-deep);
+  background: #e2e8f0;
+  border-color: rgba(148, 163, 184, 0.65);
+}
+
+.login-reg-hint {
+  margin: 0.28rem 0 0;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: var(--portal-accent);
+}
+
+.login-reg-actions .btn-login-submit {
+  width: auto;
+}
+
+.login-reg-actions .btn.btn-login-submit.btn-sm {
+  padding: 0.55rem 1.15rem;
+  font-size: 0.88rem;
+}
+
+.login-reg-actions .btn-outline-secondary {
+  border-color: rgba(148, 163, 184, 0.85);
+  color: var(--portal-navy-deep);
+}
+
+.login-reg-actions .btn-outline-secondary:hover {
+  border-color: var(--portal-navy);
+  background: rgba(241, 245, 249, 0.9);
+  color: var(--portal-navy-deep);
+}
+
+.login-reg-control-padded {
+  padding-left: 2.65rem !important;
+}
+
+.login-brand-row {
+  text-align: center;
+  margin-bottom: clamp(0.85rem, 2.8vmin, 1.25rem);
+}
+
+.login-konark-wheel-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.65rem;
+}
+
+/* box-shadow avoids filter+overflow issues that can freeze child rotation in some engines */
+.login-wheel-spin {
+  width: clamp(72px, 15vmin, 92px);
+  height: clamp(72px, 15vmin, 92px);
+  border-radius: 50%;
+  overflow: hidden;
+  transform-origin: center center;
+  flex-shrink: 0;
+  background: #f8fafc;
+  box-shadow: 0 3px 14px rgba(15, 23, 42, 0.12);
+}
+
+/* Rotate this div — animating <img> transform is flaky with object-fit in some browsers */
+.login-wheel-rotator {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  transform-origin: center center;
+  will-change: transform;
+  animation: loginKonarkSpin 24s linear infinite;
+  -webkit-animation: loginKonarkSpin 24s linear infinite;
+}
+
+.login-wheel-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+  transform: scale(1.14);
+}
+
+@keyframes loginKonarkSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes loginKonarkSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.login-heading {
+  font-size: clamp(1.45rem, 4.2vmin, 1.78rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 0.2rem;
+  color: var(--portal-navy-deep);
+}
+
+/* Odia strings only: Oriya font on .lang-or + sign-in placeholders; English UI keeps body font (main.css handles visibility). */
+html.portal-index.portal-lang-or body.login-page-body .lang-or {
+  font-family: "Noto Sans Oriya", "Noto Sans Odia", serif;
+}
+
+html.portal-index.portal-lang-or body.login-page-body .login-heading .lang-or {
+  display: block;
+  margin-top: 0.08rem;
+  font-size: clamp(1.72rem, 5vmin, 2.05rem);
+  font-weight: 600;
+  color: var(--portal-navy-deep);
+}
+
+html.portal-index.portal-lang-or body.login-page-body .login-input.portal-i18n-input {
+  font-family: "Noto Sans Oriya", "Noto Sans Odia", "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+.login-sub {
+  margin: 0;
+  font-size: clamp(0.82rem, 2.4vmin, 0.9rem);
+  color: var(--od-stone);
+}
+
+.login-sub .odia {
+  font-family: "Noto Sans Oriya", "Noto Sans Odia", serif;
+  font-size: 0.95em;
+  color: var(--portal-accent);
+  font-weight: 500;
+}
+
+.login-form {
+  margin-top: clamp(0.85rem, 2.5vmin, 1.35rem);
+}
+
+.login-field {
+  margin-bottom: clamp(0.78rem, 2.2vmin, 1.05rem);
+}
+
+.login-label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.55rem;
+  margin-bottom: 0.32rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--od-ink);
+}
+
+.login-label .odia {
+  font-family: "Noto Sans Oriya", "Noto Sans Odia", serif;
+  font-weight: 500;
+  color: var(--od-deep-orange);
+  font-size: 0.84rem;
+}
+
+.login-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-input-wrap .bi {
+  position: absolute;
+  left: 0.88rem;
+  font-size: 1.02rem;
+  color: var(--portal-accent);
+  pointer-events: none;
+}
+
+.login-input {
+  width: 100%;
+  padding: 0.72rem 0.95rem 0.72rem 2.65rem;
+  font-size: 0.94rem;
+  border: 1.5px solid rgba(148, 163, 184, 0.55);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.98);
+  color: var(--od-ink);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: var(--portal-accent);
+  box-shadow: 0 0 0 4px var(--od-ring);
+  background: #fff;
+}
+
+.login-password-actions {
+  position: absolute;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.btn-toggle-password {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.28rem;
+  height: 2.28rem;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--od-stone);
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.btn-toggle-password:hover,
+.btn-toggle-password:focus-visible {
+  background: rgba(7, 96, 201, 0.1);
+  color: var(--portal-navy-deep);
+}
+
+.btn-toggle-password:focus-visible {
+  outline: 2px solid var(--portal-accent);
+  outline-offset: 2px;
+}
+
+.login-input--password {
+  padding-right: 3.05rem;
+}
+
+.login-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin-bottom: clamp(0.78rem, 2.2vmin, 1.05rem);
+}
+
+.login-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: var(--od-stone);
+  user-select: none;
+}
+
+.login-check input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.1rem;
+  accent-color: var(--portal-accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.login-check .odia {
+  font-family: "Noto Sans Oriya", "Noto Sans Odia", serif;
+}
+
+.login-forgot {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--portal-accent);
+  text-decoration: none;
+  line-height: 1.35;
+  transition: color 0.15s;
+  text-align: right;
+  max-width: 16rem;
+}
+
+.login-forgot:hover {
+  color: var(--portal-navy-deep);
+  text-decoration: underline;
+}
+
+.login-forgot .odia {
+  font-family: "Noto Sans Oriya", "Noto Sans Odia", serif;
+  font-weight: 500;
+  font-size: 0.78rem;
+  color: var(--portal-navy);
+}
+
+.btn-login-submit {
+  width: 100%;
+  padding: 0.82rem 1.15rem;
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  border: none;
+  border-radius: 13px;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    var(--portal-navy-deep) 0%,
+    var(--portal-navy) 38%,
+    var(--portal-accent) 100%
+  );
+  background-size: 200% 100%;
+  box-shadow:
+    0 4px 14px rgba(0, 53, 102, 0.28),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background-position 0.35s ease;
+}
+
+.btn-login-submit:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 26px rgba(0, 53, 102, 0.32),
+    0 0 0 1px rgba(255, 255, 255, 0.25) inset;
+  background-position: 100% 0;
+}
+
+.btn-login-submit:active {
+  transform: translateY(0);
+}
+
+.btn-login-submit .odia {
+  font-family: "Noto Sans Oriya", "Noto Sans Odia", serif;
+  font-weight: 600;
+}
+
+.login-footer-links {
+  margin-top: clamp(0.78rem, 2.4vmin, 1.1rem);
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--od-stone);
+  line-height: 1.4;
+}
+
+.login-footer-links a {
+  color: var(--portal-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-footer-links a:hover {
+  text-decoration: underline;
+}
+
+.login-footer-links .odia {
+  font-family: "Noto Sans Oriya", "Noto Sans Odia", serif;
+}
+
+/* Same pattern as homepage preloader (#preloader CSS lives in main.css there) */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  overflow: hidden;
+  background: var(--portal-page);
+  transition: opacity 0.45s ease-out;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid rgba(255, 255, 255, 0.92);
+  border-color: var(--portal-accent) transparent var(--portal-navy) transparent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-login-preloader 1.2s linear infinite;
+}
+
+@keyframes animate-login-preloader {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  #preloader:before {
+    animation: none;
+    border-color: rgba(7, 96, 201, 0.45);
+  }
+}
+
+/* ── Footer art (bottom.png): fades into page at top; strong art + deep tone at bottom ─── */
+.login-saura-footer {
+  flex-shrink: 0;
+  height: clamp(56px, 11dvh, 100px);
+  min-height: 56px;
+  position: relative;
+  z-index: 20;
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom,
+    rgba(248, 250, 252, 0.95) 0%,
+    rgba(226, 232, 240, 0.55) 32%,
+    rgba(148, 163, 184, 0.35) 58%,
+    rgba(51, 65, 85, 0.55) 82%,
+    rgba(15, 23, 42, 0.92) 96%,
+    #0f172a 100%
+  );
+}
+
+.login-bottom-art {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  /* Fade at TOP only; bottom stays fully visible (mask: white = opaque) */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent var(--login-footer-mask-top),
+    rgba(255, 255, 255, 0.28) 18%,
+    rgba(255, 255, 255, 0.62) 28%,
+    rgba(255, 255, 255, 0.9) var(--login-footer-mask-blend-mid),
+    #fff var(--login-footer-mask-solid-from),
+    #fff 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent var(--login-footer-mask-top),
+    rgba(255, 255, 255, 0.28) 18%,
+    rgba(255, 255, 255, 0.62) 28%,
+    rgba(255, 255, 255, 0.9) var(--login-footer-mask-blend-mid),
+    #fff var(--login-footer-mask-solid-from),
+    #fff 100%
+  );
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+@media (max-height: 620px) {
+  .login-saura-footer {
+    height: clamp(44px, 8dvh, 64px);
+    min-height: 44px;
+  }
+
+  .login-brand-row {
+    margin-bottom: 0.5rem;
+  }
+
+  .login-wheel-spin {
+    width: clamp(56px, 13vmin, 72px);
+    height: clamp(56px, 13vmin, 72px);
+  }
+
+  .login-wheel-rotator {
+    animation-duration: 28s;
+    -webkit-animation-duration: 28s;
+  }
+
+  .login-form {
+    margin-top: 0.65rem;
+  }
+
+  .login-field {
+    margin-bottom: 0.62rem;
+  }
+
+  .login-footer-links {
+    margin-top: 0.55rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .login-wheel-rotator {
+    animation: none !important;
+    -webkit-animation: none !important;
+    will-change: auto;
+  }
+
+  .btn-login-submit:hover {
+    transform: none;
+  }
+}
