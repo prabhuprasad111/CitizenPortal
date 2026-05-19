@@ -1,0 +1,199 @@
+<div class="login-card-shell" id="loginCardShell">
+      <svg class="login-patta-frame" viewBox="0 0 440 620" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="pattaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0a4f8c" />
+            <stop offset="50%" stop-color="#0760c9" />
+            <stop offset="100%" stop-color="#003566" />
+          </linearGradient>
+        </defs>
+        <rect x="3" y="3" width="434" height="614" rx="20" fill="none" stroke="url(#pattaGrad)" stroke-width="2.2" />
+        <path fill="none" stroke="url(#pattaGrad)" stroke-width="1.2" opacity="0.8"
+          d="M22 22h52l10-11 10 11h52M22 596h52l10 11 10-11h52M22 22v52l-11 10 11 10M416 22v52l11 10-11 10" />
+        <circle cx="40" cy="40" r="5" fill="none" stroke="url(#pattaGrad)" stroke-width="1.1" opacity="0.75" />
+        <circle cx="400" cy="40" r="5" fill="none" stroke="url(#pattaGrad)" stroke-width="1.1" opacity="0.75" />
+        <circle cx="40" cy="578" r="5" fill="none" stroke="url(#pattaGrad)" stroke-width="1.1" opacity="0.75" />
+        <circle cx="400" cy="578" r="5" fill="none" stroke="url(#pattaGrad)" stroke-width="1.1" opacity="0.75" />
+      </svg>
+
+      <div class="login-card-inner">
+        <div class="login-auth-switch" role="tablist" aria-label="Sign in or register">
+          <button type="button" class="login-auth-tab login-auth-tab--active" id="loginTabSignin" role="tab"
+            aria-selected="true" aria-controls="loginPanelSignin" data-login-panel="signin">Sign in</button>
+          <button type="button" class="login-auth-tab" id="loginTabRegister" role="tab" aria-selected="false"
+            aria-controls="loginPanelRegister" data-login-panel="register">Citizen registration</button>
+        </div>
+
+        <div class="login-panel" id="loginPanelSignin" role="tabpanel" aria-labelledby="loginTabSignin">
+          <div class="login-brand-row">
+            <div class="login-konark-wheel-wrap">
+              <div class="login-wheel-spin" role="img" aria-label="Konark Sun Temple wheel · କୋଣାର୍କ ସୂର୍ଯ୍ୟମନ୍ଦିରର ଚକ">
+                <div class="login-wheel-rotator">
+                  <img class="login-wheel-img" src="assets/img/konark.png" alt="" width="400" height="400"
+                    decoding="async" fetchpriority="high">
+                </div>
+              </div>
+            </div>
+
+            <h1 class="login-heading">
+              <span class="lang-en">Welcome</span>
+              <span class="lang-or" lang="or">ସ୍ୱାଗତ</span>
+            </h1>
+            <p class="login-sub">
+              <span class="lang-en">Odisha Citizen Portal</span>
+              <span class="lang-or" lang="or">ଓଡ଼ିଶା ନାଗରିକ ପୋର୍ଟାଲ୍</span>
+            </p>
+          </div>
+
+          <form class="login-form" id="loginFormSignin" action="#" method="post" autocomplete="on" novalidate>
+            <div class="login-field">
+              <label class="login-label" for="username">
+                <span class="lang-en">Username</span>
+                <span class="lang-or" lang="or">ବ୍ୟବହାରକାରୀ ନାମ</span>
+              </label>
+              <div class="login-input-wrap">
+                <i class="bi bi-person-fill" aria-hidden="true"></i>
+                <input class="login-input portal-i18n-input" type="text" id="username" name="username" required
+                  spellcheck="false" autocapitalize="none" data-ph-en="Enter your username"
+                  data-ph-or="ବ୍ୟବହାରକାରୀ ନାମ ଲେଖନ୍ତୁ">
+              </div>
+            </div>
+
+            <div class="login-field">
+              <label class="login-label" for="password">
+                <span class="lang-en">Password</span>
+                <span class="lang-or" lang="or">ପାସ୍ୱାର୍ଡ</span>
+              </label>
+              <div class="login-input-wrap">
+                <i class="bi bi-shield-lock-fill" aria-hidden="true"></i>
+                <input class="login-input login-input--password portal-i18n-input" type="password" id="password"
+                  name="password" required autocomplete="current-password" data-ph-en="Enter your password"
+                  data-ph-or="ପାସ୍ୱାର୍ଡ ଲେଖନ୍ତୁ">
+                <div class="login-password-actions">
+                  <button class="btn-toggle-password" type="button" id="togglePassword" aria-pressed="false"
+                    aria-controls="password" data-show-en="Show password" data-hide-en="Hide password"
+                    data-show-or="ପାସ୍ୱାର୍ଡ ଦେଖାନ୍ତୁ" data-hide-or="ପାସ୍ୱାର୍ଡ ଲୁଚାନ୍ତୁ">
+                    <i class="bi bi-eye-fill" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="login-meta">
+              <label class="login-check">
+                <input type="checkbox" id="remember" name="remember" value="1">
+                <span>
+                  <span class="lang-en">Remember me</span>
+                  <span class="lang-or" lang="or">ମନେରଖିବେ</span>
+                </span>
+              </label>
+              <a class="login-forgot" href="#">
+                <span class="lang-en">Forgot password?</span>
+                <span class="lang-or" lang="or">ପାସ୍ୱାର୍ଡ ଭୁଲି ଗଲେ?</span>
+              </a>
+            </div>
+
+            <button type="submit" class="btn-login-submit" aria-label="Sign in">Sign in</button>
+          </form>
+        </div>
+
+        <div class="login-panel" id="loginPanelRegister" role="tabpanel" hidden aria-labelledby="loginTabRegister">
+          <h2 class="login-reg-title">Citizen registration</h2>
+          <form class="login-reg-form" id="loginFormRegister" action="#" method="post" autocomplete="on" novalidate>
+            <div class="row g-2 g-md-3">
+              <div class="col-md-4">
+                <label class="login-reg-label" for="regFirstName">First name <abbr class="text-danger"
+                    title="required">*</abbr></label>
+                <input class="form-control login-reg-control" type="text" id="regFirstName" name="firstName" required
+                  maxlength="80" autocomplete="given-name">
+              </div>
+              <div class="col-md-4">
+                <label class="login-reg-label" for="regMiddleName">Middle name</label>
+                <input class="form-control login-reg-control" type="text" id="regMiddleName" name="middleName"
+                  maxlength="80" autocomplete="additional-name">
+              </div>
+              <div class="col-md-4">
+                <label class="login-reg-label" for="regLastName">Last name</label>
+                <input class="form-control login-reg-control" type="text" id="regLastName" name="lastName"
+                  maxlength="80" autocomplete="family-name">
+              </div>
+              <div class="col-12">
+                <label class="login-reg-label" for="regMobile">Mobile number <abbr class="text-danger"
+                    title="required">*</abbr></label>
+                <div class="input-group login-reg-mobile-group">
+                  <span class="input-group-text login-reg-cc" id="regCcLabel">+91</span>
+                  <input class="form-control login-reg-control" type="tel" id="regMobile" name="mobile"
+                    inputmode="numeric" pattern="[1-9][0-9]{9}" maxlength="10" required autocomplete="tel-national"
+                    aria-describedby="regMobileHint" placeholder="10-digit mobile number">
+                </div>
+                <p class="login-reg-hint" id="regMobileHint">The mobile number must be of 10 digits and mobile no.
+                  should not start with 0.</p>
+              </div>
+              <div class="col-12">
+                <label class="login-reg-label" for="regEmail">Email ID</label>
+                <input class="form-control login-reg-control" type="email" id="regEmail" name="email"
+                  autocomplete="email" placeholder="emailid@mail.com" aria-describedby="regEmailHint">
+                <p class="login-reg-hint" id="regEmailHint">(Ex:- emailid@mail.com)</p>
+              </div>
+              <div class="col-md-6">
+                <label class="login-reg-label" for="regGender">Gender <abbr class="text-danger"
+                    title="required">*</abbr></label>
+                <select class="form-select login-reg-control" id="regGender" name="gender" required>
+                  <option value="male" selected>Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="login-reg-label" for="regDob">Date of birth <abbr class="text-danger"
+                    title="required">*</abbr></label>
+                <input class="form-control login-reg-control" type="date" id="regDob" name="dob" required
+                  max="9999-12-31" autocomplete="bday" aria-describedby="regDobHint">
+                <p class="login-reg-hint mb-0" id="regDobHint">Use calendar or enter as DD/MM/YYYY in supported
+                  browsers.</p>
+              </div>
+              <div class="col-12">
+                <label class="login-reg-label" for="regLoginId">Login ID <abbr class="text-danger"
+                    title="required">*</abbr></label>
+                <input class="form-control login-reg-control" type="text" id="regLoginId" name="loginId" required
+                  minlength="6" maxlength="30" pattern="[A-Za-z0-9]{6,30}" autocomplete="username"
+                  aria-describedby="regLoginIdHint">
+                <p class="login-reg-hint" id="regLoginIdHint">Login ID should be of 6 to 30 alphanumeric.</p>
+              </div>
+              <div class="col-12">
+                <label class="login-reg-label" for="regPassword">Password <abbr class="text-danger"
+                    title="required">*</abbr></label>
+                <div class="login-input-wrap">
+                  <i class="bi bi-shield-lock-fill" aria-hidden="true"></i>
+                  <input class="login-input login-input--password login-reg-control-padded" type="password"
+                    id="regPassword" name="regPassword" required autocomplete="new-password"
+                    aria-describedby="regPasswordHint">
+                  <div class="login-password-actions">
+                    <button class="btn-toggle-password" type="button" id="toggleRegPassword" aria-pressed="false"
+                      aria-controls="regPassword" data-show-en="Show password" data-hide-en="Hide password"
+                      data-show-or="ପାସ୍ୱାର୍ଡ ଦେଖାନ୍ତୁ" data-hide-or="ପାସ୍ୱାର୍ଡ ଲୁଚାନ୍ତୁ">
+                      <i class="bi bi-eye-fill" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+                <p class="login-reg-hint" id="regPasswordHint">Password should be combination of a-z, 0-9 &amp; special
+                  characters or more.</p>
+              </div>
+            </div>
+            <div class="login-reg-actions d-flex flex-wrap gap-2 justify-content-end mt-3">
+              <button type="submit" class="btn btn-login-submit btn-sm px-4">Submit</button>
+              <button type="reset" class="btn btn-outline-secondary btn-sm px-3">Clear</button>
+              <button type="button" class="btn btn-outline-secondary btn-sm px-3" id="loginRegClose">Close</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="login-footer-links">
+          <a href="index.html" id="loginBackHome" data-loader-on-leave="1">
+            <i class="bi bi-arrow-left-short" aria-hidden="true"></i>
+            <span class="lang-en"> Back to home</span>
+            <span class="lang-or" lang="or"> ମୁଖ୍ୟ ପୃଷ୍ଠାକୁ ଫେରିଆସନ୍ତୁ</span>
+          </a>
+        </div>
+      </div>
+    </div>
