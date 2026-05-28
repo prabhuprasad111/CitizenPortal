@@ -3,6 +3,7 @@ import { CHATBOT_TOPICS, type ChatbotTopic } from './chatbotTopics';
 import { postServiceStatus } from '@/api/serviceStatus';
 import { ServiceStatusApiError } from '@/api/types/serviceStatus';
 import { sendToAI } from '@/api/aiChat';
+import type { AiChatResult } from '@/api/aiChat';
 import {
   AI_ERROR,
   AI_THINKING,
@@ -26,6 +27,8 @@ import {
   type UserFlowData,
 } from './chatbotSession';
 import { SERVICE_TYPES, type ServiceTypeOption } from './serviceTypes';
+import { marked } from 'marked';
+import DOMPurify from 'dompurify';
 
 /** Called from React Send button / Enter — ensures send runs even if DOM listeners fail. */
 let submitFreeformHandler: (() => void) | null = null;
@@ -71,6 +74,9 @@ export function initPortalChatbot(): (() => void) | undefined {
     patchChatbotSession({ state: chatbotState, userData: { ...userData } });
   };
 
+  /** Get current session ID for AI calls. */
+  const getSessionId = () => getChatbotSession().sessionId;
+
   const isOrMode = () => document.documentElement.classList.contains('portal-lang-or');
   const esc = (s: string) => {
     const d = document.createElement('div');
@@ -88,19 +94,83 @@ export function initPortalChatbot(): (() => void) | undefined {
   };
 
   const appendUser = (text: string) => {
+
     const wrap = document.createElement('div');
+
     wrap.className = 'portal-chatbot-msg portal-chatbot-msg--user';
-    wrap.innerHTML = `<div class="portal-chatbot-bubble">${esc(text)}</div>`;
+
+    wrap.innerHTML =
+      `<div class="portal-chatbot-bubble">${esc(text)}</div>`;
+
+    thread.appendChild(wrap);
+
+    thread.scrollTop = thread.scrollHeight;
+  };
+  const appendBot = (markdown: string) => {
+
+    const wrap = document.createElement('div');
+
+    wrap.className = 'portal-chatbot-msg portal-chatbot-msg--bot';
+
+    const formattedHtml = DOMPurify.sanitize(
+      marked.parse(markdown) as string
+    );
+
+    wrap.innerHTML =
+      `<div class="portal-chatbot-bubble markdown-body">${formattedHtml}</div>`;
+
+    thread.appendChild(wrap);
+
+    thread.scrollTop = thread.scrollHeight;
+  };
+
+  /** Render a confirmation prompt with clickable Yes/No buttons. */
+  const appendBotConfirmation = (message: string, options: string[]) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'portal-chatbot-msg portal-chatbot-msg--bot';
+
+    const sanitizedMessage = DOMPurify.sanitize(
+      marked.parse(message) as string
+    );
+
+    const buttonsHtml = options
+      .map(
+        (opt) =>
+          `<button type="button" class="portal-chatbot-confirm-btn" data-confirm-value="${esc(opt)}">${esc(opt)}</button>`,
+      )
+      .join('');
+
+    wrap.innerHTML =
+      `<div class="portal-chatbot-bubble markdown-body">` +
+      `${sanitizedMessage}` +
+      `<div class="portal-chatbot-confirm-buttons">${buttonsHtml}</div>` +
+      `</div>`;
+
+    // Attach click handlers to confirmation buttons
+    wrap.querySelectorAll('.portal-chatbot-confirm-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const value = (btn as HTMLElement).dataset.confirmValue || '';
+        // Disable all confirmation buttons after selection
+        wrap.querySelectorAll('.portal-chatbot-confirm-btn').forEach((b) => {
+          (b as HTMLButtonElement).disabled = true;
+          b.classList.add('portal-chatbot-confirm-btn--disabled');
+        });
+        // Highlight the selected button
+        btn.classList.add('portal-chatbot-confirm-btn--selected');
+        // Send the confirmation value as a user message
+        handleConfirmationClick(value);
+      });
+    });
+
     thread.appendChild(wrap);
     thread.scrollTop = thread.scrollHeight;
   };
 
-  const appendBot = (html: string) => {
-    const wrap = document.createElement('div');
-    wrap.className = 'portal-chatbot-msg portal-chatbot-msg--bot';
-    wrap.innerHTML = `<div class="portal-chatbot-bubble">${html}</div>`;
-    thread.appendChild(wrap);
-    thread.scrollTop = thread.scrollHeight;
+  /** Handle user clicking a confirmation button (Yes/No). */
+  const handleConfirmationClick = async (value: string) => {
+    if (busy) return;
+    appendUser(value);
+    await invokeSendToAI(value);
   };
 
   const appendBotBilingual = (en: string, or: string) => {
@@ -113,13 +183,15 @@ export function initPortalChatbot(): (() => void) | undefined {
     if (sendBtn) (sendBtn as HTMLButtonElement).disabled = on;
   };
 
-  const showTyping = (en: string, or: string) => {
+  const showTyping = (_en: string, _or: string) => {
     removeTyping();
     const wrap = document.createElement('div');
     wrap.className = 'portal-chatbot-msg portal-chatbot-msg--bot portal-chatbot-msg--typing';
     wrap.innerHTML =
       `<div class="portal-chatbot-bubble portal-chatbot-bubble--typing">` +
-      bilingualHtml(esc(en), esc(or)) +
+      `<div class="portal-chatbot-typing-dots">` +
+      `<span></span><span></span><span></span>` +
+      `</div>` +
       `</div>`;
     thread.appendChild(wrap);
     typingEl = wrap;
@@ -276,7 +348,7 @@ export function initPortalChatbot(): (() => void) | undefined {
         if (import.meta.env.DEV && err.kind === 'network') {
           appendBot(
             `<p class="lang-en mb-0">${esc(text)}</p><p class="lang-or mb-0" lang="or">${esc(textOr)}</p>` +
-              `<p class="small text-muted mb-0 mt-1">${esc(err.message)}</p>`,
+            `<p class="small text-muted mb-0 mt-1">${esc(err.message)}</p>`,
           );
         } else {
           appendBot(
@@ -325,9 +397,16 @@ export function initPortalChatbot(): (() => void) | undefined {
     showTyping(AI_THINKING.en, AI_THINKING.or);
     setBusy(true);
     try {
-      const reply = await sendToAI(text);
+      const result: AiChatResult = await sendToAI(text, getSessionId());
       removeTyping();
-      appendBot(`<p class="mb-0">${esc(reply)}</p>`);
+
+      if (result.type === 'confirmation' && result.options?.length) {
+        // Render confirmation with clickable buttons
+        appendBotConfirmation(result.text, result.options);
+      } else {
+        // Render as markdown
+        appendBot(result.text);
+      }
     } catch (error) {
       console.error('AI API error:', error);
       removeTyping();
@@ -336,7 +415,12 @@ export function initPortalChatbot(): (() => void) | undefined {
       }
     } finally {
       setBusy(false);
-      appendFollowUpInvite();
+      // Don't show follow-up invite for confirmations — wait for user response
+      const lastMsg = thread.querySelector('.portal-chatbot-msg:last-child');
+      const hasConfirmButtons = lastMsg?.querySelector('.portal-chatbot-confirm-buttons');
+      if (!hasConfirmButtons) {
+        appendFollowUpInvite();
+      }
     }
   };
 

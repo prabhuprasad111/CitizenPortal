@@ -1,9 +1,10 @@
 import { aiChatPath } from './config';
 import { getEffectiveApiBaseUrl } from './httpClient';
 
-/** POST /api/ai/chat — dev: Vite proxy → Python /chat; prod: .NET or configured base */
+/** POST /api/ai/chat — dev: Vite proxy → .NET → Python; prod: .NET gateway */
 export interface AiChatRequestBody {
   message: string;
+  session_id?: string;
 }
 
 export interface AiChatResponseBody {
@@ -11,6 +12,15 @@ export interface AiChatResponseBody {
   message?: string;
   reply?: string;
   content?: string;
+  type?: string;        // "answer" | "confirmation"
+  options?: string[];   // e.g. ["Yes", "No"]
+}
+
+/** Structured result returned by sendToAI — includes type and options for confirmations. */
+export interface AiChatResult {
+  text: string;
+  type: 'answer' | 'confirmation';
+  options?: string[];
 }
 
 export function resolveAiChatUrl(): string {
@@ -27,9 +37,9 @@ export function resolveAiChatUrl(): string {
 
 /**
  * POST /api/ai/chat using fetch (visible in DevTools Network).
- * Body: { message }. Reads response.response | message | content.
+ * Body: { message, session_id? }. Returns structured result with type and options.
  */
-export async function sendToAI(message: string): Promise<string> {
+export async function sendToAI(message: string, sessionId?: string): Promise<AiChatResult> {
   const trimmed = message.trim();
   if (!trimmed) {
     throw new Error('Message is empty');
@@ -37,6 +47,11 @@ export async function sendToAI(message: string): Promise<string> {
 
   const url = resolveAiChatUrl();
   console.log('Calling AI API:', trimmed, '→', url);
+
+  const body: AiChatRequestBody = { message: trimmed };
+  if (sessionId) {
+    body.session_id = sessionId;
+  }
 
   let res: Response;
   try {
@@ -46,7 +61,7 @@ export async function sendToAI(message: string): Promise<string> {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ message: trimmed } satisfies AiChatRequestBody),
+      body: JSON.stringify(body),
     });
   } catch (error) {
     console.error('AI API error:', error, { url });
@@ -78,5 +93,9 @@ export async function sendToAI(message: string): Promise<string> {
     throw new Error('AI service unavailable');
   }
 
-  return reply;
+  return {
+    text: reply,
+    type: (data.type === 'confirmation' ? 'confirmation' : 'answer') as 'answer' | 'confirmation',
+    options: data.options,
+  };
 }

@@ -15,16 +15,12 @@ export default defineConfig(({ mode }) => {
       },
     },
     publicDir: 'public',
+
     server: {
       port: 5173,
       open: true,
+
       proxy: {
-        '/api/ai/chat': {
-          target: env.VITE_API_AI_PROXY_TARGET || 'http://localhost:8000',
-          changeOrigin: true,
-          secure: false,
-          rewrite: () => '/chat',
-        },
         '/api': {
           target: env.VITE_API_PROXY_TARGET || 'http://localhost:5165',
           changeOrigin: true,
