@@ -2342,22 +2342,31 @@ html.portal-index #root {
 }
 
 .index-page .main {
-  padding-top: clamp(176px, 22vw, 212px);
+  padding-top: 192px !important;
 }
 
 /* Home anchor target should stop below fixed header so alert strip is visible. */
 #home {
-  scroll-margin-top: clamp(176px, 22vw, 212px);
+  scroll-margin-top: 192px !important;
+}
+
+@media (max-width: 991px) {
+  .index-page .main {
+    padding-top: 186px !important;
+  }
+  #home {
+    scroll-margin-top: 186px !important;
+  }
 }
 
 @media (max-width: 767px) {
   .index-page .main {
     /* Mobile header stack is taller (utility + brand + nav), keep alert ticker below it */
-    padding-top: clamp(248px, 46vw, 332px);
+    padding-top: 268px !important;
   }
 
   #home {
-    scroll-margin-top: clamp(248px, 46vw, 332px);
+    scroll-margin-top: 268px !important;
   }
 }
 
@@ -3752,4 +3761,51 @@ html.portal-high-contrast body {
   border: none;
   border-top: 1px solid #e2e8f0;
   margin: 0.75rem 0;
+}
+
+/* ==========================================
+   Premium Custom Scrollbar Styles
+   ========================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+  border-radius: 10px;
+  border: 2px solid #f8fafc;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2563eb 0%, #1e40af 100%);
+}
+
+/* Firefox scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #f8fafc;
+}
+
+/* Pulse animation for headset icon */
+@keyframes portalPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
