@@ -2,7 +2,7 @@
 import { CHATBOT_TOPICS, type ChatbotTopic } from './chatbotTopics';
 import { postServiceStatus } from '@/api/serviceStatus';
 import { ServiceStatusApiError } from '@/api/types/serviceStatus';
-import { sendToAI } from '@/api/aiChat';
+import { sendToAI, resolveAiChatUrl } from '@/api/aiChat';
 import type { AiChatResult } from '@/api/aiChat';
 import {
   AI_ERROR,
@@ -388,6 +388,7 @@ export function initPortalChatbot(): (() => void) | undefined {
       return false;
     }
     appendFaqAnswer(faq.answer.en, faq.answer.or);
+    appendFollowUpInvite();
     return true;
   };
 
@@ -408,7 +409,7 @@ export function initPortalChatbot(): (() => void) | undefined {
         appendBot(result.text);
       }
     } catch (error) {
-      console.error('AI API error:', error);
+      console.error('AI API error:', error, { url: resolveAiChatUrl() });
       removeTyping();
       if (!tryLocalFaq(text)) {
         appendBotBilingual(AI_ERROR.en, AI_ERROR.or);
@@ -451,6 +452,11 @@ export function initPortalChatbot(): (() => void) | undefined {
     launcher?.setAttribute('aria-expanded', open ? 'true' : 'false');
     if (open) {
       setTimeout(() => input?.focus(), 80);
+      const bubble = document.getElementById('portalChatbotLauncherBubble');
+      if (bubble) {
+        bubble.classList.remove('show');
+        sessionStorage.setItem('sakhiBubbleDismissed', 'true');
+      }
     } else if (wasOpen) {
       resetChat();
     }
@@ -485,6 +491,9 @@ export function initPortalChatbot(): (() => void) | undefined {
         startServiceFlow();
         return;
       }
+      if (tryLocalFaq(message)) {
+        return;
+      }
       await invokeSendToAI(message);
       return;
     }
@@ -492,6 +501,9 @@ export function initPortalChatbot(): (() => void) | undefined {
     console.warn('[SAKHI] unexpected chatbotState:', chatbotState);
     chatbotState = 'idle';
     syncSession();
+    if (tryLocalFaq(message)) {
+      return;
+    }
     await invokeSendToAI(message);
   };
 
@@ -564,6 +576,34 @@ export function initPortalChatbot(): (() => void) | undefined {
     }
   };
 
+  const bubble = document.getElementById('portalChatbotLauncherBubble');
+  const bubbleClose = document.getElementById('portalChatbotLauncherBubbleClose');
+  const bubbleContent = document.getElementById('portalChatbotLauncherBubbleContent');
+
+  const onBubbleClose = (e: Event) => {
+    e.stopPropagation();
+    bubble?.classList.remove('show');
+    sessionStorage.setItem('sakhiBubbleDismissed', 'true');
+  };
+
+  const onBubbleContentClick = (e: Event) => {
+    e.preventDefault();
+    setOpen(true);
+  };
+
+  bubbleClose?.addEventListener('click', onBubbleClose);
+  bubbleContent?.addEventListener('click', onBubbleContentClick);
+
+  // Delayed presentation of launcher speech bubble
+  let bubbleTimeoutId: number | undefined;
+  if (!sessionStorage.getItem('sakhiBubbleDismissed') && root.getAttribute('data-open') !== 'true') {
+    bubbleTimeoutId = window.setTimeout(() => {
+      if (root.getAttribute('data-open') !== 'true') {
+        bubble?.classList.add('show');
+      }
+    }, 1500);
+  }
+
   thread.addEventListener('click', onThreadClick);
   launcher?.addEventListener('click', onLauncherClick);
   headerOpen?.addEventListener('click', onHeaderOpenClick);
@@ -586,6 +626,9 @@ export function initPortalChatbot(): (() => void) | undefined {
 
   return () => {
     submitFreeformHandler = null;
+    if (bubbleTimeoutId) clearTimeout(bubbleTimeoutId);
+    bubbleClose?.removeEventListener('click', onBubbleClose);
+    bubbleContent?.removeEventListener('click', onBubbleContentClick);
     thread.removeEventListener('click', onThreadClick);
     launcher?.removeEventListener('click', onLauncherClick);
     headerOpen?.removeEventListener('click', onHeaderOpenClick);

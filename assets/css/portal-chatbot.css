@@ -16,6 +16,41 @@
   --portal-bot-surface: #f8fafc;
 }
 
+/* Pulsing glow animation for chatbot launcher */
+@keyframes portalSathiLauncherPulse {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(10, 79, 140, 0.6),
+      0 0 0 0 rgba(253, 181, 21, 0.4),
+      0 6px 20px rgba(10, 79, 140, 0.35),
+      0 0 0 3px rgba(255, 255, 255, 0.95);
+  }
+  40% {
+    box-shadow:
+      0 0 0 14px rgba(10, 79, 140, 0),
+      0 0 0 8px rgba(253, 181, 21, 0.25),
+      0 6px 20px rgba(10, 79, 140, 0.35),
+      0 0 0 3px rgba(255, 255, 255, 0.95);
+  }
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(10, 79, 140, 0),
+      0 0 0 16px rgba(253, 181, 21, 0),
+      0 6px 20px rgba(10, 79, 140, 0.35),
+      0 0 0 3px rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* Gentle bounce/wiggle animation for speech bubble */
+@keyframes portalSathiBubbleWiggle {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.01);
+  }
+}
+
 .portal-chatbot-launcher {
   display: flex;
   align-items: center;
@@ -27,16 +62,15 @@
   border-radius: 50%;
   cursor: pointer;
   background: linear-gradient(145deg, #fff 0%, #e8f1fb 100%);
-  box-shadow:
-    0 4px 20px rgba(10, 79, 140, 0.35),
-    0 0 0 3px rgba(255, 255, 255, 0.95);
+  animation: portalSathiLauncherPulse 2.2s infinite ease-in-out;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
 }
 
 .portal-chatbot-launcher:hover {
-  transform: scale(1.06);
+  transform: scale(1.08);
   box-shadow:
-    0 8px 28px rgba(10, 79, 140, 0.4),
+    0 8px 28px rgba(10, 79, 140, 0.45),
     0 0 0 3px #fff;
 }
 
@@ -54,6 +88,94 @@
   border-radius: 50%;
   display: block;
   pointer-events: none;
+}
+
+/* Greeting Speech Bubble styled premium next to launcher */
+.portal-chatbot-launcher-bubble {
+  position: absolute;
+  bottom: 84px;
+  right: 6px;
+  width: 320px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 14px 18px;
+  box-shadow:
+    0 12px 36px rgba(10, 37, 92, 0.16),
+    0 0 0 1px rgba(10, 79, 140, 0.08);
+  opacity: 0;
+  transform: scale(0.85) translateY(15px);
+  pointer-events: none;
+  transition: opacity 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 2147483647;
+  animation: portalSathiBubbleWiggle 5s infinite ease-in-out 3s;
+}
+
+.portal-chatbot-launcher-bubble.show {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+.portal-chatbot-launcher-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  right: 28px;
+  border-width: 8px 8px 0;
+  border-style: solid;
+  border-color: #ffffff transparent;
+  display: block;
+  width: 0;
+}
+
+.portal-chatbot-launcher-bubble-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: color 0.15s ease, transform 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portal-chatbot-launcher-bubble-close:hover {
+  color: #475569;
+  transform: scale(1.1);
+}
+
+.portal-chatbot-launcher-bubble-content {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.portal-chatbot-launcher-bubble-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #e8f1fb;
+  box-shadow: 0 4px 10px rgba(10, 79, 140, 0.12);
+  flex-shrink: 0;
+  background: #ffffff;
+}
+
+.portal-chatbot-launcher-bubble-text {
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: #334155;
+  padding-right: 12px;
+}
+
+.portal-chatbot-launcher-bubble-text p {
+  margin: 0;
 }
 
 /* Utility bar: same row as contrast — img needs explicit size (gov-util-icon is icon-font sized) */
@@ -79,7 +201,13 @@
 .portal-chatbot[data-open="true"] .portal-chatbot-launcher {
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.85);
+  transform: scale(0.8);
+}
+
+.portal-chatbot[data-open="true"] .portal-chatbot-launcher-bubble {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8) translateY(10px);
 }
 
 .portal-chatbot-panel {
@@ -92,12 +220,15 @@
   min-height: 200px;
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 20px;
   overflow: hidden;
   box-shadow:
-    0 24px 60px rgba(15, 23, 42, 0.22),
-    0 0 0 1px rgba(10, 79, 140, 0.08);
+    0 24px 60px rgba(10, 37, 92, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
 }
 
 .portal-chatbot-panel[hidden] {
@@ -107,18 +238,33 @@
 .portal-chatbot-header {
   position: relative;
   flex-shrink: 0;
-  padding: 0.65rem 0.75rem 1.25rem;
-  background: linear-gradient(180deg, var(--portal-bot-blue) 0%, var(--portal-bot-blue-deep) 100%);
+  padding: 1.25rem 1rem 1.35rem;
+  background: url('/assets/img/sakhi-bg.png') no-repeat top center;
+  background-size: cover;
   color: #fff;
   text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.portal-chatbot-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 37, 92, 0.3) 0%, rgba(10, 37, 92, 0.6) 100%);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .portal-chatbot-header-top {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 0.25rem;
   min-height: 2rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .portal-chatbot-icon-btn {
@@ -131,13 +277,13 @@
   border: none;
   border-radius: 8px;
   color: rgba(255, 255, 255, 0.92);
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.15);
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
 }
 
 .portal-chatbot-icon-btn:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.25);
   color: #fff;
 }
 
@@ -147,36 +293,42 @@
 }
 
 .portal-chatbot-avatar-wrap {
-  margin-top: -0.25rem;
-  margin-bottom: 0.35rem;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.45rem;
 }
 
 .portal-chatbot-avatar {
-  width: 72px;
-  height: 72px;
+  width: 76px;
+  height: 76px;
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 24px rgba(10, 37, 92, 0.3);
   background: #fff;
 }
 
 .portal-chatbot-title {
+  position: relative;
+  z-index: 1;
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  /* main.css sets global h2 { color: var(--heading-color) }; override for dark header */
   color: #fff;
+  text-shadow: 0 2px 4px rgba(10, 37, 92, 0.4);
 }
 
 .portal-chatbot-sub {
+  position: relative;
+  z-index: 1;
   margin: 0.2rem 0 0;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 600;
-  opacity: 0.88;
+  opacity: 0.95;
   letter-spacing: 0.04em;
+  text-shadow: 0 1px 2px rgba(10, 37, 92, 0.4);
 }
 
 .portal-chatbot-body {
@@ -184,7 +336,20 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
-  background: var(--portal-bot-surface);
+  position: relative;
+  background: rgba(248, 250, 252, 0.85);
+}
+
+/* Watermark logo under the chat bubbles */
+.portal-chatbot-body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url('/assets/img/odisha-police-logo-flat.png') no-repeat center center;
+  background-size: 65%;
+  opacity: 0.055;
+  pointer-events: none;
 }
 
 .portal-chatbot-thread {

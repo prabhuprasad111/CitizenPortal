@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { PortalChatbot } from './PortalChatbot';
 import { PortalFooter } from './PortalFooter';
 import { PortalHeader } from './PortalHeader';
+import { CitizenFeedback } from './CitizenFeedback';
 
 export function PortalLayout() {
   const { pathname } = useLocation();
@@ -13,6 +14,7 @@ export function PortalLayout() {
       <Outlet />
       {!isLogin && <PortalFooter />}
       <PortalChatbot />
+      {!isLogin && <CitizenFeedback />}
       <a
         href="#"
         id="scroll-top"

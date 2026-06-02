@@ -6,3 +6,177 @@
 
 @import '../../assets/css/main.css';
 @import '../../assets/css/portal-chatbot.css';
+
+/* Citizen Feedback Styles */
+.feedback-sticky-tab {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: right bottom;
+  z-index: 1040;
+  background: linear-gradient(135deg, #0d233a 0%, #1a3e61 100%);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 2px -2px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  /* Adjust offset to position nicely along the right edge */
+  margin-right: -1px;
+}
+
+.feedback-sticky-tab:hover {
+  background: linear-gradient(135deg, #b99238 0%, #d4af37 100%);
+  box-shadow: 4px -4px 16px rgba(0, 0, 0, 0.25);
+  color: #0d233a !important;
+}
+
+.feedback-tab-text {
+  text-transform: uppercase;
+}
+
+.feedback-tab-icon {
+  transform: rotate(90deg);
+  display: inline-block;
+}
+
+.feedback-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(13, 35, 58, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1045;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.feedback-panel {
+  position: fixed;
+  top: 0;
+  right: -550px;
+  width: 520px;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+  z-index: 1050;
+  transition: right 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  border-left: 4px solid #b99238;
+}
+
+.feedback-panel.open {
+  right: 0;
+}
+
+.feedback-panel-header {
+  background: #0d233a;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #b99238;
+}
+
+.text-gold {
+  color: #d4af37;
+}
+
+.btn-navy {
+  background-color: #0d233a;
+  border-color: #0d233a;
+  transition: all 0.2s ease;
+}
+
+.btn-navy:hover {
+  background-color: #b99238;
+  border-color: #b99238;
+  color: #0d233a !important;
+}
+
+.feedback-close-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.feedback-close-btn:hover {
+  transform: scale(1.15) rotate(90deg);
+  color: #d4af37;
+}
+
+.feedback-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.feedback-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0d233a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-left: 3px solid #b99238;
+  padding-left: 8px;
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.form-info-card {
+  background: #eef4fa;
+  border-left: 3px solid #0d233a;
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #1a3e61;
+  display: flex;
+  align-items: center;
+}
+
+.success-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background: #d4edda;
+  color: #28a745;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+}
+
+.text-navy {
+  color: #0d233a;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 576px) {
+  .feedback-panel {
+    width: 100vw;
+    right: -100vw;
+  }
+}

@@ -8,6 +8,51 @@ export interface ChatbotFaqEntry {
 
 const FAQ_ENTRIES: readonly ChatbotFaqEntry[] = [
   {
+    id: 'track-character-certificate',
+    match: (text) => {
+      const t = text.toLowerCase();
+      const isTrackQuery = /track|check|status|verify|application/i.test(t);
+      const isCharCertQuery = /character|cert/i.test(t);
+      return (isTrackQuery && isCharCertQuery) || /character\s+certificate/i.test(t) || /ଚରିତ୍ର\s+ପ୍ରମାଣପତ୍ର/.test(text);
+    },
+    answer: {
+      en:
+        'To track / check the status of your Character Certificate application:<br/><br/>' +
+        '<strong>Option 1: Ask SAKHI directly</strong><br/>' +
+        '<ol>' +
+        '<li>Click on the <strong>\'View Topics\'</strong> button below.</li>' +
+        '<li>Select <strong>\'Service Status\'</strong>.</li>' +
+        '<li>Enter your <strong>Service Request Number</strong>.</li>' +
+        '<li>Choose your service type (Character Certificate).</li>' +
+        '</ol>' +
+        'And SAKHI will show you the current status!<br/><br/>' +
+        '<strong>Option 2: Use the Portal Verify Section</strong><br/>' +
+        '<ol>' +
+        '<li>Go to the <strong>Verify</strong> section on the home page.</li>' +
+        '<li>Choose <strong>Character Certificate</strong> from the dropdown.</li>' +
+        '<li>Enter your <strong>Service Request Number</strong>.</li>' +
+        '<li>Click the <strong>Search</strong> button to view the status.</li>' +
+        '</ol>',
+      or:
+        'ଆପଣଙ୍କ ଚରିତ୍ର ପ୍ରମାଣପତ୍ର ଆବେଦନର ସ୍ଥିତି ଯାଞ୍ଚ/ଟ୍ରାକ୍ କରିବା ପାଇଁ:<br/><br/>' +
+        '<strong>ବିକଳ୍ପ ୧: SAKHI କୁ ସିଧାସଳଖ ପଚାରନ୍ତୁ</strong><br/>' +
+        '<ol>' +
+        '<li>ତଳେ ଥିବା <strong>\'View Topics\' (ବିଷୟ ଦେଖନ୍ତୁ)</strong> ବଟନ୍ କ୍ଲିକ୍ କରନ୍ତୁ ।</li>' +
+        '<li><strong>\'Service Status\' (ସେବା ସ୍ଥିତି)</strong> ବାଛନ୍ତୁ ।</li>' +
+        '<li>ଆପଣଙ୍କ <strong>Service Request Number (ସେବା ଅନୁରୋଧ ନମ୍ବର)</strong> ପ୍ରବେଶ କରନ୍ତୁ ।</li>' +
+        '<li>ଆପଣଙ୍କ ସେବା ପ୍ରକାର (Character Certificate) ଚୟନ କରନ୍ତୁ ।</li>' +
+        '</ol>' +
+        'ଏବଂ SAKHI ଆପଣଙ୍କୁ ବର୍ତ୍ତମାନର ସ୍ଥିତି ଦର୍ଶାଇବ!<br/><br/>' +
+        '<strong>ବିକଳ୍ପ ୨: ପୋର୍ଟାଲ୍‌ର Verify (ଯାଞ୍ଚ) ବିଭାଗ ବ୍ୟବହାର କରନ୍ତୁ</strong><br/>' +
+        '<ol>' +
+        '<li>ହୋମ୍ ପେଜ୍‌ରେ ଥିବା <strong>Verify (ଯାଞ୍ଚ)</strong> ବିଭାଗକୁ ଯାଆନ୍ତୁ ।</li>' +
+        '<li>ଡ୍ରପଡାଉନ୍‌ରୁ <strong>Character Certificate (ଚରିତ୍ର ପ୍ରମାଣପତ୍ର)</strong> ବାଛନ୍ତୁ ।</li>' +
+        '<li>ଆପଣଙ୍କ <strong>Service Request Number (ସେବା ଅନୁରୋଧ ନମ୍ବର)</strong> ପ୍ରବେଶ କରନ୍ତୁ ।</li>' +
+        '<li>ସ୍ଥିତି ଦେଖିବା ପାଇଁ <strong>Search (ଖୋଜନ୍ତୁ)</strong> ବଟନ୍ କ୍ଲିକ୍ କରନ୍ତୁ ।</li>' +
+        '</ol>',
+    },
+  },
+  {
     id: 'what-is-portal',
     match: (text) => {
       const t = text.toLowerCase();

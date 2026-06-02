@@ -19,6 +19,34 @@ export function PortalChatbot() {
 
   return (
     <div id="portalSathiBot" className="portal-chatbot" data-open="false" lang="en">
+      {/* SAKHI Greeting Speech Bubble */}
+      <div className="portal-chatbot-launcher-bubble" id="portalChatbotLauncherBubble">
+        <button
+          type="button"
+          className="portal-chatbot-launcher-bubble-close"
+          id="portalChatbotLauncherBubbleClose"
+          aria-label="Dismiss greeting"
+        >
+          <i className="bi bi-x-lg" aria-hidden="true" />
+        </button>
+        <div className="portal-chatbot-launcher-bubble-content" id="portalChatbotLauncherBubbleContent">
+          <img
+            src={SAKHI_AVATAR}
+            className="portal-chatbot-launcher-bubble-avatar"
+            alt=""
+            onError={(e) => {
+              const img = e.currentTarget;
+              if (img.src.includes('policebot')) return;
+              img.src = SAKHI_AVATAR_FALLBACK;
+            }}
+          />
+          <div className="portal-chatbot-launcher-bubble-text">
+            <p className="lang-en mb-1"><strong>Namaskar!</strong> I am SAKHI, your Citizen Portal assistant. How can I help you today?</p>
+            <p className="lang-or mb-0" lang="or"><strong>ନମସ୍କାର!</strong> ମୁଁ SAKHI — ଆପଣଙ୍କ ନାଗରିକ ପୋର୍ଟାଲ୍ ସହାୟିକା । ମୁଁ ଆପଣଙ୍କୁ କିପରି ସାହାଯ୍ୟ କରିପାରିବି?</p>
+          </div>
+        </div>
+      </div>
+
       <button
         type="button"
         className="portal-chatbot-launcher"
